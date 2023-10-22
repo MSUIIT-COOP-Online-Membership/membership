@@ -8,7 +8,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
+                {{-- <x-welcome />  --}} <br>
+                <h1 style="text-align: center">Welcome {{ auth()->user()->name }}!
+                    You have successfully verified your membership.</h1><br>
             </div>
         </div>
     </div>

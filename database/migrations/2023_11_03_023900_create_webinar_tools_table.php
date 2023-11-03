@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePanelAdminsTableEasypanel extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePanelAdminsTableEasypanel extends Migration
      */
     public function up()
     {
-        Schema::create('panel_admins', function (Blueprint $table) {
+        Schema::create('webinar_tools', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->boolean('is_superuser');
+            $table->unsignedBigInteger('participant_id');
+            $table->foreign('participant_id')->references('id')->on('premembers');
+            $table->string('tool_name')->nullable();
+            $table->string('attending_status')->nullable();
             $table->timestamps();
-
-            $table->unique(['user_id']);
         });
     }
 
@@ -30,6 +30,6 @@ class CreatePanelAdminsTableEasypanel extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('panel_admins');
+        Schema::dropIfExists('webinar_tools');
     }
-}
+};

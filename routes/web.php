@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Premembersform_controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/Premembership',[Premembersform_controller::class, 'index'])->name('premembershipform.index');
+Route::post('/Premembership',[Premembersform_controller::class, 'store'])->name('premembershipform.store');
+
 
 Route::get('/', function () {
     return view('welcome');

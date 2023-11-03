@@ -50,6 +50,8 @@
                 @if (Route::has('login'))
                 
                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                        <a href="{{ route('premembershipform.index') }}" style="margin-right: 10px">Premembership</a>
+
                         @auth
                             <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                         @else

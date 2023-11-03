@@ -25,13 +25,13 @@ class UserComponent implements CRUDComponent
     // which kind of data should be showed in list page
     public function fields()
     {
-        return ['name', 'email'];
+        return ['name', 'email', 'password'];
     }
 
     // Searchable fields, if you dont want search feature, remove it
     public function searchable()
     {
-        return ['name', 'email'];
+        return ['name', 'email', 'password'];
     }
 
     // Write every fields in your db which you want to have a input
@@ -39,21 +39,14 @@ class UserComponent implements CRUDComponent
     // "password", "number", "email", "select", "date", "datetime", "time"
     public function inputs()
     {
-        return [
-            'name'=>'text',
-            'email'=>'email',
-            'password'=>'password'
-        ];
+        return [];
     }
 
     // Validation in update and create actions
     // It uses Laravel validation system
     public function validationRules()
     {
-        return [
-            'name'=>'required'
-
-        ];
+        return [];
     }
 
     // Where files will store for inputs

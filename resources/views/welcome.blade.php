@@ -72,7 +72,12 @@
 
             <!-- Seminar Email -->
             <div>
-                <a href= "{{ route('sendEmail') }}"> Seminar Video </a>
+                <a href= "{{ route('seminarEmail') }}"> Seminar Email </a> <br> <br>
+            </div>
+
+            <!-- With Attachment - Email -->
+            <div>
+                <a href= "{{ route('certificateEmail') }}"> Attachment Email </a>
             </div>
         
     </body>

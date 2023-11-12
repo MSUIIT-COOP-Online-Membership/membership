@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Email\CertificateController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SeminarController;
+use App\Http\Controllers\Email\SeminarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,7 @@ Route::middleware([
 });
 
 // Seminar Email
-Route::get('/seminar-email', [SeminarController::class,'seminarEmail'])->name('sendEmail');
+Route::get('/seminar-mail-sent', [SeminarController::class,'seminarEmail'])->name('seminarEmail');
+
+//With Certificate Email
+Route::get('/certificate-mail-sent', [CertificateController::class,'certificateEmail'])->name('certificateEmail');

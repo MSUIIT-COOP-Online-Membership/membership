@@ -9,11 +9,14 @@
             max-width: 600px; 
             margin: 0 auto; 
             background-color: #F4F4F4;
+            border: 1px solid #ccc;
         }
 
         .logo{
             background-color: #E0E7F0;
             height: 6rem;
+            text-align: center;
+            padding-top: 2rem;
         }
 
         .logo img{
@@ -79,7 +82,7 @@
             .seminar-box{
                 text-align: initial;
             }
-            
+
             .sem-details{
                 padding-left: 0;
                 padding-right: 0;
@@ -97,7 +100,7 @@
     <body>
         <div class="container">
             <div class="logo">
-                <img src= "{{ $message->embed(public_path('img/logo.png')) }}" alt="MSU-IIT NMPC Logo">
+                <img src= "{{ $message->embed(public_path('img/email/nmpc logo.png')) }}" alt="MSU-IIT NMPC Logo">
             </div>
             <div class="message">
                 Dear <strong>{{ $seminar_data['name'] }}</strong>,<br> <br> 
@@ -110,7 +113,7 @@
                             <strong>Duration</strong>: {{ $seminar_data['duration']}} <br>
                             
                             <div class="gmeet">
-                                <img src="{{ $message->embed(public_path('img/gmeet.png')) }}" alt="Gmeet Logo">
+                                <img src="{{ $message->embed(public_path('img/email/gmeet.png')) }}" alt="Gmeet Logo">
                                 <a href="https://meet.google.com/ojw-xept-tfs" class="gmeet-txt"> Join with Google Meet </a>
                             </div>
                         </div>
@@ -121,7 +124,7 @@
                             <strong>Duration</strong>: {{ $seminar_data['duration']}} <br>
                             
                             <div class="gmeet">
-                                <img src="{{ $message->embed(public_path('img/gmeet.png')) }}" alt="Gmeet Logo">
+                                <img src="{{ $message->embed(public_path('img/email/gmeet.png')) }}" alt="Gmeet Logo">
                                 <a href="https://meet.google.com/ojw-xept-tfs" class="gmeet-txt"> Join with Google Meet </a>
                             </div>
                         </div>
@@ -132,7 +135,7 @@
                             <strong>Duration</strong>: {{ $seminar_data['duration']}} <br>
                             
                             <div class="gmeet">
-                                <img src="{{ $message->embed(public_path('img/gmeet.png')) }}" alt="Gmeet Logo">
+                                <img src="{{ $message->embed(public_path('img/email/gmeet.png')) }}" alt="Gmeet Logo">
                                 <a href="https://meet.google.com/ojw-xept-tfs" class="gmeet-txt"> Join with Google Meet </a>
                             </div>
                         </div>

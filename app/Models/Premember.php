@@ -14,6 +14,7 @@ class Premember extends Model
         'mname',
         'lname',
         'gender',
+        'dob',
         'date_of_birth',
         'civil_status',
         'email',

@@ -47,10 +47,15 @@
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $branch->name }}" required>
                             </div>
 
-                            <!-- Branch Manager -->
-                            <div class="form-group">
-                                <label for="manager">Branch Manager</label>
-                                <input type="text" class="form-control" id="manager" name="manager" value="{{ $branch->manager }}">
+                            <!-- area -->
+                                <div class="form-group">
+                                <label for="area">{{ __('Branch Area') }}</label>
+                                <select id="area" name="area" class="form-control" required>
+                                    <option value="" disabled selected>Select Area</option>
+                                    <option value="1" {{ $branch->area == '1' ? 'selected' : '' }}>1</option>
+                                    <option value="2" {{ $branch->area == '2' ? 'selected' : '' }}>2</option>
+                                    <option value="3" {{ $branch->area == '3' ? 'selected' : '' }}>3</option>
+                                </select>
                             </div>
 
                             <!-- Branch Address -->
@@ -83,7 +88,7 @@
                                     <a href="{{ route('branches.index') }}" class="btn btn-danger"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
                                     <div>
                                         <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle mr-1"></i>{{ __('Update Branch') }}</button>
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-check-circle mr-1"></i>{{ __('Update') }}</button>
                                     </div>
                                 </div>
                             </div>

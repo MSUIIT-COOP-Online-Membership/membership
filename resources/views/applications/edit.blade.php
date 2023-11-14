@@ -1,12 +1,40 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications / Update</title>
+</head>
+<body>
+    @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Edit Application') }}</div>
 
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update Application</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('applications.index') }}">Applications</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h7 class="mb-0">{{ __('Please input fields to update application.') }}</h7>
+                        </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('applications.update', $application->id) }}">
                             @csrf
@@ -16,8 +44,8 @@
                             <div class="form-group">
                                 <label for="type">Type</label>
                                 <select class="form-control" id="type" name="type" required>
-                                    <option value="New Member" {{ $application->type == 'New Member' ? 'selected' : '' }}>New Member</option>
-                                    <option value="For Updating" {{ $application->type == 'For Updating' ? 'selected' : '' }}>For Updating</option>
+                                    <option value="Regular Member" {{ $application->type == 'Regular Member' ? 'selected' : '' }}>Regular Member</option>
+                                    <option value="Associate Member" {{ $application->type == 'Associate Member' ? 'selected' : '' }}>Associate Member</option>
                                 </select>
                             </div>
 
@@ -25,9 +53,8 @@
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select class="form-control" id="status" name="status" required>
-                                    <option value="Pending" {{ $application->status == 'Pending' ? 'selected' : '' }}>Pending</option>
-                                    <option value="In Review" {{ $application->status == 'In Review' ? 'selected' : '' }}>In Review</option>
-                                    <option value="Approved" {{ $application->status == 'Approved' ? 'selected' : '' }}>Approved</option>
+                                    <option value="New Member" {{ $application->status == 'New Member' ? 'selected' : '' }}>New Member</option>
+                                    <option value="For Updating" {{ $application->status == 'For Updating' ? 'selected' : '' }}>For Updating</option>
                                 </select>
                             </div>
 
@@ -72,16 +99,30 @@
                                 <label for="payment_id">Payment</label>
                                 <select class="form-control" id="payment_id" name="payment_id" required>
                                     @foreach($payments as $payment)
-                                        <option value="{{ $payment->id }}" {{ $application->payment_id == $payment->id ? 'selected' : '' }}>{{ $payment->name }}</option>
+                                        <option value="{{ $payment->id }}" {{ $payment->id ? 'selected' : '' }}>
+                                            {{ $payment->member->fname }} {{ $payment->member->lname }} - PHP {{ $payment->amount }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Update Application</button>
+                             <!-- Submit Button -->
+                             <div class="form-group">
+                                <div class="d-flex justify-content-between">
+                                    <a href="{{ route('applications.index') }}" class="btn btn-danger"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
+                                    <div>
+                                        <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-check-circle mr-1"></i>{{ __('Update') }}</button>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+    @endsection
+
+</body>
+</html>

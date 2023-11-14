@@ -99,6 +99,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('applications', ApplicationController::class);
 
     Route::get('/appointments/calendar', [AppointmentController::class, 'getAppointments'])->name('appointments.calendar');
+    //Route::get('/appointments/calendar', [AppointmentController::class, 'getAppCard'])->name('appointments.calendar');
     Route::get('appointments', [AppointmentController::class, 'index'])->name('appointments.index');
     Route::get('appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
     Route::post('appointments', [AppointmentController::class, 'store'])->name('appointments.store');

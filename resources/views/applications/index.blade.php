@@ -35,6 +35,11 @@
                 <div class="col-12">
                     <div class="card">
                     <div class="card-body">
+
+                    <a href="{{ route('applications.create') }}" class="btn btn-success mb-3">
+                            <i class="fas fa-plus-circle"></i> Add Application
+                        </a>
+
                     <table class="table" id="advancedDataTable">
                                 <thead>
                                 <tr>
@@ -54,10 +59,10 @@
                                         <td>{{ $application->id }}</td>
                                         <td>{{ $application->type }}</td>
                                         <td>{{ $application->status }}</td>
-                                        <td>{{ $application->member->name }}</td>
+                                        <td>{{ $application->member->fname }} {{ $application->member->lname }}</td>
                                         <td>{{ $application->branch->name }}</td>
                                         <td>{{ $application->staff->fname }} {{ $application->staff->lname }}</td>
-                                        <td>{{ $application->payment->member->lname }}</td>
+                                        <td>{{ $application->payment->amount }}</td>
                                         <td>
                                                 <!-- View button with eye icon -->
                                                 <!-- <a href="{{ route('applications.show', ['application' => $application->id]) }}" class="btn btn-info">

@@ -38,12 +38,16 @@
                 <div class="card">
                     <div class="card-body">
 
+                    <a href="{{ route('branches.create') }}" class="btn btn-success mb-3">
+                            <i class="fas fa-plus-circle"></i> Add Branch
+                        </a>
+
                         <!-- DataTable -->
                         <table class="table" id="advancedDataTable">
                             <thead>
                                 <tr>
                                     <th>Branch Name</th>
-                                    <th>Manager</th>
+                                    <th>Area</th>
                                     <th>Address</th>
                                     <th>Tel No</th>
                                     <th>Mobile No</th>
@@ -55,7 +59,7 @@
                                 @forelse($branches as $branch)
                                     <tr>
                                         <td>{{ $branch->name }}</td>
-                                        <td>{{ $branch->manager }}</td>
+                                        <td>{{ $branch->area }}</td>
                                         <td>{{ $branch->address }}</td>
                                         <td>{{ $branch->tel_no }}</td>
                                         <td>{{ $branch->mobile_no }}</td>

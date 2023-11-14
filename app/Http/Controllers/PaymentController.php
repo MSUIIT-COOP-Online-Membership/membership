@@ -7,9 +7,20 @@ use App\Models\Payment;
 use App\Models\Member;
 use App\Models\Branch;
 use App\Models\Staff;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PaymentController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,6 +54,7 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
+        try {
         $request->validate([
             'member_id' => 'required',
             'branch_id' => 'required',
@@ -52,8 +64,13 @@ class PaymentController extends Controller
 
         Payment::create($request->all());
 
-        return redirect()->route('payments.index')
-            ->with('success', 'Payment created successfully.');
+        Alert::success('Success!', 'Added payment successfully.');
+
+        return redirect()->route('payments.index')->with('success', 'Payment created successfully.');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -93,6 +110,7 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        try {
         $request->validate([
             'member_id' => 'required',
             'branch_id' => 'required',
@@ -102,9 +120,15 @@ class PaymentController extends Controller
 
         Payment::find($id)->update($request->all());
 
+        Alert::success('Success!', 'Updated payment successfully.');
+
         return redirect()->route('payments.index')
             ->with('success', 'Payment updated successfully.');
-    }
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+        }
 
     /**
      * Remove the specified resource from storage.
@@ -114,9 +138,13 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        Payment::destroy($id);
+        try {
+            $payment = Payment::findOrFail($id);
+            $payment->delete();
 
-        return redirect()->route('payments.index')
-            ->with('success', 'Payment deleted successfully.');
+            return response()->json(['success' => true, 'message' => 'Payment deleted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
     }
 }

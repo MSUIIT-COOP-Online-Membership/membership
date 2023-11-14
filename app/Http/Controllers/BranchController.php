@@ -52,7 +52,7 @@ class BranchController extends Controller
         try {
             $request->validate([
                 'name' => 'required|string|max:255',
-                'manager' => 'nullable|string|max:255',
+                'area' => 'nullable|string|max:255',
                 'address' => 'required|string|max:255',
                 'tel_no' => 'nullable|string|max:255',
                 'mobile_no' => 'nullable|string|max:255',
@@ -62,7 +62,7 @@ class BranchController extends Controller
             // Create a new branch instance and save to the database
             Branch::create([
                 'name' => $request->input('name'),
-                'manager' => $request->input('manager'),
+                'area' => $request->input('area'),
                 'address' => $request->input('address'),
                 'tel_no' => $request->input('tel_no'),
                 'mobile_no' => $request->input('mobile_no'),
@@ -110,7 +110,7 @@ class BranchController extends Controller
             // Validate the incoming request data
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
-                'manager' => 'nullable|string|max:255',
+                'area' => 'nullable|string|max:255',
                 'address' => 'required|string',
                 'tel_no' => 'nullable|string|max:255',
                 'mobile_no' => 'nullable|string|max:255',

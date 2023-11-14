@@ -27,7 +27,7 @@
   </div>
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-danger navbar-dark">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -241,38 +241,48 @@
 <!-- Page specific script -->
 <script>
    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
-      var appointments = {!! json_encode($appointments) !!};
+   var calendarEl = document.getElementById('calendar');
+   var appointments = {!! json_encode($appointments) !!};
 
-      var events = appointments.map(function (appointment) {
-         return {
-            title: appointment.subject,
-            start: appointment.date + 'T' + appointment.start_time,
-            end: appointment.date + 'T' + appointment.end_time,
-            backgroundColor: '#3c8dbc', // Customize as needed
-            borderColor: '#3c8dbc' // Customize as needed
-         };
-      });
+   var events = appointments.map(function (appointment) {
+      var bgColor = '#3c8dbc'; // Default color
 
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-         headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
-         },
-         themeSystem: 'bootstrap',
-         events: events,
-         editable: true,
-         droppable: true,
-         drop: function (info) {
-            if (checkbox.checked) {
-               info.draggedEl.parentNode.removeChild(info.draggedEl);
-            }
-         }
-      });
+      // Set background color based on appointment status
+      if (appointment.status === 'Booked') {
+         bgColor = '#f0ad4e'; // Warning color
+      } else if (appointment.status === 'Available') {
+         bgColor = '#5cb85c'; // Success color
+      }
 
-      calendar.render();
+      return {
+         title: appointment.subject,
+         start: appointment.date + 'T' + appointment.start_time,
+         end: appointment.date + 'T' + appointment.end_time,
+         backgroundColor: bgColor,
+         borderColor: bgColor // Customize as needed
+      };
    });
+
+   var calendar = new FullCalendar.Calendar(calendarEl, {
+      headerToolbar: {
+         left: 'prev,next today',
+         center: 'title',
+         right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      themeSystem: 'bootstrap',
+      events: events,
+      editable: true,
+      droppable: true,
+      drop: function (info) {
+         if (checkbox.checked) {
+            info.draggedEl.parentNode.removeChild(info.draggedEl);
+         }
+      }
+   });
+
+   calendar.render();
+});
+
 </script>
 
 <script>

@@ -38,6 +38,11 @@
             
                 <div class="card">
                     <div class="card-body">
+
+                    <a href="{{ route('staff.create') }}" class="btn btn-success mb-3">
+                            <i class="fas fa-plus-circle"></i> Add Staff
+                        </a>
+
                         <table class="table" id="advancedDataTable">
                             <thead>
                                 <tr>

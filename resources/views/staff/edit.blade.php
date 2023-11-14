@@ -50,11 +50,10 @@
                             @endif
 
                             <div class="text-center mt-3">
-                                <label for="id_photo" class="btn btn-light">
-                                    Upload New Photo
+                                <label for="id_photo" class="btn btn-primary">
+                                    <i class="fas fa-upload"></i> New ID Photo
                                     <input type="file" id="id_photo" name="id_photo" class="form-control-file" style="display: none;" onchange="displayFileName()">
-                                </label>
-                                <p id="selectedFileName" class="mt-2"></p>
+                                </label><p id="selectedFileName" class="mt-2"><small class="form-text text-muted">Upload a formal ID photo.</small></p>  
                             </div>
 
                             <!-- JavaScript to update the selected file name -->
@@ -66,21 +65,13 @@
                                     // Check if a file is selected
                                     if (fileInput.files.length > 0) {
                                         // Update the text content with the selected file name
-                                        fileNameDisplay.textContent = 'New Selected File: ' + fileInput.files[0].name;
+                                        fileNameDisplay.textContent = fileInput.files[0].name;
                                     } else {
                                         // If no file is selected, clear the text content
                                         fileNameDisplay.textContent = '';
                                     }
                                 }
                             </script>
-
-                            <!-- Add input for uploading new photo
-                            <div class="text-center mt-3">
-                                <label for="id_photo" class="btn btn-light">
-                                    Upload New Photo
-                                    <input type="file" id="id_photo" name="id_photo" class="form-control-file" style="display: none;">
-                                </label>
-                            </div> -->
 
                             <hr class="solid" style="border-top: 3px solid #bbb"><br>
 
@@ -194,7 +185,7 @@
                                     <a href="{{ route('staff.index') }}" class="btn btn-danger"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
                                     <div>
                                         <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle mr-1"></i>{{ __('Update Staff') }}</button>
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-check-circle mr-1"></i>{{ __('Update') }}</button>
                                     </div>
                                 </div>
                             </div>

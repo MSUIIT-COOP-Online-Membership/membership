@@ -31,7 +31,7 @@
                             <!-- Add more fields based on your Member model -->
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle mr-1"></i>{{ __('Update') }}</button>
+                                <button type="submit" class="btn btn-success"><i class="fas fa-check-circle mr-1"></i>{{ __('Update') }}</button>
                                 <a href="{{ route('members.index') }}" class="btn btn-secondary"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
                             </div>
                         </form>

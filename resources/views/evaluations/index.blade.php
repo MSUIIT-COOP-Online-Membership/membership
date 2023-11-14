@@ -36,6 +36,10 @@
                 <div class="card">
                     <div class="card-body">
 
+                    <a href="{{ route('evaluations.create') }}" class="btn btn-success mb-3">
+                            <i class="fas fa-plus-circle"></i> Add Evaluation
+                        </a>
+
                         <!-- DataTable -->
                         <table class="table" id="advancedDataTable">
                             <thead>

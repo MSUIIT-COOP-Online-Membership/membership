@@ -1,11 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments / Create</title>
+</head>
+<body>
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Create Appointment') }}</div>
+    @section('content')
+
+    <!-- Content Header (Page header) -->
+<section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Create Appointment</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('appointments.index') }}">Appointments</a></li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h7 class="mb-0">{{ __('Please input fields to add appointment.') }}</h7>
+                        </div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('appointments.store') }}">
@@ -102,7 +131,15 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Create Appointment</button>
+                            <div class="form-group">
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('appointments.index') }}" class="btn btn-danger"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
+                                        <div>
+                                            <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
+                                            <button type="submit" class="btn btn-success"><i class="fas fa-check-circle mr-1"></i>{{ __('Create') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
                         </form>
                     </div>
                 </div>

@@ -6,9 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Member;
 use App\Models\Branch;
+use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,11 +32,30 @@ class AppointmentController extends Controller
         return view('appointments.index', compact('appointments'));
     }
 
+    // public function getAppointments()
+    // {
+    //     $appointments = Appointment::all();
+    //     return view('appointments.calendar', compact('appointments'));
+    // }
+
     public function getAppointments()
     {
         $appointments = Appointment::all();
-        return view('appointments.calendar', compact('appointments'));
+    
+        $today = Carbon::today();
+    
+        $bookedAppointments = $appointments->filter(function ($appointment) use ($today) {
+            $appointmentDate = Carbon::parse($appointment->date); // Ensure it's a Carbon instance
+            return $appointment->status === 'Booked' && $appointmentDate->isSameDay($today);
+        });
+        
+    
+        $availableAppointments = $appointments->where('status', 'Available');
+        $upcomingAppointments = $appointments->where('status', 'Booked');
+    
+        return view('appointments.calendar', compact('bookedAppointments', 'availableAppointments', 'upcomingAppointments', 'appointments'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,7 +76,7 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation
+        try {
         $request->validate([
             'member_id' => 'nullable|exists:members,id',
             'branch_id' => 'required',
@@ -59,8 +90,14 @@ class AppointmentController extends Controller
         // Store logic
         Appointment::create($request->all());
 
+        Alert::success('Success!', 'Added appointment successfully.');
+
         return redirect()->route('appointments.index')
             ->with('success', 'Appointment created successfully');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -104,7 +141,7 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validation
+        try {
         $request->validate([
             'member_id' => 'nullable|exists:members,id',
             'branch_id' => 'required',
@@ -126,8 +163,14 @@ class AppointmentController extends Controller
         // Update the appointment
         $appointment->update($request->all());
 
+        Alert::success('Success!', 'Updated appointment successfully.');
+
         return redirect()->route('appointments.index')
             ->with('success', 'Appointment updated successfully');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -138,6 +181,15 @@ class AppointmentController extends Controller
      */
     public function destroy($id)
     {
-        // Deletion logic here
+        try {
+            $appointment = Appointment::findOrFail($id);
+            $appointment->delete();
+
+            return response()->json(['success' => true, 'message' => 'Appointment deleted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
     }
+
+    
 }

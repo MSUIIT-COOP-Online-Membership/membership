@@ -35,6 +35,12 @@
             <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
+
+                        <!-- Add the "Create User" button with a link to users.create -->
+                        <a href="{{ route('users.create') }}" class="btn btn-success mb-3">
+                            <i class="fas fa-plus-circle"></i> Add User
+                        </a>
+
                         <table class="table" id="advancedDataTable">
                             <thead>
                                 <tr>

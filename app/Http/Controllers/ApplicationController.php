@@ -8,9 +8,19 @@ use App\Models\Member;
 use App\Models\Branch;
 use App\Models\Staff;
 use App\Models\Payment;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ApplicationController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,6 +55,7 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
+        try {
         $request->validate([
             'type' => 'required',
             'status' => 'required',
@@ -58,8 +69,14 @@ class ApplicationController extends Controller
             'type', 'status', 'member_id', 'branch_id', 'approved_by', 'payment_id',
         ]));
 
+        Alert::success('Success!', 'Added application successfully.');
+
         return redirect()->route('applications.index')->with('success', 'Application created successfully.');
+    } catch (\Exception $e) {
+        Alert::error('Error', 'Error Message: ' . $e->getMessage());
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
+}
 
     /**
      * Display the specified resource.
@@ -99,6 +116,7 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        try {
         $request->validate([
             'type' => 'required',
             'status' => 'required',
@@ -112,8 +130,14 @@ class ApplicationController extends Controller
         $application->update($request->only([
             'type', 'status', 'member_id', 'branch_id', 'approved_by', 'payment_id',
         ]));
+        
+        Alert::success('Success!', 'Updated application successfully.');
 
         return redirect()->route('applications.index')->with('success', 'Application updated successfully.');
+    } catch (\Exception $e) {
+        Alert::error('Error', 'Error Message: ' . $e->getMessage());
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
     }
 
     /**
@@ -124,9 +148,13 @@ class ApplicationController extends Controller
      */
     public function destroy($id)
     {
+        try {
         $application = Application::findOrFail($id);
         $application->delete();
 
-        return redirect()->route('applications.index')->with('success', 'Application deleted successfully.');
+        return response()->json(['success' => true, 'message' => 'Application deleted successfully.']);
+    } catch (\Exception $e) {
+        return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+    }
     }
 }

@@ -3,16 +3,19 @@
 
 <!-- Sidebar -->
 <div class="sidebar">
-    <!-- Sidebar user panel (optional)
+    <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/public/images/id_photos/" class="img-circle elevation-2" alt="User Image">
+        @if (auth()->user()->id_photo)
+            <img src="{{ asset('images/id_photos/' . auth()->user()->id_photo) }}" class="img-circle elevation-2" alt="User Image" width="50" height="50">
+        @else
+            No photo
+        @endif
         </div>
         <div class="info">
-            <a href="{{ route('profile.show') }}" class="d-block">{{ Auth::user()->name }}</a>
+            <a href="{{ route('profile.show') }}" class="d-block">{{ auth()->user()->name }}</a>
         </div>
-    </div> -->
-    <br>
+    </div>
 
     <!-- SidebarSearch Form -->
     <div class="form-inline">
@@ -38,79 +41,62 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a href="#" class="nav-link" id="dashboard-link">
+                <i class="nav-icon fas fa-chart-bar"></i>
+                <p>
+                    {{ __('Analytics') }}
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link" id="dashboard-link">
+                <i class="nav-icon fas fa-clock"></i>
+                <p>
+                    {{ __('Timeline') }}
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-header">CRUD MODELS</li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         {{ __('Users') }}
-                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('All Users') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('users.create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Add User') }}</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        {{ __('Members') }}
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('members.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('All Members') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('members.create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Add Member') }}</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
 
             <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ route('branches.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-building"></i>
                     <p>
                         {{ __('Branches') }}
-                        <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('branches.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('All Branches') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('branches.create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Add Branch') }}</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
 
             <li class="nav-item has-treeview">
+                <a href="{{ route('staff.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-user-tie"></i>
+                    <p>
+                        {{ __('Staff') }}
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('members.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-user-check"></i>
+                    <p>
+                        {{ __('Members') }}
+                    </p>
+                </a>
+            </li>
+
+            <!-- <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-video"></i>
                     <p>
@@ -146,142 +132,133 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ route('evaluations.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-newspaper"></i>
                     <p>
                         {{ __('Evaluations') }}
-                        <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('evaluations.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('All Evaluations') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('evaluations.create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Add Evaluation') }}</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
 
             <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        {{ __('Staff') }}
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('staff.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('All Staff') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('staff.create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Add Staff') }}</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-newspaper"></i>
-                    <p>
-                        {{ __('Applications') }}
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('applications.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('All Applications') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('applications.create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Add Application') }}</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-money-bill"></i>
-                    <p>
-                        {{ __('Invoice') }}
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('payments.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('All Payments') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('payments.create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Add Payment') }}</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ route('appointments.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-calendar"></i>
                     <p>
-                        {{ __('Calendar') }}
+                        {{ __('Appointments') }}
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+                <a href="{{ route('payments.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    <p>
+                        {{ __('Invoices') }}
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+                <a href="{{ route('applications.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-file-signature"></i>
+                    <p>
+                        {{ __('Applications') }}
+                    </p>
+                </a>
+            </li>
+
+
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-envelope"></i>
+                    <p>
+                        {{ __('Mailbox') }}
                         <i class="fas fa-angle-left right"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('appointments.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('All Appointments') }}</p>
+                        <a href="#" class="nav-link">
+                            <i class="far fa-circle nav-icon text-primary"></i>
+                            <p>{{ __('Inbox') }}</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('appointments.create') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Add Appointment') }}</p>
+                        <a href="#" class="nav-link">
+                            <i class="far fa-circle nav-icon text-success"></i>
+                            <p>{{ __('Compose') }}</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('appointments.calendar') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>{{ __('Booking') }}</p>
+                        <a href="#" class="nav-link">
+                            <i class="far fa-circle nav-icon text-warning"></i>
+                            <p>{{ __('Read') }}</p>
                         </a>
                     </li>
                 </ul>
             </li>
 
 
+            <li class="nav-header">MISCELLANEOUS</li>
+            <li class="nav-item">
+                <a href="{{ route('appointments.calendar') }}" class="nav-link">
+                    <i class="nav-icon far fa-calendar-alt"></i>
+                    <p>
+                    {{ __('Calendar') }}
+                        <span class="badge badge-info right"></span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('appointments.calendar') }}" class="nav-link">
+                    <i class="nav-icon far fa-image"></i>
+                    <p>
+                    {{ __('Gallery') }}
+                        <span class="badge badge-info right"></span>
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="{{ route('about') }}" class="nav-link">
                     <i class="nav-icon far fa-address-card"></i>
                     <p>
-                        {{ __('About us') }}
+                        {{ __('About Us') }}
                     </p>
                 </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-cogs"></i>
+                    <p>
+                        {{ __('Settings') }}
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-question-circle"></i>
+                    <p>
+                        {{ __('FAQs') }}
+                    </p>
+                </a>
+            </li>
+    
+            <li class="nav-item">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a href="{{ route('logout') }}" class="nav-link"
+                    onclick="event.preventDefault(); this.closest('form').submit();">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>
+                        {{ __('Log Out') }}
+                        </p>
+                    </a>
+                </form>
             </li>
         </ul>
     </nav>

@@ -716,7 +716,7 @@
                                 <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
                                 <button type="button" class="btn btn-secondary prev-section" style="display: none;"><i class="fas fa-arrow-circle-left mr-1"></i>Previous</button>
                                 <button type="button" class="btn btn-primary next-section"><i class="fas fa-arrow-circle-right mr-1"></i>Next</button>
-                                <button type="submit" class="btn btn-primary" id="submitButtonContainer" style="display: none;"><i class="fas fa-check-circle mr-1"></i>Create User</button>
+                                <button type="submit" class="btn btn-success" id="submitButtonContainer" style="display: none;"><i class="fas fa-check-circle mr-1"></i>Create</button>
                             </div>
                             </div>
                         </form>

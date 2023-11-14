@@ -46,10 +46,15 @@
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
 
-                                <!-- Manager -->
+                                <!-- area -->
                                 <div class="form-group">
-                                    <label for="manager">Manager</label>
-                                    <input type="text" class="form-control" id="manager" name="manager">
+                                    <label for="area">{{ __('Area') }}</label>
+                                    <select id="area" name="area" class="form-control" required>
+                                        <option value="" disabled selected>Select Area</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
                                 </div>
 
                                 <!-- Address -->
@@ -81,7 +86,7 @@
                                         <a href="{{ route('branches.index') }}" class="btn btn-danger"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
                                         <div>
                                             <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
-                                            <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle mr-1"></i>{{ __('Create Branch') }}</button>
+                                            <button type="submit" class="btn btn-success"><i class="fas fa-check-circle mr-1"></i>{{ __('Create') }}</button>
                                         </div>
                                     </div>
                                 </div>

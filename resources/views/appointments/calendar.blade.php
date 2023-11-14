@@ -21,41 +21,92 @@
 
             <div class="col-md-5">
                 <!-- Appointments from Database -->
-                <div class="card card-primary">
+                <!-- <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Today | Walk-in Appointments</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Member</th>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($bookedAppointments as $appointment)
+                                <tr>
+                                    <td>{{ $appointment->member->fname }} {{ $appointment->member->lname }}</td>
+                                    <td>{{ $appointment->date }}</td>
+                                    <td>{{ $appointment->start_time }}</td>
+                                    <td>{{ $appointment->end_time }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div> -->
+
+                <!-- /.card -->
+                <div class="card card-warning">
                     <div class="card-header">
-                        <h3 class="card-title">Appointments</h3>
+                        <h3 class="card-title">Booked | Walk-in Appointments</h3>
+                    </div>
+                    <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Member</th>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($upcomingAppointments as $appointment)
+                                <tr>
+                                    <td>{{ $appointment->member->fname }} {{ $appointment->member->lname }}</td>
+                                    <td>{{ $appointment->date }}</td>
+                                    <td>{{ $appointment->start_time }}</td>
+                                    <td>{{ $appointment->end_time }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Available | Walk-in Appointments</h3>
                     </div>
                     <div class="card-body">
                         <table class="table">
-                            <thead>
+                        <thead>
+                            <tr>
+                                <th>Member</th>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($availableAppointments as $appointment)
                                 <tr>
-                                    <!-- <th>Date</th>
-                                    <th>Start Time</th>
-                                    <th>End Time</th> -->
-                                    <th>Subject</th>
-                                    <th>Member</th>
-                                    <!-- Add other fields as needed -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($appointments as $appointment)
-                                <tr>
-                                    <!-- <td>{{ $appointment->date }}</td>
-                                    <td>{{ $appointment->start_time }}</td>
-                                    <td>{{ $appointment->end_time }}</td> -->
-                                    <td>{{ $appointment->subject }}</td>
                                     <td>{{ $appointment->member->fname }} {{ $appointment->member->lname }}</td>
-                                    <!-- Assuming your Appointment model has a member relationship -->
-                                    <!-- Adjust the relationship and field names accordingly -->
-                                    <!-- Add other fields as needed -->
+                                    <td>{{ $appointment->date }}</td>
+                                    <td>{{ $appointment->start_time }}</td>
+                                    <td>{{ $appointment->end_time }}</td>
                                 </tr>
-                                @endforeach
-                            </tbody>
+                            @endforeach
+                        </tbody>
                         </table>
                     </div>
                 </div>
                 <!-- /.card -->
             </div>
+
 
             <div class="col-md-7">
                 <div class="card card-primary">

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->text('name')->nullable();
-            $table->text('manager')->nullable();
+            $table->text('area')->nullable();
             $table->longText('address')->nullable();
             $table->string('tel_no')->nullable();
             $table->string('mobile_no')->nullable();

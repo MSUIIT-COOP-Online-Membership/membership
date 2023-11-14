@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
     @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -219,6 +224,10 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 <!-- REQUIRED SCRIPTS -->
 <script>
     // Add this script to automatically collapse the sidebar on page load
@@ -231,6 +240,56 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add a listener for form submission
+        document.getElementById('createUserBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Submit the form using AJAX
+            const form = e.target.closest('form');
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success SweetAlert
+                    Swal.fire({
+                        title: 'Success!',
+                        text: data.message,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // Redirect to another page if needed
+                        window.location.href = "{{ route('users.index') }}";
+                    });
+                } else {
+                    // Show error SweetAlert
+                    Swal.fire({
+                        title: 'Error!',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
 @yield('scripts')
+
+@include('sweetalert::alert')
+
 </body>
 </html>

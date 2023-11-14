@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Webinar;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class WebinarController extends Controller
 {
@@ -18,14 +21,13 @@ class WebinarController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        $webinars = Webinar::paginate();
-
+        $webinars = Webinar::all();
         return view('webinars.index', compact('webinars'));
     }
 
@@ -47,35 +49,42 @@ class WebinarController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'web_tool' => 'required|string',
-            'date' => [
-                'required',
-                'date',
-                'after_or_equal:' . now()->toDateString(), // Ensure date is not before today
-            ],
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => [
-                'required',
-                'date_format:H:i',
-                function ($attribute, $value, $fail) use ($request) {
-                    // Custom validation: Ensure end time is after start time
-                    $startTime = strtotime($request->input('start_time'));
-                    $endTime = strtotime($value);
+        try{
+            $request->validate([
+                'web_tool' => 'required|string',
+                'date' => [
+                    'required',
+                    'date',
+                    'after_or_equal:' . now()->toDateString(), // Ensure date is not before today
+                ],
+                'start_time' => 'required|date_format:H:i',
+                'end_time' => [
+                    'required',
+                    'date_format:H:i',
+                    function ($attribute, $value, $fail) use ($request) {
+                        // Custom validation: Ensure end time is after start time
+                        $startTime = strtotime($request->input('start_time'));
+                        $endTime = strtotime($value);
 
-                    if ($endTime <= $startTime) {
-                        $fail('The end time must be after the start time.');
-                    }
-                },
-            ],
-            'resource_speaker' => 'required|string',
-            'web_link' => 'url|nullable',
-        ]);
+                        if ($endTime <= $startTime) {
+                            $fail('The end time must be after the start time.');
+                        }
+                    },
+                ],
+                'resource_speaker' => 'nullable|string',
+                'web_link' => 'url|nullable',
+            ]);
 
-        // Store the webinar
-        Webinar::create($request->all());
+            // Store the webinar
+            Webinar::create($request->all());
 
-        return redirect()->route('webinars.index')->with('success', 'Webinar created successfully!');
+            Alert::success('Success!', 'Added webinar successfully.');
+
+            return redirect()->route('webinars.index')->with('success', 'Webinar created successfully!');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -87,7 +96,6 @@ class WebinarController extends Controller
     public function show($id)
     {
         $webinar = Webinar::findOrFail($id);
-
         return view('webinars.show', compact('webinar'));
     }
 
@@ -100,7 +108,6 @@ class WebinarController extends Controller
     public function edit($id)
     {
         $webinar = Webinar::findOrFail($id);
-
         return view('webinars.edit', compact('webinar'));
     }
 
@@ -113,20 +120,26 @@ class WebinarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'web_tool' => 'required',
-            'date' => 'required|date',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
-            'resource_speaker' => 'required',
-            'web_link' => 'nullable|url',
-        ]);
+        try {
+            $request->validate([
+                'web_tool' => 'required',
+                'date' => 'required|date',
+                'start_time' => 'required|date_format:H:i',
+                'end_time' => 'required|date_format:H:i|after:start_time',
+                'resource_speaker' => 'nullable',
+                'web_link' => 'nullable|url',
+            ]);
 
-        $webinar = Webinar::findOrFail($id);
-        $webinar->update($request->all());
+            $webinar = Webinar::findOrFail($id);
+            $webinar->update($request->all());
 
-        return redirect()->route('webinars.index')
-            ->with('success', 'Webinar updated successfully.');
+            Alert::success('Success!', 'Updated webinar successfully.');
+
+            return redirect()->route('webinars.index')->with('success', 'Webinar updated successfully.');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -137,10 +150,29 @@ class WebinarController extends Controller
      */
     public function destroy($id)
     {
-        $webinar = Webinar::findOrFail($id);
-        $webinar->delete();
+        try {
+            $webinar = Webinar::findOrFail($id);
+            $webinar->delete();
 
-        return redirect()->route('webinars.index')
-            ->with('success', 'Webinar deleted successfully.');
+            return response()->json(['success' => true, 'message' => 'Webinar deleted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
+    }
+
+    public function getDates($id)
+    {
+        $webinar = Webinar::findOrFail($id);
+        $dates = $webinar->where('web_tool', 'Google Meet')->pluck('date')->unique();
+
+        return response()->json(['dates' => $dates]);
+    }
+
+    public function getTimes($id, $date)
+    {
+        $webinar = Webinar::findOrFail($id);
+        $times = $webinar->where('web_tool', 'Google Meet')->where('date', $date)->pluck('start_time', 'end_time');
+
+        return response()->json(['times' => $times]);
     }
 }

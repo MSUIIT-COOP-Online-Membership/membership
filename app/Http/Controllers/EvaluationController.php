@@ -6,9 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Evaluation;
 use App\Models\Member;
 use App\Models\Branch;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EvaluationController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +27,7 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        $evaluations = Evaluation::paginate(10); // Change 10 to the number of items you want per page
+        $evaluations = Evaluation::all();
         return view('evaluations.index', compact('evaluations'));
     }
 
@@ -42,28 +53,35 @@ class EvaluationController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the form data
-        $request->validate([
-            'member_id' => 'required|exists:members,id',
-            'branch_id' => 'required|exists:branches,id',
-            'q_one' => 'required|string',
-            'q_two' => 'required|string',
-            'q_three' => 'required|string',
-            'q_four' => 'required|string',
-            'q_five' => 'required|string',
-            'q_six' => 'required|string',
-            'q_seven' => 'required|string',
-            'q_eight' => 'required|string',
-            'q_nine' => 'required|string',
-            'q_ten' => 'required|string',
-            'score' => 'required|integer',
-            'pass_status' => 'required|in:Pass,Fail',
-        ]);
+        try {
+            // Validate the form data
+            $request->validate([
+                'member_id' => 'required|exists:members,id',
+                'branch_id' => 'required|exists:branches,id',
+                'q_one' => 'required|string',
+                'q_two' => 'required|string',
+                'q_three' => 'required|string',
+                'q_four' => 'required|string',
+                'q_five' => 'required|string',
+                'q_six' => 'required|string',
+                'q_seven' => 'required|string',
+                'q_eight' => 'required|string',
+                'q_nine' => 'required|string',
+                'q_ten' => 'required|string',
+                'score' => 'nullable|integer',
+                'pass_status' => 'nullable|string',
+            ]);
 
-        // Create a new evaluation
-        Evaluation::create($request->all());
+            // Create a new evaluation
+            Evaluation::create($request->all());
+            
+            Alert::success('Success!', 'Added evaluation entry successfully.');
 
-        return redirect()->route('evaluations.index')->with('success', 'Evaluation created successfully');
+            return redirect()->route('evaluations.index')->with('success', 'Evaluation created successfully');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -99,29 +117,36 @@ class EvaluationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validate the form data
-        $request->validate([
-            'member_id' => 'required|exists:members,id',
-            'branch_id' => 'required|exists:branches,id',
-            'q_one' => 'required|string',
-            'q_two' => 'required|string',
-            'q_three' => 'required|string',
-            'q_four' => 'required|string',
-            'q_five' => 'required|string',
-            'q_six' => 'required|string',
-            'q_seven' => 'required|string',
-            'q_eight' => 'required|string',
-            'q_nine' => 'required|string',
-            'q_ten' => 'required|string',
-            'score' => 'required|integer',
-            'pass_status' => 'required|in:Pass,Fail',
-        ]);
+        try {
+            // Validate the form data
+            $request->validate([
+                'member_id' => 'nullable|exists:members,id',
+                'branch_id' => 'nullable|exists:branches,id',
+                'q_one' => 'required|string',
+                'q_two' => 'required|string',
+                'q_three' => 'required|string',
+                'q_four' => 'required|string',
+                'q_five' => 'required|string',
+                'q_six' => 'required|string',
+                'q_seven' => 'required|string',
+                'q_eight' => 'required|string',
+                'q_nine' => 'required|string',
+                'q_ten' => 'required|string',
+                'score' => 'nullable|integer',
+                'pass_status' => 'nullable|string',
+            ]);
 
-        // Update the evaluation
-        $evaluation = Evaluation::findOrFail($id);
-        $evaluation->update($request->all());
+            // Update the evaluation
+            $evaluation = Evaluation::findOrFail($id);
+            $evaluation->update($request->all());
 
-        return redirect()->route('evaluations.index')->with('success', 'Evaluation updated successfully');
+            Alert::success('Success!', 'Updated evaluation entry successfully.');
+
+            return redirect()->route('evaluations.index')->with('success', 'Evaluation updated successfully');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -132,9 +157,13 @@ class EvaluationController extends Controller
      */
     public function destroy($id)
     {
+        try {
         $evaluation = Evaluation::findOrFail($id);
         $evaluation->delete();
 
-        return redirect()->route('evaluations.index')->with('success', 'Evaluation deleted successfully');
+         return response()->json(['success' => true, 'message' => 'Evaluation deleted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
     }
 }

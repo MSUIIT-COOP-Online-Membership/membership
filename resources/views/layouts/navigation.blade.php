@@ -5,7 +5,7 @@
 <div class="sidebar">
     <!-- Sidebar user panel (optional)
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-    <div class="image">
+        <div class="image">
           <img src="/public/images/id_photos/" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
@@ -39,12 +39,27 @@
         </li>
 
             <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         {{ __('Users') }}
+                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('users.index') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{ __('All Users') }}</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('users.create') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{ __('Add User') }}</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item">

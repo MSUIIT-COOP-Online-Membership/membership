@@ -1,31 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member / Create</title>
+</head>
+<body>
 @extends('layouts.app')
 
-@section('content')
+    @section('content')
+
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+<section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">{{ __('Add Member') }}</h1>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
+                    <h1>Create Member</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('members.index') }}">Members</a></li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ol>
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    </section>
 
-    <!-- Main content -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
 
                     <div class="card-body">
-                        <form id="memberForm" method="POST" action="{{ route('members.store') }}">
+                        <form id="memberForm" method="POST" action="{{ route('members.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <!-- Section 1: Personal Info -->
                             <div id="section1">
-                                <div class="card-header">{{ __('Personal Information') }}</div>
+                                <div class="card-header bg-dark text-white">
+                                    <h7 class="mb-0">{{ __('Personal Information') }}</h7>
+                                </div><br>
 
                                 <div class="form-group">
                                     <label for="lname">{{ __('Last Name') }}</label>
@@ -50,6 +66,7 @@
                                 <div class="form-group">
                                     <label for="sex">{{ __('Sex') }}</label>
                                     <select id="sex" class="form-control" name="sex">
+                                        <option value="" disabled selected>Select Sex</option>
                                         <option value="male">{{ __('Male') }}</option>
                                         <option value="female">{{ __('Female') }}</option>
                                     </select>
@@ -58,6 +75,7 @@
                                 <div class="form-group">
                                     <label for="civil_status">{{ __('Civil Status') }}</label>
                                     <select id="civil_status" class="form-control" name="civil_status">
+                                        <option value="" disabled selected>Select Civil Status</option>
                                         <option value="single">{{ __('Single') }}</option>
                                         <option value="married">{{ __('Married') }}</option>
                                         <option value="widow">{{ __('Widow') }}</option>
@@ -110,8 +128,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="living_parents">{{ __('Living with Parents') }}</label>
+                                    <label for="living_parents">{{ __('Living with Parents?') }}</label>
                                     <select id="living_parents" class="form-control" name="living_parents">
+                                        <option value="" disabled selected>Select Answer</option>
                                         <option value="Yes">{{ __('Yes') }}</option>
                                         <option value="No">{{ __('No') }}</option>
                                     </select>
@@ -120,6 +139,7 @@
                                 <div class="form-group">
                                     <label for="house">{{ __('House') }}</label>
                                     <select id="house" class="form-control" name="house">
+                                        <option value="" disabled selected>Select House</option>
                                         <option value="own">{{ __('Own') }}</option>
                                         <option value="rent">{{ __('Rent') }}</option>
                                         <option value="mortgage">{{ __('Mortgage') }}</option>
@@ -134,6 +154,7 @@
                                 <div class="form-group">
                                     <label for="lot">{{ __('Lot') }}</label>
                                     <select id="lot" class="form-control" name="lot">
+                                        <option value="" disabled selected>Select Lot</option>
                                         <option value="own">{{ __('Own') }}</option>
                                         <option value="rent">{{ __('Rent') }}</option>
                                         <option value="mortgage">{{ __('Mortgage') }}</option>
@@ -153,6 +174,7 @@
                                 <div class="form-group">
                                     <label for="educational_attainment">{{ __('Educational Attainment') }}</label>
                                     <select id="educational_attainment" class="form-control" name="educational_attainment">
+                                        <option value="" disabled selected>Select Educational Attainment</option>
                                         <option value="elementary_level">{{ __('Elementary Level') }}</option>
                                         <option value="elementary_graduate">{{ __('Elementary Graduate') }}</option>
                                         <option value="high_school_level">{{ __('High School Level') }}</option>
@@ -167,11 +189,14 @@
 
                             <!-- Section 2: Employment -->
                             <div id="section2" style="display: none;">
-                                <div class="card-header">{{ __('Employment/Occupation/Business Data') }}</div>
+                                <div class="card-header bg-dark text-white">
+                                    <h7 class="mb-0">{{ __('Employment/Occupation/Business Data') }}</h7>
+                                </div><br>
 
                                 <div class="form-group">
                                     <label for="emp_stat">{{ __('Employment Status (choose one)') }}</label>
                                     <select id="emp_stat" class="form-control" name="emp_stat">
+                                        <option value="" disabled selected>Select Employment Status</option>
                                         <option value="private_employee">{{ __('Private Employee') }}</option>
                                         <option value="government_employee">{{ __('Government Employee') }}</option>
                                         <option value="office_worker">{{ __('Office Worker') }}</option>
@@ -199,6 +224,7 @@
                                 <div class="form-group">
                                     <!-- <label for="emp_type">{{ __('Employment Type') }}</label> -->
                                     <select id="emp_type" class="form-control" name="emp_type">
+                                        <option value="" disabled selected>Select Employment Role/Position</option>
                                         <option value="regular">{{ __('Regular') }}</option>
                                         <option value="contractual">{{ __('Contractual') }}</option>
                                         <option value="casual">{{ __('Casual') }}</option>
@@ -241,6 +267,7 @@
                                 <div class="form-group" >
                                     <label for="asset_size">{{ __('Asset Size') }}</label>
                                     <select id="asset_size" class="form-control" name="asset_size">
+                                        <option value="" disabled selected>Select Asset Size</option>
                                         <option value="below_100000">Below PHP 100,000.00</option>
                                         <option value="100000_1000000">PHP 100,000.00 - PHP 1,000,000.00</option>
                                         <option value="1000000_5000000">PHP 1,000,000.00 - PHP 5,000,000.00</option>
@@ -262,21 +289,24 @@
 
                             <!-- Section 3: Employed Information -->
                             <div id="section3" style="display: none;">
-                                <div class="card-header">{{ __('For Employed') }}</div>
+                                <div class="card-header bg-dark text-white">
+                                    <h7 class="mb-0">{{ __('For Employed') }}</h7>
+                                </div><br>
 
                                 <div class="form-group">
                                     <label for="employer_name">{{ __('Employer Name') }}</label>
-                                    <input id="employer_name" type="text" class="form-control" name="employer_name" required>
+                                    <input id="employer_name" type="text" class="form-control" name="employer_name">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="service_length">{{ __('Service Length') }}</label>
-                                    <input id="service_length" type="text" class="form-control" name="service_length" required>
+                                    <input id="service_length" type="text" class="form-control" name="service_length">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="employer_status">{{ __('Status of Employment') }}</label>
                                     <select id="employer_status" class="form-control" name="employer_status">
+                                        <option value="" disabled selected>Select Employer Status</option>
                                         <option value="regular">{{ __('Regular') }}</option>
                                         <option value="contractual">{{ __('Contractual') }}</option>
                                         <option value="casual">{{ __('Casual') }}</option>
@@ -286,17 +316,18 @@
 
                                 <div class="form-group">
                                     <label for="employer_address">{{ __('Employer Address') }}</label>
-                                    <input id="employer_address" type="text" class="form-control" name="employer_address" required>
+                                    <input id="employer_address" type="text" class="form-control" name="employer_address">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="employer_contact">{{ __('Employer Contact') }}</label>
-                                    <input id="employer_contact" type="tel" class="form-control" name="employer_contact" required>
+                                    <input id="employer_contact" type="tel" class="form-control" name="employer_contact">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="monthly_salary">{{ __('Monthly Salary') }}</label>
-                                    <select id="monthly_salary" class="form-control" name="monthly_salary" required>
+                                    <select id="monthly_salary" class="form-control" name="monthly_salary">
+                                        <option value="" disabled selected>Select Monthly Salary</option>
                                         <option value="below_10000">Below PHP 10,000</option>
                                         <option value="10000_19999">PHP 10,000 - PHP 19,999</option>
                                         <option value="20000_49999">PHP 20,000 - PHP 49,999</option>
@@ -308,8 +339,10 @@
 
                             <!-- Section 4: For those who have existing business-->
                             <div id="section4" style="display: none;">
-                                <div class="card-header">{{ __('For those who have existing business') }}</div>
-
+                                <div class="card-header bg-dark text-white">
+                                    <h7 class="mb-0">{{ __('For those who have existing business') }}</h7>
+                                </div><br>
+                               
                                 <div class="form-group">
                                     <label for="business_name">{{ __('Business Name') }}</label>
                                     <input id="business_name" type="text" class="form-control" name="business_name">
@@ -346,8 +379,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="yearly_income">{{ __('Yearly Income') }}</label>
+                                    <label for="yearly_income">{{ __('Annual Income') }}</label>
                                     <select id="yearly_income" class="form-control" name="yearly_income">
+                                        <option value="" disabled selected>Select Annual Income</option>
                                         <option value="below_50000">Below ₱50,000</option>
                                         <option value="50000_149999">₱50,000 - ₱149,999</option>
                                         <option value="150000_249999">₱150,000 - ₱249,999</option>
@@ -369,6 +403,7 @@
                                 <div class="form-group">
                                     <label for="source_income">{{ __('Source of Income') }}</label>
                                     <select id="source_income" class="form-control" name="source_income">
+                                        <option value="" disabled selected>Select Income Source</option>
                                         <option value="pension">{{ __('Pension') }}</option>
                                         <option value="regular_remittance">{{ __('Regular Remittance') }}</option>
                                         <option value="investment">{{ __('Investment') }}</option>
@@ -378,6 +413,7 @@
                                 <div class="form-group">
                                     <label for="monthly_income">{{ __('Monthly Income') }}</label>
                                     <select id="monthly_income" class="form-control" name="monthly_income">
+                                        <option value="" disabled selected>Select Monthly Income</option>
                                         <option value="below_10000">{{ __('Below PHP 10,000') }}</option>
                                         <option value="10000_19999">{{ __('PHP 10,000 - PHP 19,999') }}</option>
                                         <option value="20000_49999">{{ __('PHP 20,000 - PHP 49,999') }}</option>
@@ -389,7 +425,9 @@
 
                             <!-- Section 5: Family Background -->
                             <div id="section5" style="display: none;">
-                                <div class="card-header">{{ __('Family Background') }}</div>
+                                <div class="card-header bg-dark text-white">
+                                    <h7 class="mb-0">{{ __('Family Background') }}</h7>
+                                </div><br>
 
                                 <!-- Father Information -->
                                 <div class="form-group">
@@ -522,6 +560,7 @@
                                 <div class="form-group">
                                     <label for="spouse_emp_stat">{{ __('Spouse\'s Employment Status') }}</label>
                                     <select id="spouse_emp_stat" class="form-control" name="spouse_emp_stat">
+                                        <option value="" disabled selected>Select Employment Status</option>
                                         <option value="regular">{{ __('Regular') }}</option>
                                         <option value="contractual">{{ __('Contractual') }}</option>
                                         <option value="casual">{{ __('Casual') }}</option>
@@ -572,8 +611,9 @@
 
                                 <!-- Yearly Income of the Household -->
                                 <div class="form-group">
-                                    <label for="house_yearly_income">{{ __('Yearly Income of the Household') }}</label>
+                                    <label for="house_yearly_income">{{ __('Annual Income of the Household') }}</label>
                                     <select id="house_yearly_income" class="form-control" name="house_yearly_income">
+                                        <option value="" disabled selected>Select Annual Income</option>
                                         <option value="150000_249999">PHP 150,000 - PHP 249,999</option>
                                         <option value="250000_349999">PHP 250,000 - PHP 349,999</option>
                                         <option value="350000_449999">PHP 350,000 - PHP 449,999</option>
@@ -611,7 +651,9 @@
 
                             <!-- Section 6: Beneficiaries -->
                             <div id="section6" style="display: none;">
-                                <div class="card-header">{{ __('Beneficiaries') }}</div>
+                                <div class="card-header bg-dark text-white">
+                                    <h7 class="mb-0">{{ __('Beneficiaries') }}</h7>
+                                </div><br>
 
                                 <!-- Beneficiary 1 -->
                                 <div class="form-group">
@@ -642,19 +684,22 @@
 
                             <!-- Section 7: Declaration and Specimen Signature -->
                             <div id="section7" style="display: none;">
-                                <div class="card-header">{{ __('Declaration and Specimen Signature') }}</div>
-
+                                <div class="card-header bg-dark text-white">
+                                    <h7 class="mb-0">{{ __('Declaration and Specimen Signature') }}</h7>
+                                </div><br>
+                                
                                 <!-- E-Signature field -->
                                 <div class="form-group">
                                     <label for="e_signature">{{ __('E-Signature') }}</label>
-                                    <input id="e_signature" type="file" class="form-control" name="e_signature" accept="image/*">
+                                    <input id="e_signature" type="file" class="form-control-file" name="e_signature" accept="image/*">
+                                    <small class="form-text text-muted">Upload a clear scanned e-signature.</small>
                                 </div>
 
-                                <!-- ID Photo field -->
-                                <!-- <div class="form-group">
-                                    <label for="e_signature">{{ __('ID Photo') }}</label>
-                                    <input id="id_photo" type="file" class="form-control" name="e_signature" accept="image/*">
-                                </div> -->
+                                <div class="form-group">
+                                    <label for="id_photo">{{ __('ID Photo') }}</label>
+                                    <input type="file" id="id_photo" name="id_photo" class="form-control-file" accept="image/*">
+                                    <small class="form-text text-muted">Upload a formal ID photo.</small>
+                                </div>
 
                                 <!-- Application Date field -->
                                 <div class="form-group">
@@ -664,14 +709,15 @@
                             </div>
 
                             <!-- Submit button -->
-                            <div class="form-group mb-0" id="submitButtonContainer" style="display: none;">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
 
                             <!-- Navigation buttons -->
-                            <div class="form-group mt-3 d-flex justify-content-between">
-                                <button type="button" class="btn btn-primary prev-section" style="display: none;">Previous</button>
-                                <button type="button" class="btn btn-primary next-section">Next</button>
+                            <div class="form-group mt-5 d-flex justify-content-between">
+                                <a href="{{ route('members.index') }}" class="btn btn-danger"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
+                                <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
+                                <button type="button" class="btn btn-secondary prev-section" style="display: none;"><i class="fas fa-arrow-circle-left mr-1"></i>Previous</button>
+                                <button type="button" class="btn btn-primary next-section"><i class="fas fa-arrow-circle-right mr-1"></i>Next</button>
+                                <button type="submit" class="btn btn-primary" id="submitButtonContainer" style="display: none;"><i class="fas fa-check-circle mr-1"></i>Create User</button>
+                            </div>
                             </div>
                         </form>
                     </div>
@@ -849,7 +895,6 @@ document.getElementById('emp_stat').addEventListener('change', function () {
         showOptions(assetSizeOptions, assetSizeField);
     }
 
-
     // Function to show options in the Employment Type dropdown
     function showOptions(options, targetField) {
         const field = targetField || empTypeField;
@@ -867,3 +912,5 @@ document.getElementById('emp_stat').addEventListener('change', function () {
 </script>
 
 @endsection
+</body>
+</html>

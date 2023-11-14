@@ -1,12 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webinars / Update</title>
+</head>
+<body>
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Edit Webinar') }}</div>
+ <!-- Content Header (Page header) -->
+ <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Update Webinar Schedule</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('webinars.index') }}">Webinars</a></li>
+                        <li class="breadcrumb-item active">Update Schedule</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
+    <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h7 class="mb-0">{{ __('Please input fields to update webinar schedule.') }}</h7>
+                        </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('webinars.update', ['webinar' => $webinar->id]) }}">
                             @csrf
@@ -76,7 +103,7 @@
                                 <label for="resource_speaker" class="col-md-4 col-form-label text-md-right">{{ __('Resource Speaker') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="resource_speaker" class="form-control @error('resource_speaker') is-invalid @enderror" name="resource_speaker" required>{{ old('resource_speaker', $webinar->resource_speaker) }}</textarea>
+                                    <textarea id="resource_speaker" class="form-control @error('resource_speaker') is-invalid @enderror" name="resource_speaker">{{ old('resource_speaker', $webinar->resource_speaker) }}</textarea>
 
                                     @error('resource_speaker')
                                         <span class="invalid-feedback" role="alert">
@@ -100,11 +127,14 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Update Webinar') }}
-                                    </button>
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <div class="d-flex justify-content-between">
+                                    <a href="{{ route('webinars.index') }}" class="btn btn-danger">{{ __('Cancel') }}</a>
+                                    <div>
+                                        <button type="reset" class="btn btn-warning">{{ __('Reset') }}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('Update Schedule') }}</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -113,4 +143,7 @@
             </div>
         </div>
     </div>
-@endsection
+    @endsection
+
+</body>
+</html>

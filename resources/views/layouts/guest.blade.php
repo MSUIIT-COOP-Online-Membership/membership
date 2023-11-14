@@ -27,6 +27,8 @@
 </div>
 <!-- /.login-box -->
 
+@include('sweetalert::alert')
+
 @vite('resources/js/app.js')
 <!-- Bootstrap 4 -->
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

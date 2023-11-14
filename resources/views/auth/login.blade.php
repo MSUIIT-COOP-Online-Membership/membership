@@ -59,4 +59,5 @@
         @endif
     </div>
     <!-- /.login-card-body -->
+    @include('sweetalert::alert')
 @endsection

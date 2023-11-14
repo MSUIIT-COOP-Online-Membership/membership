@@ -1,11 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webinars / Booking / Create</title>
+</head>
+<body>
 @extends('layouts.app')
 
 @section('content')
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Create Webinar Booking</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('webbookings.index') }}">Webinars</a></li>
+                        <li class="breadcrumb-item active">Create Booking</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Create Web Booking') }}</div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h7 class="mb-0">{{ __('Please input fields to add webinar booking.') }}</h7>
+                        </div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('webbookings.store') }}">
@@ -32,7 +60,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="web_id" class="col-md-4 col-form-label text-md-right">{{ __('Webinar') }}</label>
+                                <label for="web_id" class="col-md-4 col-form-label text-md-right">{{ __('Webinar Tool') }}</label>
 
                                 <div class="col-md-6">
                                     <!-- Assuming you have a variable $webinars containing the webinars -->
@@ -50,6 +78,32 @@
                                     @enderror
                                 </div>
                             </div>
+                            
+
+                            <div class="form-group row">
+                                <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Date') }}</label>
+                                <div class="col-md-6">
+                                    <select id="date" class="form-control" name="date" required></select>
+                                    @error('date')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="time" class="col-md-4 col-form-label text-md-right">{{ __('Time') }}</label>
+                                <div class="col-md-6">
+                                    <select id="time" class="form-control" name="time" required></select>
+                                    @error('time')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
 
                             <div class="form-group row">
                                 <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
@@ -77,80 +131,93 @@
                                 </div>
                             </div>
                         </form>
-
-                        <!-- Add this div to contain the calendar -->
-                        <div id="calendar"></div>
-
-                        <!-- Add a table to display webinar details -->
-                        <table id="webinarDetails" class="table" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Webinar details will be dynamically loaded here -->
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Include FullCalendar scripts here -->
-    <script src="{{ asset('js/fullcalendar/core/main.js') }}"></script>
-    <script src="{{ asset('js/fullcalendar/daygrid/main.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Include jQuery -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-            var webinarDetailsTable = document.getElementById('webinarDetails');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                events: [
-                    // Your events will be dynamically loaded here
-                    // Example: { title: 'Webinar 1', start: '2023-11-07T10:00:00' },
-                    // ...
-                ],
-            });
-
-            calendar.render();
-
-            // Update the table with webinar details based on selected webinar tool
-            document.getElementById('web_id').addEventListener('change', function () {
-                var selectedTool = this.options[this.selectedIndex].getAttribute('data-tool');
-
-                // Fetch webinar details dynamically using AJAX
-                $.ajax({
-                    url: '/get-webinar-details', // Replace with your actual route
-                    method: 'POST',
-                    data: {
-                        tool: selectedTool
-                    },
-                    success: function (response) {
-                        // Clear previous table content
-                        webinarDetailsTable.querySelector('tbody').innerHTML = '';
-
-                        // Append fetched details to the table
-                        response.forEach(function (webinar) {
-                            var row = webinarDetailsTable.querySelector('tbody').insertRow();
-                            row.insertCell(0).textContent = webinar.title;
-                            row.insertCell(1).textContent = webinar.start_date;
-                            row.insertCell(2).textContent = webinar.end_date;
-                        });
-
-                        // Show or hide the table based on whether there are details to display
-                        webinarDetailsTable.style.display = response.length > 0 ? 'table' : 'none';
-                    },
-                    error: function (error) {
-                        console.error(error);
-                    }
-                });
-            });
-        });
-    </script>
 @endsection
+
+<!-- Add this script block after your form -->
+<script>
+    // Function to update date options based on selected web_tool
+    function updateDates() {
+        var selectedWebinar = $('#web_id option:selected');
+        var webTool = selectedWebinar.data('tool');
+
+        // Check if the web_tool is "Google Meet"
+        if (webTool === 'Google Meet') {
+            var webId = selectedWebinar.val();
+
+            // Make an AJAX request to fetch dates
+            $.ajax({
+                url: '/webinars/dates/' + webId,
+                type: 'GET',
+                success: function (data) {
+                    // Update the date dropdown with fetched dates
+                    var dateDropdown = $('#date');
+                    dateDropdown.empty().append('<option value="" disabled selected>Select Date</option>');
+
+                    $.each(data.dates, function (index, date) {
+                        dateDropdown.append('<option value="' + date + '">' + date + '</option>');
+                    });
+
+                    // Show the date dropdown
+                    dateDropdown.show();
+
+                    // Reset and hide the time dropdown
+                    $('#time').val('');
+                    $('#time').hide();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        } else {
+            // If web_tool is not "Google Meet", reset and hide the date and time dropdowns
+            $('#date').val('');
+            $('#date').hide();
+            $('#time').val('');
+            $('#time').hide();
+        }
+    }
+
+    // Function to update time options based on selected date
+    function updateTimes() {
+        var selectedDate = $('#date').val();
+
+        // Check if a date is selected
+        if (selectedDate) {
+            var webId = $('#web_id').val();
+
+            // Make an AJAX request to fetch times
+            $.ajax({
+                url: '/webinars/times/' + webId + '/' + selectedDate,
+                type: 'GET',
+                success: function (data) {
+                    // Update the time dropdown with fetched times
+                    var timeDropdown = $('#time');
+                    timeDropdown.empty().append('<option value="" disabled selected>Select Time</option>');
+
+                    $.each(data.times, function (index, time) {
+                        timeDropdown.append('<option value="' + time + '">' + time + '</option>');
+                    });
+
+                    // Show the time dropdown
+                    timeDropdown.show();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        } else {
+            // If no date is selected, reset and hide the time dropdown
+            $('#time').val('');
+            $('#time').hide();
+        }
+    }
+
+    // Attach the functions to the change event of the dropdowns
+    $('#web_id').on('change', updateDates);
+    $('#date').on('change', updateTimes);
+</script>

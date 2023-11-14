@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\WebBooking;
 use App\Models\Webinar;
 use App\Models\Member;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class WebBookingController extends Controller
 {
@@ -26,8 +27,7 @@ class WebBookingController extends Controller
      */
     public function index()
     {
-        $webBookings = WebBooking::with(['member', 'webinar'])->paginate();
-
+        $webBookings = WebBooking::all();
         return view('webbookings.index', compact('webBookings'));
     }
 
@@ -52,16 +52,22 @@ class WebBookingController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'member_id' => 'required|exists:members,id',
-            'web_id' => 'required|exists:webinars,id',
-            'status' => 'required|string',
-        ]);
+        try{
+            $request->validate([
+                'member_id' => 'required|exists:members,id',
+                'web_id' => 'required|exists:webinars,id',
+                'status' => 'required|string',
+            ]);
 
-        WebBooking::create($request->all());
+            WebBooking::create($request->all());
 
-        return redirect()->route('webbookings.index')
-            ->with('success', 'Web Booking created successfully.');
+            Alert::success('Success!', 'Added webinar booking successfully.');
+
+            return redirect()->route('webbookings.index')->with('success', 'Web Booking created successfully.');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -73,7 +79,6 @@ class WebBookingController extends Controller
     public function show($id)
     {
         $webBooking = WebBooking::findOrFail($id);
-
         return view('webbookings.show', compact('webBooking'));
     }
 
@@ -101,17 +106,23 @@ class WebBookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'member_id' => 'required|exists:members,id',
-            'web_id' => 'required|exists:webinars,id',
-            'status' => 'required|string',
-        ]);
+        try {
+            $request->validate([
+                'member_id' => 'required|exists:members,id',
+                'web_id' => 'required|exists:webinars,id',
+                'status' => 'required|string',
+            ]);
 
-        $webBooking = WebBooking::findOrFail($id);
-        $webBooking->update($request->all());
+            $webBooking = WebBooking::findOrFail($id);
+            $webBooking->update($request->all());
 
-        return redirect()->route('webbookings.index')
-            ->with('success', 'Web Booking updated successfully.');
+            Alert::success('Success!', 'Updated webinar booking successfully.');
+
+            return redirect()->route('webbookings.index')->with('success', 'Web Booking updated successfully.');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -122,10 +133,15 @@ class WebBookingController extends Controller
      */
     public function destroy($id)
     {
-        WebBooking::destroy($id);
+        try {
+            $webBooking = WebBooking::findOrFail($id);
+            $webBooking->delete();
 
-        return redirect()->route('webbookings.index')
-            ->with('success', 'Web Booking deleted successfully.');
+            return response()->json(['success' => true, 'message' => 'Webinar booking deleted successfully.']);
+        } catch (\Exception $e) {
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
     }
 
 }

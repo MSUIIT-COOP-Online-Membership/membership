@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\WebinarController;
@@ -32,7 +33,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
+
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+    Route::post('users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::resource('users', UserController::class);
+
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
@@ -43,19 +51,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
     Route::resource('members', MemberController::class);
 
-    Route::get('branches', [App\Http\Controllers\BranchController::class, 'index'])->name('branches.index');
-    Route::get('branches/home', [App\Http\Controllers\BranchController::class, 'home'])->name('branches.home');
+    Route::get('branches', [\App\Http\Controllers\BranchController::class, 'index'])->name('branches.index');
     Route::get('branches/create', [App\Http\Controllers\BranchController::class, 'create'])->name('branches.create');
     Route::post('branches', [App\Http\Controllers\BranchController::class, 'store'])->name('branches.store');
     Route::get('/branches/{branch}/edit', [BranchController::class, 'edit'])->name('branches.edit');
     Route::delete('/branches/{branch}', [BranchController::class, 'destroy'])->name('branches.destroy');
     Route::resource('branches', BranchController::class);
 
-    Route::get('webinars', [App\Http\Controllers\WebinarController::class, 'index'])->name('webinars.index');
+    Route::get('webinars', [\App\Http\Controllers\WebinarController::class, 'index'])->name('webinars.index');
     Route::get('webinars/create', [App\Http\Controllers\WebinarController::class, 'create'])->name('webinars.create');
     Route::post('webinars', [App\Http\Controllers\WebinarController::class, 'store'])->name('webinars.store');
     Route::get('/webinars/{webinar}/edit', [WebinarController::class, 'edit'])->name('webinars.edit');
     Route::delete('/webinars/{webinar}', [WebinarController::class, 'destroy'])->name('webinars.destroy');
+    Route::get('/webinars/dates/{webinar}', [WebinarController::class, 'getDates']);
+    Route::get('/webinars/times/{webinar}/{date}', [WebinarController::class, 'getTimes']);
     Route::resource('webinars', WebinarController::class);
 
     Route::get('webbookings', [WebBookingController::class, 'index'])->name('webbookings.index');
@@ -97,7 +106,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/appointments/{appointment}', [AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/appointments/{appointment}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
     Route::resource('appointments', AppointmentController::class);
-
 
     Route::get('payments', [PaymentController::class, 'index'])->name('payments.index');
     Route::get('payments/create', [PaymentController::class, 'create'])->name('payments.create');

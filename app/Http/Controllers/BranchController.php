@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Branch;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BranchController extends Controller
 {
@@ -24,8 +27,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branches = Branch::paginate();
-
+        $branches = Branch::all();
         return view('branches.index', compact('branches'));
     }
 
@@ -47,22 +49,40 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'manager' => 'nullable|string|max:255',
-            'address' => 'required|string',
-            'tel_no' => 'nullable|string|max:20',
-            'mobile_no' => 'nullable|string|max:20',
-            'email' => 'nullable|email|max:255',
-            // Add validation rules for other fields based on your Branch model
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'manager' => 'nullable|string|max:255',
+                'address' => 'required|string|max:255',
+                'tel_no' => 'nullable|string|max:255',
+                'mobile_no' => 'nullable|string|max:255',
+                'email' => 'nullable|email|max:255',
+            ]);
 
-        // Create a new branch instance and save to the database
-        Branch::create($validatedData);
+            // Create a new branch instance and save to the database
+            Branch::create([
+                'name' => $request->input('name'),
+                'manager' => $request->input('manager'),
+                'address' => $request->input('address'),
+                'tel_no' => $request->input('tel_no'),
+                'mobile_no' => $request->input('mobile_no'),
+                'email' => $request->input('email'),
+            ]);
 
-        // Redirect to the branch index page or any other page after creation
-        return redirect()->route('branches.index')->with('success', 'Branch added successfully!');
+            Alert::success('Success!', 'Added branch successfully.');
+
+            // Redirect to the branch index page or any other page after creation
+            return redirect()->route('branches.index')->with('success', 'Branch added successfully!');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function show($id)
+    {
+        $branch = Branch::findOrFail($id);
+        return view('branches.show', compact('branch'));
     }
 
     /**
@@ -74,7 +94,6 @@ class BranchController extends Controller
     public function edit($id)
     {
         $branch = Branch::findOrFail($id);
-
         return view('branches.edit', compact('branch'));
     }
 
@@ -87,30 +106,42 @@ class BranchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'manager' => 'nullable|string|max:255',
-            'address' => 'required|string',
-            'tel_no' => 'nullable|string|max:20',
-            'mobile_no' => 'nullable|string|max:20',
-            'email' => 'nullable|email|max:255',
-            // Add validation rules for other fields based on your Branch model
-        ]);
+        try {
+            // Validate the incoming request data
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'manager' => 'nullable|string|max:255',
+                'address' => 'required|string',
+                'tel_no' => 'nullable|string|max:255',
+                'mobile_no' => 'nullable|string|max:255',
+                'email' => 'nullable|email|max:255',
+                // Add validation rules for other fields based on your Branch model
+            ]);
 
-        // Find the branch by ID and update its information
-        $branch = Branch::findOrFail($id);
-        $branch->update($validatedData);
+            // Find the branch by ID and update its information
+            $branch = Branch::findOrFail($id);
+            $branch->update($validatedData);
 
-        // Redirect to the branch index page or any other page after update
-        return redirect()->route('branches.index')->with('success', 'Branch updated successfully!');
+            Alert::success('Success!', 'Updated branch successfully.');
+
+            // Redirect to the branch index page or any other page after update
+            return redirect()->route('branches.index')->with('success', 'Branch updated successfully!');
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Error Message: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
-    public function destroy(Branch $branch)
+    public function destroy($id)
     {
-        $branch->delete();
+        try {
+            $branch = Branch::findOrFail($id);
+            $branch->delete();
 
-        return redirect()->route('branches.index')->with('success', 'Branch deleted successfully!');
+            return response()->json(['success' => true, 'message' => 'Branch deleted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
     }
 
 }

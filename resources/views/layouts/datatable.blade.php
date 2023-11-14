@@ -247,9 +247,9 @@
     <script>
         $(document).ready(function () {
             // Check if DataTable is already initialized
-            if (!$.fn.dataTable.isDataTable('#webinarsTable')) {
+            if (!$.fn.dataTable.isDataTable('#advancedDataTable')) {
                 // Initialize DataTable
-                $("#webinarsTable").DataTable({
+                $("#advancedDataTable").DataTable({
                 "responsive": true, 
                 "lengthChange": false, 
                 "autoWidth": false,
@@ -258,7 +258,7 @@
                 "searching": true,
                 "ordering": true,
                 "info": true,
-                }).buttons().container().appendTo('#webinarsTable_wrapper .col-md-6:eq(0)');
+                }).buttons().container().appendTo('#advancedDataTable_wrapper .col-md-6:eq(0)');
             }
         });
     </script>

@@ -96,6 +96,15 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="{{ route('beneficiaries.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-user-shield"></i>
+                    <p>
+                        {{ __('Beneficiaries') }}
+                    </p>
+                </a>
+            </li>
+
             <!-- <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-video"></i>

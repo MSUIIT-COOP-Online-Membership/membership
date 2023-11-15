@@ -11,6 +11,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\BeneficiaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,4 +116,11 @@ Route::middleware('auth')->group(function () {
     Route::put('/payments/{payment}', [PaymentController::class, 'update'])->name('payments.update');
     Route::delete('/payments/{payment}', [PaymentController::class, 'destroy'])->name('payments.destroy');
     Route::resource('payments', PaymentController::class);
+
+    Route::get('beneficiaries', [\App\Http\Controllers\BeneficiaryController::class, 'index'])->name('beneficiaries.index');
+    Route::get('beneficiaries/create', [App\Http\Controllers\BeneficiaryController::class, 'create'])->name('beneficiaries.create');
+    Route::post('beneficiaries', [App\Http\Controllers\BeneficiaryController::class, 'store'])->name('beneficiaries.store');
+    Route::get('/beneficiaries/{beneficiary}/edit', [BeneficiaryController::class, 'edit'])->name('beneficiaries.edit');
+    Route::delete('/beneficiaries/{beneficiary}', [BeneficiaryController::class, 'destroy'])->name('beneficiaries.destroy');
+    Route::resource('beneficiaries', BeneficiaryController::class);
 });

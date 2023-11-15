@@ -39,9 +39,9 @@ class EvaluationController extends Controller
      */
     public function create()
     {
-        $members = Member::all();
+       
+ $members = Member::all();
         $branches = Branch::all();
-
         return view('evaluations.create', compact('members', 'branches'));
     }
 
@@ -105,7 +105,10 @@ class EvaluationController extends Controller
     public function edit($id)
     {
         $evaluation = Evaluation::findOrFail($id);
-        return view('evaluations.edit', compact('evaluation'));
+        $members = Member::all();
+        $branches = Branch::all();
+
+        return view('evaluations.edit', compact('evaluation', 'members', 'branches'));
     }
 
     /**

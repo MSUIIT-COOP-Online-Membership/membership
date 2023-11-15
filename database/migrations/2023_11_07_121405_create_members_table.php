@@ -96,12 +96,12 @@ return new class extends Migration
             $table->string('emer_name')->nullable();
             $table->string('emer_contact')->nullable();
             $table->longText('emer_address')->nullable();
-            $table->string('ben_fname')->nullable();
-            $table->string('ben_mname')->nullable();
-            $table->string('ben_lname')->nullable(); 
-            $table->string('ben_suffix')->nullable();
-            $table->date('ben_dob')->nullable();
-            $table->string('ben_relationship')->nullable();
+            // $table->string('ben_fname')->nullable();
+            // $table->string('ben_mname')->nullable();
+            // $table->string('ben_lname')->nullable(); 
+            // $table->string('ben_suffix')->nullable();
+            // $table->date('ben_dob')->nullable();
+            // $table->string('ben_relationship')->nullable();
             $table->string('e_signature')->nullable();
             $table->string('app_date')->nullable();
             $table->timestamps();

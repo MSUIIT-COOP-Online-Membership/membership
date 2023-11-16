@@ -19,9 +19,6 @@ class CertificateController extends Controller
         {
             $certificate_data =[
                 'name' => $user->name,
-                'date' => '11/14/23',
-                'time' => '1:00PM',
-                'duration' => "15 minutes",
             ];
     
             Mail::to($user->email)->send(new CertificateMail($certificate_data));

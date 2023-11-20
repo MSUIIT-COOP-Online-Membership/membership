@@ -1,0 +1,13 @@
+
+.main-header{
+    background-color: #9C0D0F;
+}
+.navbar .nav-link{
+    color: #fff !important;
+}
+.navbar .nav-link:hover{
+    color: #f7d853 !important;
+}
+.main-sidebar .brand-link{
+    background-color: #800000;
+}

@@ -29,6 +29,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('userpanel/regular', [App\Http\Controllers\HomeController::class, 'showRegular'])->name('regular');
+Route::get('userpanel/associate', [App\Http\Controllers\HomeController::class, 'showAssociate'])->name('associate');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

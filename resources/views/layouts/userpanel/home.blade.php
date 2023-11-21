@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo url('theme'); ?>/dist/css/adminlte.min.css">
-
+  <!--Custom Styles-->
+  <link rel="stylesheet" href="{{asset('css/custom.css')}}">
   @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -155,7 +156,7 @@
             </a>
                 <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px;">
                     <a href="{{ route('profile.show') }}" class="dropdown-item">
-                        <i class="mr-2 fas fa-file"></i>
+                        <i class="mr-2 fas fa-user"></i>
                         {{ __('My profile') }}
                     </a>
                     <div class="dropdown-divider"></div>
@@ -198,6 +199,12 @@
     </aside>
 </div>
 <!-- ./wrapper -->
+@if ($errors->any())
+    <script>
+        alert("{{ $errors->first('error') }}");
+    </script>
+@endif
+
 
 <!-- REQUIRED SCRIPTS -->
 

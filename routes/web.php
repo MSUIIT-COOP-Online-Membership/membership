@@ -29,12 +29,20 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('userpanel/regular', [App\Http\Controllers\HomeController::class, 'showRegular'])->name('regular');
-Route::get('userpanel/associate', [App\Http\Controllers\HomeController::class, 'showAssociate'])->name('associate');
+
+Route::middleware(['auth', 'checkRole:Regular Member'])->group(function () {
+    Route::get('userpanel/regular', [App\Http\Controllers\HomeController::class, 'showRegular'])->name('regular');
+
+});
+
+Route::middleware(['auth', 'checkRole:Regular Member'])->group(function () {
+    Route::get('userpanel/associate', [App\Http\Controllers\HomeController::class, 'showAssociate'])->name('associate');
+
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'checkRole:System Administrator'])->group(function () {
     Route::view('about', 'about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');

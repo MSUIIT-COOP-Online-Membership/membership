@@ -12,6 +12,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BeneficiaryController;
+use App\Http\Controllers\Pre_MembershipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,20 +24,20 @@ use App\Http\Controllers\BeneficiaryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('Premembership',[Pre_MembershipController::class, 'index'])->name('premembershipform.index');
+Route::post('Premembership',[Pre_MembershipController::class, 'store'])->name('premembershipform.store');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
+Route::get('userpanel/regular', [App\Http\Controllers\HomeController::class, 'showRegular'])->name('regular');
 Route::middleware(['auth', 'checkRole:Regular Member'])->group(function () {
-    Route::get('userpanel/regular', [App\Http\Controllers\HomeController::class, 'showRegular'])->name('regular');
 
 });
-
+Route::get('userpanel/associate', [App\Http\Controllers\HomeController::class, 'showAssociate'])->name('associate');
 Route::middleware(['auth', 'checkRole:Regular Member'])->group(function () {
-    Route::get('userpanel/associate', [App\Http\Controllers\HomeController::class, 'showAssociate'])->name('associate');
 
 });
 

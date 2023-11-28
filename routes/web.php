@@ -13,6 +13,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BeneficiaryController;
 use App\Http\Controllers\Pre_MembershipController;
+use App\Http\Controllers\MembershipApplication;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,3 +136,12 @@ Route::middleware(['auth', 'checkRole:System Administrator'])->group(function ()
     Route::delete('/beneficiaries/{beneficiary}', [BeneficiaryController::class, 'destroy'])->name('beneficiaries.destroy');
     Route::resource('beneficiaries', BeneficiaryController::class);
 });
+
+Route::get('/code', [App\Http\Controllers\MembershipApplication::class, 'index'])->name('members.code');
+Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'code'])->name('members.code');
+Route::post('/membershipform/edit/{id}', [App\Http\Controllers\MembershipApplication::class, 'edit'])->name('members.membershipform.edit');
+Route::get('/get-sub-type-options', [App\Http\Controllers\MembershipForm::class, 'getSubTypeOptions'])->name('members.get-sub-type-options');
+Route::get('/view/{id}', [App\Http\Controllers\MembershipApplication::class, 'view'])->name('members.view');
+Route::get('/pdf_download/pdf_view/{id}/generate', [App\Http\Controllers\MembershipApplication::class, 'generatePDF'])->name('members.pdf_download.generatePDF');
+Route::get('/bookappointment/{id}', [App\Http\Controllers\AppointmentFormController::class, 'bookappointment'])->name('members.bookappointment');
+Route::post('/bookappointment', [App\Http\Controllers\AppointmentFormController::class, 'addappointment'])->name('members.bookappointment');

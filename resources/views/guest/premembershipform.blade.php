@@ -73,7 +73,8 @@
                         </div>
                         
                         <div class="form-content">
-                            <input type="checkbox" class="form-input" id="myCheck" required> I here by accept the policy
+                            <input type="checkbox" class="form-input" id="myCheck" required>
+                            <label for="myCheck">I here by accept the policy</label> 
                             <span class="field-message" style="text-align: left; margin-top: 5px;">This field is required</span>
                         </div>
                         <div class="btns-group first-btn">
@@ -105,12 +106,12 @@
     
                             <div class="input-group">  
                             <label for="mname">Middle Name</label>
-                            <input type="text" name="mname" placeholder="Phone" class="form-input" id="mname" required/>                    
+                            <input type="text" name="mname" placeholder="Middle Name" class="form-input" id="mname" required/>                    
                             <span class="field-message">This field is required</span>
                             </div>
     
                              <div class="input-group">
-                                <label for="date_of_birth">Birth of Date</label>
+                                <label for="date_of_birth">Date of Birth</label>
                                 <input type="date" name="date_of_birth" class="form-input" id="date_of_birth" required/>
                                 <span class="field-message">This field is required</span>    
                             </div>

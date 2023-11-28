@@ -12,7 +12,11 @@
      <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
 
      <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/header.css'); }}">
- <!-- Fonts -->
+ 
+     <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/evaluationform.css'); }}">
+
+     <!-- Fonts -->
+
  <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 </head>
@@ -107,7 +111,8 @@
                                 <option value="Married">Married</option>
                                 <option value="Widow">Widow</option>
                                 <option value="Separated">Separated</option>
-                              </select>
+                              
+                            </select>
 
                                 <span class="field-message">This field is required</span>
                             </div>
@@ -202,9 +207,11 @@
                         
                     </div>
                     <!-- tab -->
+                    @include('guest.evaluationform')
 
-                    <div class="tabpanel">
+                    {{-- <div class="tabpanel">
                         
+
                         <h1>Preview</h1> 
                        
                         <div class="btns-group">
@@ -213,7 +220,7 @@
                               <input type='submit' class="submit btn-primary">
                             </div>
                           </div>
-                    </div>
+                    </div> --}}
 
                 </form>
             </div>

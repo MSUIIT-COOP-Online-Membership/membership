@@ -60,6 +60,19 @@
           </div>
         </div>
       </div>
+
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="Check" required>
+          <label class="form-check-label" for="Check">
+            I also acknowledge and warrant that
+            I have acquired the consent from all parties relevant to this consent and hold free and harmless and indemnify MSU-IIT NMPC from any complaint, suit, or damages which any party may file or claim in relation to my consent.   
+                  </label>
+          <div class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
     
     
     
@@ -88,7 +101,7 @@
         <div class="modal-content">
             <div class="modal-header">
               <h6 class="modal-title fs-5" id="termsModalLabel">PRIVACY NOTICE AND CONSENT FORM</h6>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
             </div>
             <div class="modal-body">
                 <p>MSU-IIT National Multipurpose Cooperative (“MSU-IIT NMPC”, “We”, “Us”) is dedicated for the protection and security of the personal data of our Data Subjects (“You”) in compliance to the Data Privacy Act of 2012 and 

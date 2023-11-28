@@ -241,12 +241,6 @@ class MemberController extends Controller
                 'emer_name' => $request->input('emer_name'),
                 'emer_contact' => $request->input('emer_contact'),
                 'emer_address' => $request->input('emer_address'),
-                // 'ben_fname' => $request->input('ben_fname'),
-                // 'ben_mname' => $request->input('ben_mname'),
-                // 'ben_lname' => $request->input('ben_lname'),
-                // 'ben_suffix' => $request->input('ben_suffix'),
-                // 'ben_dob' => $request->input('ben_dob'),
-                // 'ben_relationship' => $request->input('ben_relationship'),
                 'e_signature' => $request->input('e_signature'),
                 'app_date' => $request->input('app_date'),
             ]);

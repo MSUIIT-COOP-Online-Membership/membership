@@ -186,7 +186,7 @@
                         </div>
                         
                         <div style="display: flex; justify-content: center; align-items: center;">
-                            <video style="max-width: 100%;" id="seminarVideo" controls>
+                            <video style="max-width: 100%;" id="seminarVideo" autoplay muted controls>
                                 <source src="{{ asset('/assets/premembershipform/video/seminar.mp4'); }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>

@@ -19,8 +19,21 @@
                 <div class="ques-text">
                     Choose your desired branches
                 </div>
-                <div class="option-container">
-                    <div class="checkbox-container">
+                <div class="row">
+
+
+                    @forelse($branches as $branch)
+                    <div class="col-lg-4">
+                        <input type="checkbox" name="branches[]" value="{{ $branch->id }}">
+                        <label>
+                            {{ $branch->name }}
+                        </label>
+                    </div>
+                    @empty
+                    @endforelse
+
+              
+                    {{-- <div class="checkbox-container">
                         <input class="form-check-input" type="checkbox" id = "branch1" name="branch_id" value="29" />
                         <label for="branch1"> Bacolod LDN Branch </label> <br>
                     </div>
@@ -99,7 +112,7 @@
                     <div class="checkbox-container">
                         <input class="form-check-input" type="checkbox" id = "branch20" name="branch_id" value="32" required/>
                         <label for="branch20"> Tubod LDN Branch </label> <br>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="eval-group">  

@@ -26,7 +26,8 @@ use App\Http\Controllers\MembershipApplication;
 |
 */
 Route::get('Premembership',[Pre_MembershipController::class, 'index'])->name('premembershipform.index');
-Route::post('Premembership',[Pre_MembershipController::class, 'store'])->name('premembershipform.store');
+// Route::get('Premembership/getbranch',[MemberController::class, 'DisplayBranch'])->name('premembershipform.getbranch');
+Route::post('Premembership/',[Pre_MembershipController::class, 'premembershipForm'])->name('premembershipform.store');
 
 Route::get('/', function () {
     return view('welcome');

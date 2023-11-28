@@ -50,26 +50,26 @@
 <div class="form-content">
     <p>If you wish to proceed, please read and confirm the following:</p>
     <div class="col-12">
-        <div class="form-check">
+        <div class="form-check form-boxs">
           <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
           <label class="form-check-label" for="invalidCheck">
             I affirm that I have thoroughly read the <a href="#termsModal" data-bs-toggle="modal" data-bs-target="#termsModal">PRIVACY NOTICE AND CONSENT</a>  form.
         </label>
           <div class="invalid-feedback">
-            You must agree before submitting.
+            You must check before submitting.
           </div>
         </div>
       </div>
 
       <div class="col-12">
-        <div class="form-check">
+        <div class="form-check form-boxs">
           <input class="form-check-input" type="checkbox" value="" id="Check" required>
           <label class="form-check-label" for="Check">
             I also acknowledge and warrant that
             I have acquired the consent from all parties relevant to this consent and hold free and harmless and indemnify MSU-IIT NMPC from any complaint, suit, or damages which any party may file or claim in relation to my consent.   
                   </label>
           <div class="invalid-feedback">
-            You must agree before submitting.
+            You must check before submitting.
           </div>
         </div>
       </div>

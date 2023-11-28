@@ -1,15 +1,15 @@
 <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 form-check">
         <label for="fname" class="form-label">First name</label>
-        <input type="text" class="form-control" id="fname"  required>
+        <input type="text" class="form-control" name="fname" id="fname"  required>
         <div class="invalid-feedback">
             Please provide a Firt Name.
           </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 form-check">
         <label for="lname" class="form-label">Last name</label>
-        <input type="text" class="form-control" id="lname"  required>
+        <input type="text" class="form-control" name="lname" id="lname"  required>
         {{-- <div class="valid-feedback">
           Looks good!
         </div> --}}
@@ -18,9 +18,9 @@
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 form-check">
         <label for="mname" class="form-label">Middle name</label>
-        <input type="text" class="form-control" id="mname"  required>
+        <input type="text" class="form-control" name="mname" id="mname"  required>
         {{-- <div class="valid-feedback">
           Looks good!
         </div> --}}
@@ -31,28 +31,29 @@
 
       {{-- bod, gender, and civil --}}
 
-      <div class="col-md-4">
-        <label for="date_of_birth" class="form-label">Date of Birth</label>
-        <input type="date" class="form-control" id="date_of_birth"  required>
+      <div class="col-md-4 form-check">
+        <label for="dob" class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" name="dob" id="dob"  required>
         <div class="invalid-feedback">
             This is required Field.
           </div>
       </div>
 
-      <div class="col-md-4">
-        <label for="gender" class="form-label"> Gender </label>
-        <input type="text" class="form-control" id="gender"  required>
-        {{-- <div class="valid-feedback">
-          Looks good!
-        </div> --}}
+      <div class="col-md-4 form-check">
+        <label for="sex" class="form-label"> Gender </label>
+        <select class="form-control" name="sex" id="sex" required>
+          <option selected disabled value="">Choose...</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+      </select>
         <div class="invalid-feedback">
             This is required Field.
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 form-check">
         <label for="civil_status" class="form-label">Civil Status</label>
-        <select class="form-control" id="civil_status" required>
+        <select class="form-control" name="civil_status" id="civil_status" required>
             <option selected disabled value="">Choose...</option>
             <option value="Single">Single</option>
             <option value="Married">Married</option>
@@ -66,17 +67,17 @@
 
       {{-- email, tel, mob --}}
 
-      <div class="col-md-4">
+      <div class="col-md-4 form-check">
         <label for="email" class="form-label">Email Address</label>
-        <input type="email" class="form-control" id="email"  required>
+        <input type="email" class="form-control" name="email" id="email" autocomplete="email" required>
         <div class="invalid-feedback">
             This is required Field.
           </div>
       </div>
 
-      <div class="col-md-4">
-        <label for="telephone_number" class="form-label">Telephone Number</label>
-        <input type="number" class="form-control" id="telephone_number"  >
+      <div class="col-md-4 form-check">
+        <label for="tel_no" class="form-label">Telephone Number</label>
+        <input type="number" class="form-control" name="tel_no" id="tel_no"  >
         {{-- <div class="valid-feedback">
           Looks good!
         </div> --}}
@@ -85,12 +86,10 @@
         </div>
       </div>
 
-      <div class="col-md-4">
-        <label for="mobile_number" class="form-label">Mobile Number</label>
-        <input type="number" class="form-control" id="mobile_number"  required>
-        {{-- <div class="valid-feedback">
-          Looks good!
-        </div> --}}
+      <div class="col-md-4 form-check">
+        <label for="mobile_no" class="form-label">Mobile Number</label>
+        <input type="number" class="form-control" name="mobile_no" id="mobile_no"  required>
+    
         <div class="invalid-feedback">
             This is required Field.
           </div>
@@ -98,26 +97,24 @@
 
       {{-- fb, occopation, and ofw --}}
 
-      <div class="col-md-3">
-        <label for="facebook_account" class="form-label">Facebook Account</label>
-        <input type="text" class="form-control" id="facebook_account"  required>
+      <div class="col-md-4 form-check">
+        <label for="religion" class="form-label">Religion</label>
+        <input type="text" class="form-control" name="religion" id="religion"  required>
         <div class="invalid-feedback">
             This is required Field.
           </div>
       </div>
 
-      <div class="col-md-3">
+      {{-- <div class="col-md-3">
         <label for="occupation" class="form-label">Occupation</label>
-        <input type="text" class="form-control" id="occupation"  required>
-        {{-- <div class="valid-feedback">
-          Looks good!
-        </div> --}}
+        <input type="text" class="form-control" name="occupation" id="occupation"  required>
+
         <div class="invalid-feedback">
             This is required Field.
         </div>
-      </div>
+      </div> --}}
 
-      <div class="col-md-6">
+      {{-- <div class="col-md-5">
         <label for="ofw_family_member" class="form-label">Do you have an OFW in your Family?</label>
         <select class="form-control" id="ofw_family_member" required>
             <option selected disabled value="">Choose...</option>
@@ -131,17 +128,18 @@
         <div class="invalid-feedback">
             This is required Field.
           </div>
-      </div>
+      </div> --}}
 
-
-{{-- 
-      <div class="col-md-6">
-        <label for="validationCustom03" class="form-label">City</label>
-        <input type="text" class="form-control" id="validationCustom03" required>
+      <div class="col-md-6 form-check">
+        <label for="present_address" class="form-label">Present Address</label>
+        <input type="text" class="form-control" name="present_address" id="present_address" required>
         <div class="invalid-feedback">
-          Please provide a valid city.
+          Please provide a valid Address.
         </div>
       </div>
+
+{{-- 
+   
 
       <div class="col-md-3">
         <label for="validationCustom04" class="form-label">State</label>

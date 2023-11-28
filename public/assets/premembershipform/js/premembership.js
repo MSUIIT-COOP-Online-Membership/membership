@@ -44,7 +44,7 @@ function isVideoCompleted() {
   console.log("Current time:", video.currentTime);
   console.log("Duration:", video.duration);
   
-   const hasVideoCompleted = video.currentTime >= video.duration - 10;
+   const hasVideoCompleted = video.currentTime >= video.duration - 30;
    if (hasVideoCompleted) {
     // Save a flag in localStorage to indicate that the video has been completed
     localStorage.setItem("videoCompleted", "true");
@@ -62,7 +62,8 @@ function validateCurrentStep() {
   let isValid = true;
 
   requiredFields.forEach((field) => {
-    const fieldMessage = field.nextElementSibling; // Assuming fieldMessage is a sibling of the input field
+    // const fieldMessage = field.nextElementSibling; // Assuming fieldMessage is a sibling of the input field
+    const fieldMessage = field.closest('.form-check').querySelector('.invalid-feedback');
 
     if (field.type === "checkbox") {
       if (!field.checked) {

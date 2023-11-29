@@ -19,8 +19,16 @@
 
  <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+ 
+        {{-- Mapbox API --}}
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+
 </head>
 <body>
+
+    
 
     <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="{{ asset('images/npmc-logo-nobg.png') }}" alt="MSUIIT COOP" width="200">
@@ -246,11 +254,71 @@
 <!-- AdminLTE App -->
 <script src="<?php echo url('theme'); ?>/dist/js/adminlte.js"></script>
 
-{{-- <script>
-  window.addEventListener("load", function () {
-    console.log("Page loaded");
-    document.querySelector('.preloader').style.display = 'none';
-});
 
-</script> --}}
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
+<script>
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoidnJvbmFseW4iLCJhIjoiY2xjMDJnNWhtMWJxYzN1bXFjZmdnNDR3dSJ9.LkEnrvW8i-KTy-8lVyZs-g';    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [124.240967, 8.231000],
+        zoom: 15
+    });
+
+    // Add the control to the map.
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+    );
+            // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl())
+    // // Add geolocate control to the map.
+    // map.addControl(
+    // new mapboxgl.GeolocateControl({
+    // positionOptions: {
+    // enableHighAccuracy: true
+    // },
+    // // When active the map will receive updates to the device's location as it changes.
+    // trackUserLocation: true,
+    // // Draw an arrow next to the location dot to indicate which direction the device is heading.
+    // showUserHeading: true
+    // })
+    // );
+
+
+// Define a variable to store the current marker
+let currentMarker;
+
+map.on('click', (e) => {
+    const coordinates = e.lngLat;
+
+    // Remove the previous marker if it exists
+    if (currentMarker) {
+        currentMarker.remove();
+    }
+
+    // Create a new marker at the clicked coordinates
+    const marker = new mapboxgl.Marker({ color: '#FF0000' })
+        .setLngLat(coordinates)
+        .addTo(map);
+
+    // Update input fields with latitude and longitude
+    document.getElementById('longitude').value = coordinates.lng.toFixed(6);
+    document.getElementById('latitude').value = coordinates.lat.toFixed(6);
+
+    // Set the current marker to the newly created marker
+    currentMarker = marker;
+
+    // Now you can save the coordinates (coordinates.lng, coordinates.lat) to your database.
+    console.log('Longitude:', coordinates.lng);
+    console.log('Latitude:', coordinates.lat);
+});
+</script>
+
 </html>

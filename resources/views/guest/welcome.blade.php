@@ -50,11 +50,11 @@
 <div class="form-content">
     <p>If you wish to proceed, please read and confirm the following:</p>
     <div class="col-12">
-        <div class="form-check form-boxs">
+        <div class="form-checks">
           <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
           <label class="form-check-label" for="invalidCheck">
             I affirm that I have thoroughly read the <a href="#termsModal" data-bs-toggle="modal" data-bs-target="#termsModal">PRIVACY NOTICE AND CONSENT</a>  form.
-        </label>
+          </label>
           <div class="invalid-feedback">
             You must check before submitting.
           </div>
@@ -62,7 +62,7 @@
       </div>
 
       <div class="col-12">
-        <div class="form-check form-boxs">
+        <div class="form-checks">
           <input class="form-check-input" type="checkbox" value="" id="Check" required>
           <label class="form-check-label" for="Check">
             I also acknowledge and warrant that

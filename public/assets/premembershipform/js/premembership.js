@@ -63,7 +63,7 @@ function validateCurrentStep() {
 
   requiredFields.forEach((field) => {
     // const fieldMessage = field.nextElementSibling; // Assuming fieldMessage is a sibling of the input field
-    const fieldMessage = field.closest('.form-check').querySelector('.invalid-feedback');
+    const fieldMessage = field.closest('.form-checks').querySelector('.invalid-feedback');
 
     if (field.type === "checkbox") {
       if (!field.checked) {

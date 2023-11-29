@@ -24,8 +24,8 @@
 
                     @forelse($branches as $branch)
                     <div class="col-lg-4">
-                        <input type="checkbox" name="branches[]" value="{{ $branch->id }}">
-                        <label>
+                        <input type="checkbox" name="branches[]" id="{{ $branch->name }}" value="{{ $branch->id }}">
+                        <label for="{{ $branch->name }}"  >
                             {{ $branch->name }}
                         </label>
                     </div>

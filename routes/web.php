@@ -140,7 +140,7 @@ Route::middleware(['auth', 'checkRole:System Administrator'])->group(function ()
 Route::get('/code', [App\Http\Controllers\MembershipApplication::class, 'index'])->name('members.code');
 Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'code'])->name('members.code');
 Route::post('/membershipform/edit/{id}', [App\Http\Controllers\MembershipApplication::class, 'edit'])->name('members.membershipform.edit');
-Route::get('/get-sub-type-options', [App\Http\Controllers\MembershipForm::class, 'getSubTypeOptions'])->name('members.get-sub-type-options');
+Route::get('/get-sub-type-options', [App\Http\Controllers\MembershipApplication::class, 'getSubTypeOptions'])->name('members.get-sub-type-options');
 Route::get('/view/{id}', [App\Http\Controllers\MembershipApplication::class, 'view'])->name('members.view');
 Route::get('/pdf_download/pdf_view/{id}/generate', [App\Http\Controllers\MembershipApplication::class, 'generatePDF'])->name('members.pdf_download.generatePDF');
 Route::get('/bookappointment/{id}', [App\Http\Controllers\AppointmentFormController::class, 'bookappointment'])->name('members.bookappointment');

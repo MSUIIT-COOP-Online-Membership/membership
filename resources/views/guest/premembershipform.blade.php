@@ -11,11 +11,9 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
 
-<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/header.css'); }}">
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-=======
      <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/header.css'); }}">
  
      <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/evaluationform.css'); }}">
@@ -23,7 +21,6 @@
      <!-- Fonts -->
 
  <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
->>>>>>> 9477024bcbefcf81f6c77227fc854d8387aeaaa3
 
  
         {{-- Mapbox API --}}
@@ -200,13 +197,8 @@
                         </div>
                         
                         <div style="display: flex; justify-content: center; align-items: center;">
-<<<<<<< HEAD
                             <video style="max-width: 100%;" id="seminarVideo" controls>
                                 <source src="{{ asset('/assets/premembershipform/video/seminar.mp4') }}" type="video/mp4">
-=======
-                            <video style="max-width: 100%;" id="seminarVideo" autoplay muted controls>
-                                <source src="{{ asset('/assets/premembershipform/video/seminar.mp4'); }}" type="video/mp4">
->>>>>>> 9477024bcbefcf81f6c77227fc854d8387aeaaa3
                                 Your browser does not support the video tag.
                             </video>
             

@@ -3,20 +3,28 @@ const prevBtns = document.querySelectorAll(".btn-prev");
 const nextBtns = document.querySelectorAll(".btn-next");
 const progress = document.getElementById("progress-wrap");
 const formSteps = document.querySelectorAll(".tabpanel");
-const progressSteps = document.querySelectorAll(".progress-bar");
+const progressSteps = document.querySelectorAll(".step");
 
 let formStepsNum = 0;
 
 nextBtns.forEach((btn) => {
 
   btn.addEventListener("click", () => {
-    if (validateCurrentStep()) {
+    if (formStepsNum === 2) {
+      if (isVideoCompleted()) {
+        formStepsNum++;
+        updateFormSteps();
+        updateProgressbar();
+      } else {
+        alert("Error: Please finish watching the video before proceeding.");
+      }
+    } else if (validateCurrentStep()) {
       formStepsNum++;
       updateFormSteps();
       updateProgressbar();
-
     } else {
-        // console.log("error next button");
+      // Add your error handling or messages here
+      console.log("Error: Form validation failed.");
     }
   });
 });
@@ -28,6 +36,23 @@ prevBtns.forEach((btn) => {
       updateProgressbar();
   });
 });
+
+// Add this function to check whether the video is completed
+function isVideoCompleted() {
+  const video = document.getElementById("seminarVideo");
+  console.log("Video paused:", video.paused);
+  console.log("Current time:", video.currentTime);
+  console.log("Duration:", video.duration);
+  
+   const hasVideoCompleted = video.currentTime >= video.duration - 10;
+   if (hasVideoCompleted) {
+    // Save a flag in localStorage to indicate that the video has been completed
+    localStorage.setItem("videoCompleted", "true");
+
+  }
+
+  return hasVideoCompleted;
+}
 
 
 function validateCurrentStep() {

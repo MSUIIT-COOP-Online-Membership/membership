@@ -28,8 +28,7 @@ class Pre_MembershipController extends Controller
             'mobile_no' => 'nullable|string|max:255',
             'religion' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
-            'present_address' => 'nullable|string|max:255',
-            
+            'present_address' => 'nullable|string|max:255',    
         ]);
 
         $PrememberInfo = Premember::create($data);

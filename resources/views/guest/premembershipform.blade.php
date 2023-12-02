@@ -6,91 +6,65 @@
     <title>Online Pre-membership</title>
     <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/premembership.css'); }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> --}}
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/header.css'); }}">
+    <!-- Fonts -->
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
-    <nav>
 
-    </nav>
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="{{ asset('images/npmc-logo-nobg.png') }}" alt="MSUIIT COOP" width="200">
+    </div>
+
+   
+    @include('guest.header')
+
     <main>
+
+
         <header>
-            <h1>Pre-Online Membership</h1>
+            <h1>Online Pre-Membership Education Seminar</h1>
         </header>
       
-        <div class="box">
+        <div class="box-custom">
             <!-- progressive bar -->
             <div class="progress-wrap">
-                <div class="progress-bar active-prog-first ">WELCOME</div>
-                <div class="progress-bar ">Personal Information</div>
-                <div class="progress-bar">Type of Seminar</div>
-                <div class="progress-bar">Preview</div>
+                <div class="step active-prog-first ">WELCOME</div>
+                <div class="step ">Personal Information</div>
+                <div class="step">Seminar Video</div>
+                <div class="step">Evaluation Form</div>
             </div>
             <!-- form -->
             <div class="form-container">
-                <form method="post" action="{{ route('premembershipform.store') }}" id="form" >
+                <form method="post" action="{{ route('premembershipform.store') }}" id="form" class="needs-validation" novalidate>
                     @csrf 
 
                     @method('post')
 
                     <!-- Welcome Page -->
                     <div class="tabpanel show">
-
-                        <div class="tab-header">
-                            <h1>Welcome</h1>
-                        </div>
-                        <div class="tab-content">
-                            <p>
-                                This is the online membership application 
-                                for MSU-IIT National Multi-Purpose Cooperative (MSU-IIT NMPC) 
-                            </p> <br>
-
-                            <p>
-                                Joining our cooperative provides you with access to a wide range of
-                                 cooperative services and benefits, whether you are affiliated with the university or the broader community. We invite you to experience the advantages of cooperative membership.
-                            </p> <br>
-
-                            <p>
-                                Our online system is designed for your convenience. It allows you to complete the application process from the comfort of your own space, at your own pace. This user-friendly
-                                 platform is committed to making your application journey as smooth as possible.
-                            </p> <br>
-
-                            <p>Before you proceed, here’s what you need to do:</p>
-
-                            <ul>
-                                <li><span>Fill out your Personal Profile:</span> Start by entering your basic personal information.</li>
-                                <li><span>Seminar Attendance:</span> Participate in the pre-membership education seminar via Google Meet or YouTube by following the link sent to your email.</li>
-                                <li><span>Evaluation Form:</span> After you have completed the seminar, please fill out the evaluation form.</li>
-                                <li><span>Document Submission:</span> When you are ready to apply for membership, present a printed hard copy of the certificate sent to your email in the [specified location], along with the following documents:
-                                    <ul>
-                                        <li>Duly accomplished Membership Application Form (MAF). Print the form and fill-in manually (handwritten).</li>
-                                        <li>Photocopy of any government issued ID (with 3 specimen signatures), birth certificate, and marriage contract if any.</li>
-                                        <li>One latest 2X2 ID picture</li>
-                                    </ul>
-                                </li>
-                                <li><span>Minimum Initial Contribution:</span> Please note that the minimum initial contribution is 500 pesos.</li>
-                            </ul>
-        
-                        </div>
-                        
-                        <div class="form-content">
-                            <input type="checkbox" class="form-input" id="myCheck" required>
-                            <label for="myCheck">I here by accept the policy</label> 
-                            <span class="field-message" style="text-align: left; margin-top: 5px;">This field is required</span>
-                        </div>
-                        <div class="btns-group first-btn">
-                            <button id="toReview" class="btn btn-next" type="button">Next</button>
-                          </div>
+                        @include('guest.welcome')
                     </div>
 
                     <!-- Personal Information -->
                     <div class="tabpanel ">
                         <div class="tab-header">
-                            <h1>Personal Information</h1>
+                            <h3>Personal Information</h3>
                         </div>
                         <div class="tab-subhead">
-                          <h3>Basic Information</h3>
+                          <h6>Basic Information</h6>
                         </div>
-                        <div class="fields">
+
+                        @include('guest.personalinfo')
+
+                        
+                        {{-- <div class="fields">
                             <div class="input-group">
                                 <label for="fname">First Name</label> 
                                 <input type="text" name="fname" placeholder="First Name" class="form-input" id="fname" required/>
@@ -103,7 +77,6 @@
                                 <input type="text" name="lname" placeholder="Last Name" class="form-input" id="lname" required/>
                                 <span class="field-message">This field is required</span>
                             </div>
-    
                             <div class="input-group">  
                             <label for="mname">Middle Name</label>
                             <input type="text" name="mname" placeholder="Middle Name" class="form-input" id="mname" required/>                    
@@ -189,11 +162,13 @@
                                     <input type="text" name="present_address" class="form-input" id="present_address" required/>
                                     <span class="field-message">This field is required</span>
                                 </div> 
-                        </div>
+
+
+                        </div> --}}
                         
                         <div class="btns-group">
                             <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="button" class="btn btn-next btn-primary">Next</button>
                         </div>
 
                     </div>
@@ -202,26 +177,29 @@
                     <div class="tabpanel">
 
                         <div class="tab-header">
-                          <h1>Seminar</h1>
+                          <h3>Seminar</h3>
                         </div>
                         
-                        <div>
-                            <div class="input-group">  
-                                <label for="tool_name">Choose the tool for your online Seminar</label>
-                                <select name="tool_name" id="tool_name" required>
-                                    <option value="" disabled selected>Select an option</option>
-                                    <option value="GGoogle meet">Google Meet</option>
-                                    <option value="Youtube">Youtube</option>                                    
-                                  </select>
-                               <span class="field-message">This field is required</span>
-                             </div>
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <video style="max-width: 100%;" id="seminarVideo" controls>
+                                <source src="{{ asset('/assets/premembershipform/video/seminar.mp4') }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+            
+                        </div>
+
+                        <div style="border-top: 1px solid #297AD8; margin-top:20px; padding-top: 20px; ">
+                            <p style="font-style: italic;"><span style="font-weight:700;">Note: </span>
+                            This system is designed in such a manner as to required the applicant 
+                            to watch the seminar video before he can submit his application
+                            </p>
                         </div>
                                 
                                 
 
                          <div class="btns-group">
                              <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="button" class="btn btn-next btn-primary">Next</button>
                           </div>
 
                         
@@ -235,7 +213,7 @@
                         <div class="btns-group">
                             <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
                             <div >
-                              <input type='submit' class="submit">
+                              <input type='submit' class="submit btn-primary">
                             </div>
                           </div>
                     </div>
@@ -244,7 +222,31 @@
             </div>
         </div>
     </main>
+
+
+    
 </body>
 <script src="{{ asset('/assets/premembershipform/js/premembership.js'); }}"></script>
 
+<!-- Bootdrap CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="<?php echo url('theme'); ?>/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?php echo url('theme'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?php echo url('theme'); ?>/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo url('theme'); ?>/dist/js/adminlte.js"></script>
+
+{{-- <script>
+  window.addEventListener("load", function () {
+    console.log("Page loaded");
+    document.querySelector('.preloader').style.display = 'none';
+});
+
+</script> --}}
 </html>

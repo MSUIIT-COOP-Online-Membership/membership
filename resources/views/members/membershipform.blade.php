@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NMPC Membership Application</title>
-    <link rel="stylesheet" href="{{ asset('/assets/membershipapplication/css/membership.css'); }}">
+    <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/premembership.css'); }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/header.css'); }}">
+    <!-- Fonts -->
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-    <nav>
-
-    </nav>
+@include('guest.header')
     <main>
         <header>
             <h1>Membership Form</h1>
@@ -30,14 +35,14 @@
             @endif
         </div>
 
-        <div class="box">
+        <div class="box-custom">
             <!-- progressive bar -->
             <div class="progress-wrap">
-                <div class="progress-bar active-prog-first ">Personal Data</div>
-                <div class="progress-bar ">Employment/Occupation/Business Data</div>
-                <div class="progress-bar">Family Background</div>
-                <div class="progress-bar">Beneficiaries</div>
-                <div class="progress-bar">Declaration</div>
+                <div class="step active-prog-first ">Personal Data</div>
+                <div class="step">Employment/Occupation/Business Data</div>
+                <div class="step">Family Background</div>
+                <div class="step">Beneficiaries</div>
+                <div class="step">Declaration</div>
             </div>
             <!-- form -->
             <div class="form-container">
@@ -54,96 +59,129 @@
                         <div class="tab-subhead">
                             <h3>Basic Information</h3>
                         </div>
-                        <div class="fields">
-                            <input type="hidden" name="members_id" class="form-input" id="members_id" value='{{ $members->id }}' readonly>
-                            <div class="input-group">
-                                <label for="lname">Last Name</label>
-                                <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
-                                <span class="field-message">This field is required</span>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="hidden" name="members_id" class="form-input" id="members_id" value='{{ $members->id }}' readonly>
+                                <div class="input-group">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="fname">First Name</label>
-                                <input type="text" name="fname" class="form-input" id="fname" value='{{ $members->fname }}' readonly>
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" name="fname" class="form-input" id="fname" value='{{ $members->fname }}' readonly>
+                                    <span class="field-message">This field is required</span>
 
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="mname">Middle Name</label>
-                                <input type="text" name="mname" class="form-input" id="mname" value='{{ $members->mname }}' readonly />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="mname">Middle Name</label>
+                                    <input type="text" name="mname" class="form-input" id="mname" value='{{ $members->mname }}' readonly />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="suffix">Suffix</label>
-                                <input type="text" name="suffix" placeholder="Suffix" class="form-input" id="suffix" />
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="suffix">Suffix</label>
+                                    <input type="text" name="suffix" placeholder="Suffix" class="form-input" id="suffix" />
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="sex">Sex</label>
-                                <input type="text" name="sex" class="form-input" id="sex" value='{{ $members->sex }}' readonly />
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="sex">Sex</label>
+                                    <input type="text" name="sex" class="form-input" id="sex" value='{{ $members->sex }}' readonly />
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="civil_status">Civil Status</label>
-                                <input type="text" name="civil_status" class="form-input" id="civil_status" value='{{ $members->civil_status }}' readonly />
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="civil_status">Civil Status</label>
+                                    <input type="text" name="civil_status" class="form-input" id="civil_status" value='{{ $members->civil_status }}' readonly />
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="dob">Date of Birth</label>
-                                <input type="date" name="dob" class="form-input" id="dob" value='{{ $members->dob }}' readonly />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" name="dob" class="form-input" id="dob" value='{{ $members->dob }}' readonly />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="age">Age</label>
-                                <input type="number" name="age" placeholder="Age" class="form-input" id="age" required />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="age">Age</label>
+                                    <input type="number" name="age" placeholder="Age" class="form-input" id="age" required />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="tel_no">Telephone Number (optional)</label>
-                                <input type="number" name="tel_no" class="form-input" id="telephone_number" value='{{ $members->tel_no }}' readonly />
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="tel_no">Telephone Number (optional)</label>
+                                    <input type="number" name="tel_no" class="form-input" id="telephone_number" value='{{ $members->tel_no }}' readonly />
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="mobile_no">Mobile Number </label>
-                                <input type="number" name="mobile_no" class="form-input" id="mobile_number" value='{{ $members->mobile_no }}' readonly />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="mobile_no">Mobile Number </label>
+                                    <input type="number" name="mobile_no" class="form-input" id="mobile_number" value='{{ $members->mobile_no }}' readonly />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="email">Email Address</label>
-                                <input type="text" name="email" class="form-input" id="email" value='{{ $members->email }}' readonly />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="text" name="email" class="form-input" id="email" value='{{ $members->email }}' readonly />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="religion">Religion</label>
-                                <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" required />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <label for="religion">Religion</label>
+                                    <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" required />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="place_birth">Place of Birth</label>
-                                <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth" required />
-                                <span class="field-message">This field is required</span>
+                            <hr>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label for="place_birth">Place of Birth</label>
+                                    <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth" required />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="present_address">Present Address</label>
-                                <input type="text" name="present_address" class="form-input" id="present_address" value='{{ $members->present_address }}' readonly />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label for="present_address">Present Address</label>
+                                    <input type="text" name="present_address" class="form-input" id="present_address" value='{{ $members->present_address }}' readonly />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
+                            
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="duration_residency">Duration of Residency With Present Address</label>
                                 <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency" required />
                                 <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="living_parents">Living With Parents</label>
                                 <select name="living_parents" id="living_parents" required>
                                     <option value="">Living With Parents?</option>
@@ -152,8 +190,10 @@
                                 </select>
                                 <span class="field-message">This field is required</span>
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="house">House</label>
                                 <select name="House" id="House" required>
                                     <option value="">House</option>
@@ -163,14 +203,18 @@
                                 </select>
                                 <span class="field-message">This field is required</span>
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="house_month">House Rental/Mortgage Per Month</label>
                                 <input type="number" name="house_month" placeholder="House Rental/Mortgage Per Month" class="form-input" id="house_month" />
                                 <span class="field-message">This field is required</span>
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="lot">Lot</label>
                                 <select name="lot" id="lot" required>
                                     <option value="">House</option>
@@ -180,20 +224,26 @@
                                 </select>
                                 <span class="field-message">This field is required</span>
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="lot_month">Lot Rental/Mortgage Per Month</label>
                                 <input type="number" name="lot_month" placeholder="Lot Rental/Mortgage Per Month" class="form-input" id="lot_month" />
                                 <span class="field-message">This field is required</span>
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="tin">TIN</label>
                                 <input type="number" name="tin" placeholder="TIN" class="form-input" id="tin" required />
                                 <span class="field-message">This field is required</span>
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="educational_attainment">Educational Attainment</label>
                                 <select name="educational_attainment" id="educational_attainment" required>
                                     <option value="">Educational Attainment</option>
@@ -208,26 +258,29 @@
                                 </select>
                                 <span class="field-message">This field is required</span>
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col">
+                                <div class="input-group">
                                 <label for="image">ID Picture</label>
                                 <input type="file" name="image" class="form-input" id="image" required />
                                 <span class="field-message">This field is required</span>
                             </div>
+                            </div>
                         </div>
 
                         <div class="btns-group" style="justify-content: flex-end !important;">
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="button" class="btn btn-next btn-primary">Next</button>
                         </div>
                     </div>
 
                     <!-- Employment/Occupation/Business Data-->
                     <div class="tabpanel ">
                         <div class="tab-header">
-                            <h1>Employment/Occupation/Business Data</h1>
+                            <h3>Employment/Occupation/Business Data</h3>
                         </div>
                         <div class="tab-subhead">
-                            <h3>Basic Information</h3>
+                            <h6>Basic Information</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -316,7 +369,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>For Employed</h3>
+                            <h6>For Employed</h6>
                         </div>
                         <div class="fields">
 
@@ -365,7 +418,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>For Those Who Have Existing Business</h3>
+                            <h6>For Those Who Have Existing Business</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -446,17 +499,17 @@
 
                         <div class="btns-group">
                             <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="button" class="btn btn-next btn-primary">Next</button>
                         </div>
                     </div>
 
                     <!-- Family Background -->
                     <div class="tabpanel ">
                         <div class="tab-header">
-                            <h1>Employment/Occupation/Business Data</h1>
+                            <h3>Employment/ Occupation/ Business Data</h3>
                         </div>
                         <div class="tab-subhead">
-                            <h3>Basic Information</h3>
+                            <h6>Basic Information</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -545,7 +598,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>If Married</h3>
+                            <h6>If Married</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -673,7 +726,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>In case of Emergency</h3>
+                            <h6>In case of Emergency</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -697,17 +750,17 @@
 
                         <div class="btns-group">
                             <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="button" class="btn btn-next btn-primary">Next</button>
                         </div>
                     </div>
 
                     <!-- Beneficiaries -->
                     <div class="tabpanel ">
                         <div class="tab-header">
-                            <h1>Beneficiaries</h1>
+                            <h3>Beneficiaries</h3>
                         </div>
                         <div class="tab-subhead">
-                            <h3>Beneficiary 1</h3>
+                            <h6>Beneficiary 1</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -748,7 +801,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>Beneficiary 2</h3>
+                            <h6>Beneficiary 2</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -789,7 +842,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>Beneficiary 3</h3>
+                            <h6>Beneficiary 3</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -830,7 +883,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>Beneficiary 4</h3>
+                            <h6>Beneficiary 4</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -871,7 +924,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>Beneficiary 5</h3>
+                            <h6>Beneficiary 5</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -912,7 +965,7 @@
                         </div>
 
                         <div class="tab-subhead">
-                            <h3>Beneficiary 6</h3>
+                            <h6>Beneficiary 6</h6>
                         </div>
                         <div class="fields">
                             <div class="input-group">
@@ -954,14 +1007,14 @@
 
                         <div class="btns-group">
                             <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
-                            <button type="button" class="btn btn-next">Next</button>
+                            <button type="button" class="btn btn-next btn-primary">Next</button>
                         </div>
                     </div>
 
                     <div class="tabpanel">
 
                         <div class="tab-header">
-                            <h1>Declaration and Specimen Signature</h1>
+                            <h3>Declaration and Specimen Signature</h3>
                         </div>
                         <div class="tab-content">
                             <p>1. I, whose specimen signature appears below, confirm that all the information disclosed in this membership
@@ -977,16 +1030,20 @@
                                 accredited by the CIC.
                             </p>
 
-                            <div class="input-group">
-                                <label for="e_signature">Signature</label>
-                                <input type="file" name="e_signature" class="form-input" id="e_signature" required />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <label for="e_signature">Signature</label>
+                                    <input type="file" name="e_signature" class="form-input" id="e_signature" required />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
-                            <div class="input-group">
-                                <label for="app_date">Date</label>
-                                <input type="date" name="app_date" class="form-input" id="app_date" required />
-                                <span class="field-message">This field is required</span>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <label for="app_date">Date</label>
+                                    <input type="date" name="app_date" class="form-input" id="app_date" required />
+                                    <span class="field-message">This field is required</span>
+                                </div>
                             </div>
 
                             <div class="btns-group">
@@ -1005,8 +1062,26 @@
         </div>
     </main>
 </body>
+<script src="{{ asset('/assets/premembershipform/js/premembership.js'); }}"></script>
+
+<!-- Bootdrap CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="<?php echo url('theme'); ?>/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?php echo url('theme'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?php echo url('theme'); ?>/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo url('theme'); ?>/dist/js/adminlte.js"></script>
+
+
 <script src="{{ asset('/assets/membershipapplication/js/membership.js'); }}"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <script>
     function updateSubTypeOptions() {
         console.log("updateSubTypeOptions function called");

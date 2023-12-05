@@ -46,7 +46,7 @@
 
       {{-- bod, gender, and civil --}}
 
-      {{-- <div class="col-md-4 form-checks">
+      <div class="col-md-4 form-checks">
         <label for="dob" class="form-label">Date of Birth</label>
         <input type="date" class="form-control" name="dob" id="dob"  required>
         <div class="invalid-feedback">
@@ -78,7 +78,7 @@
         <div class="invalid-feedback">
             This is required Field.
           </div>
-      </div> --}}
+      </div>
 
       {{-- email, tel, mob --}}
 

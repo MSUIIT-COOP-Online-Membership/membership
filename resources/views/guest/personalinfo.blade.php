@@ -1,17 +1,14 @@
 <div class="row">
-<<<<<<< HEAD
       <div class="col-md-4">
         <label for="validationCustom01" class="form-label">First name</label>
         <input type="text" class="form-control" id="validationCustom01"  required>
           <div class="invalid-feedback">
             Please provide a valid city.
-=======
         <div class="col-md-4 form-checks">
         <label for="fname" class="form-label">First name</label>
         <input type="text" class="form-control" name="fname" id="fname"  required>
         <div class="invalid-feedback">
             Please provide a Firt Name.
->>>>>>> 9477024bcbefcf81f6c77227fc854d8387aeaaa3
           </div>
       </div>
 

@@ -54,8 +54,9 @@
             <div class="progress-wrap">
                 <div class="step active-prog-first ">WELCOME</div>
                 <div class="step ">Personal Information</div>
-                <div class="step">Seminar Video</div>
+                <!-- <div class="step">Seminar Video</div> -->
                 <div class="step">Evaluation Form</div>
+                <div class="step">Result</div>
             </div>
             <!-- form -->
             <div class="form-container">
@@ -81,8 +82,6 @@
                         @include('guest.personalinfo')
 
                         
-    
-                        
                         <div class="btns-group">
                             <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
                             <button type="button" class="btn btn-next btn-primary">Next</button>
@@ -91,7 +90,7 @@
                     </div>
 
                     <!-- tab -->
-                    <div class="tabpanel">
+                    <!-- <div class="tabpanel">
 
                         <div class="tab-header">
                           <h3>Seminar</h3>
@@ -124,10 +123,17 @@
                           </div>
 
                         
-                    </div>
+                    </div> -->
                     <!-- tab -->
                     @include('guest.evaluationform')
-
+                    
+                     <!-- tab -->
+                     <div class="tabpanel show">
+                     @if(isset($percentageScore) && isset($passOrFail))
+                        @include('guest.result')
+                    @endif
+                    </div>
+                    
                 </form>
             </div>
         </div>

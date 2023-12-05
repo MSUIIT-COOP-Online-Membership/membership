@@ -29,7 +29,7 @@
           </div>
       </div>
 
-      <div class="col-md-2 form-checks">
+      <div class="col-md-3 form-checks">
         <label for="suffix" class="form-label">Suffix</label>
         <select class="form-control" name="suffix" id="suffix">
           <option selected disabled value="">Select...</option>

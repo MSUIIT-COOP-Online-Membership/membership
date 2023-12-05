@@ -40,13 +40,13 @@
     <div class="step">Verification</div>
     </div>
 
-    <div class="form-container">
-        <h1>Please Enter Your Code</h1>
+    <div class="form-container text-center">
+        <h1 class='mb-3'>Please Enter Your Code</h1>
         <form action='code' method="POST" id="form">
             @csrf
 
             <center>
-                <input type="number" name="code"><br>
+                <input type="number" name="code" class='input-group col-6 mb-3'><br>
                 <button class="btn btn-next btn-primary">Enter</button>
             </center>
         </form>

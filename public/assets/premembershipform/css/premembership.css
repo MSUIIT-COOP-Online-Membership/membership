@@ -26,12 +26,14 @@ header {
 
 .box-custom {
     /* background-color: rgb(166, 166, 166); */
-    /* height: 400px; */
+    /* height: 600px; 
+    overflow-y: auto;*/
     border-radius: 1.25rem;
     background: #f7f8fc;
     margin-top: 2.25rem;
     width: 100%;
     margin-bottom:2.25rem;
+    
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   }
 
@@ -44,11 +46,12 @@ header {
     flex-direction: row;
     justify-content: space-between;
     position: relative;
-}
+} 
 
 .step {
     width: 100%;
     background-color: #004AAD;
+    border-right: 1px solid #757575;
     height: 100%;
     color: white;
     display: flex;
@@ -63,30 +66,33 @@ header {
 
 .active-prog-first {
   border-radius: 1.25rem 3.125rem 3.125rem 0;
-  background: linear-gradient(89deg, #F0ECEC -1.24%, #BCBCBC 29.26%, #8B8B8B 60.29%, #7D7B7B 99.73%);
+  /* background: linear-gradient(89deg, #d68d8d -1.24%, rgb(179, 97, 97) 29.26%, #ae4242 60.29%, #a72828 99.73%); */
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: 1px solid #B2B1B1;
-  color: #9C0D0F;
+  border: 1px solid #032cf8;
+  /* color: rgb(237, 187, 102); */
+  background: linear-gradient(to right,#700202 ,#081182);
+  background-color: #700202;
+  color: #ffbf5b;
   font-weight: 700;
 }
 
 .active-prog-last {
-border-radius: 3.125rem 1.25rem 0 3.125rem;
-background: linear-gradient(89deg, #F0ECEC -1.24%, #BCBCBC 29.26%, #8B8B8B 60.29%, #7D7B7B 99.73%);
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-border: 1px solid #B2B1B1;
-border-top-right-radius: 1.25rem;
-
+  border-radius: 3.125rem 1.25rem 0 3.125rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to right,#700202 ,#081182);
+  background-color: #700202;
+  color: #ffbf5b;
+  border-top-right-radius: 1.25rem;
 }
 
 .active-prog {
   border-radius: 3.125rem;
-  background: linear-gradient(89deg, #F0ECEC -1.24%, #BCBCBC 29.26%, #8B8B8B 60.29%, #7D7B7B 99.73%);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: 1px solid #B2B1B1;
+  background: linear-gradient(to right,#700202 ,#081182);
+  background-color: #700202;
+  color: #ffbf5b;
   font-weight: bolder;
   font-size: 1rem;
-
 }
 
 .form-container {
@@ -176,7 +182,7 @@ border-top-right-radius: 1.25rem;
     font-size: 16px;
     font-weight: 500;
     color: #2e2e2e;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
   }
   .input-group input, .input-group select {
     height: 42px;
@@ -197,9 +203,9 @@ border-top-right-radius: 1.25rem;
 
   }
 
-  .input-group input:is(:focus, :valid){
+  /* .input-group input:is(:focus, :valid){
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
-  }
+  } */
 
   
 

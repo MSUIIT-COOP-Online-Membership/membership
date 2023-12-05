@@ -8,9 +8,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
-     <!-- Theme style -->
-     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/header.css'); }}">
+    <!-- Fonts -->
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/header.css'); }}">
  
      <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/evaluationform.css'); }}">
@@ -105,7 +108,10 @@
                         </div>
 
                         <div style="border-top: 1px solid #297AD8; margin-top:20px; padding-top: 20px; ">
-                            <p style="font-style: italic;"><span style="font-weight:700;">Note: </span>This system is designed in such a manner as to required the applicant to watch the seminar video before he can submit his application</p>
+                            <p style="font-style: italic;"><span style="font-weight:700;">Note: </span>
+                            This system is designed in such a manner as to required the applicant 
+                            to watch the seminar video before he can submit his application
+                            </p>
                         </div>
                                 
                                 
@@ -130,9 +136,9 @@
 </body>
 <script src="{{ asset('/assets/premembershipform/js/premembership.js'); }}"></script>
 
-    <!-- Bootdrap CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<!-- Bootdrap CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->

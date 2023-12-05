@@ -2,7 +2,7 @@ const prevBtns = document.querySelectorAll(".btn-prev");
 const nextBtns = document.querySelectorAll(".btn-next");
 const progress = document.getElementById("progress-wrap");
 const formSteps = document.querySelectorAll(".tabpanel");
-const progressSteps = document.querySelectorAll(".progress-bar");
+const progressSteps = document.querySelectorAll(".step");
 
 let formStepsNum = 0;
 

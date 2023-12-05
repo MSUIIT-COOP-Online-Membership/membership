@@ -6,6 +6,8 @@
     <title>Online Pre-membership</title>
     <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/premembership.css'); }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> --}}
 
     <!-- Theme style -->
@@ -79,108 +81,7 @@
                         @include('guest.personalinfo')
 
                         
-                        {{-- <div class="fields">
-                            <div class="input-group">
-                                <label for="fname">First Name</label> 
-                                <input type="text" name="fname" placeholder="First Name" class="form-input" id="fname" required/>
-                                <span class="field-message">This field is required</span>    
-
-                            </div>
     
-                            <div class="input-group">
-                                <label for="lname">Last Name</label>
-                                <input type="text" name="lname" placeholder="Last Name" class="form-input" id="lname" required/>
-                                <span class="field-message">This field is required</span>
-                            </div>
-                            <div class="input-group">  
-                            <label for="mname">Middle Name</label>
-                            <input type="text" name="mname" placeholder="Middle Name" class="form-input" id="mname" required/>                    
-                            <span class="field-message">This field is required</span>
-                            </div>
-    
-                             <div class="input-group">
-                                <label for="date_of_birth">Date of Birth</label>
-                                <input type="date" name="date_of_birth" class="form-input" id="date_of_birth" required/>
-                                <span class="field-message">This field is required</span>    
-                            </div>
-    
-                            <div class="input-group">
-                                <label for="gender">Gender</label>
-                                <select name="gender" id="gender" required>
-                                    <option value="">I am ---------</option>
-                                    <option value="female">Female</option>
-                                    <option value="male">Male</option>
-                                  </select>
-                                    <span class="field-message">This field is required</span>
-                            </div>
-    
-                            <div class="input-group">  
-                            <label for="civil_status">Civil Status</label>
-                            <select name="civil_status" id="civil_status" required>
-                                <option value="">I am ---------</option>
-                                <option value="Single">Single</option>
-                                <option value="Married">Married</option>
-                                <option value="Widow">Widow</option>
-                                <option value="Separated">Separated</option>
-                              
-                            </select>
-
-                                <span class="field-message">This field is required</span>
-                            </div>
-
-                            <div class="input-group">
-                                <label for="email">Email Address</label>
-                                <input type="text" name="email" class="form-input" id="email" required/>
-                                <span class="field-message">This field is required</span>
-                            </div>
-    
-                            <div class="input-group">
-                                <label for="telephone_number">Telephone Number (optional)</label> 
-                                <input type="number" name="telephone_number" class="form-input" id="telephone_number" />
-                            </div>
-    
-                            <div class="input-group">  
-                            <label for="mobile_number">Mobile Number </label> 
-                            <input type="number" name="mobile_number" placeholder="Phone" class="form-input" id="mobile_number" required/>                    
-                            <span class="field-message">This field is required</span>
-                            </div>
-
-                            <div class="input-group">
-                                <label for="facebook_account">Facebook Account Name</label>
-                                <input type="text" name="facebook_account" class="form-input" id="facebook_account" required/>
-                                <span class="field-message">This field is required</span>
-                            </div>
-
-                            <div class="input-group">
-                                <label for="occupation">Occupation</label>
-                                <input type="text" name="occupation" class="form-input" id="occupation" required/>
-                                <span class="field-message">This field is required</span>
-                            </div>
-
-
-                            <div class="input-group">  
-                                <label for="ofw_family_member">Do you have an OFW in your family?</label>
-                                <select name="ofw_family_member" id="ofw_family_member" required>
-                                    <option value="">I have ---------</option>
-                                    <option value="Self">Self</option>
-                                    <option value="Husband">Husband</option>
-                                    <option value="Wife">Wife</option>
-                                    <option value="Child">Child</option>
-                                    <option value="None">None</option>
-                                    <option value="Other">Other</option>    
-                                  </select>
-    
-                                    <span class="field-message">This field is required</span>
-                                </div>
-                            
-                                <div class="input-group">
-                                    <label for="present_address">Address</label>
-                                    <input type="text" name="present_address" class="form-input" id="present_address" required/>
-                                    <span class="field-message">This field is required</span>
-                                </div> 
-
-
-                        </div> --}}
                         
                         <div class="btns-group">
                             <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
@@ -195,10 +96,14 @@
                         <div class="tab-header">
                           <h3>Seminar</h3>
                         </div>
-                        
+                        <div id="videoAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Warning!</strong> Please finish watching the video before proceeding.
+                            {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
+                        </div>
+
                         <div style="display: flex; justify-content: center; align-items: center;">
-                            <video style="max-width: 100%;" id="seminarVideo" controls>
-                                <source src="{{ asset('/assets/premembershipform/video/seminar.mp4') }}" type="video/mp4">
+                            <video style="max-width: 90%;" id="seminarVideo" autoplay muted controls>
+                                <source src="{{ asset('/assets/premembershipform/video/seminar.mp4'); }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
             
@@ -222,19 +127,6 @@
                     </div>
                     <!-- tab -->
                     @include('guest.evaluationform')
-
-                    {{-- <div class="tabpanel">
-                        
-
-                        <h1>Preview</h1> 
-                       
-                        <div class="btns-group">
-                            <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
-                            <div >
-                              <input type='submit' class="submit btn-primary">
-                            </div>
-                          </div>
-                    </div> --}}
 
                 </form>
             </div>

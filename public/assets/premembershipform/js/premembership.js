@@ -10,21 +10,30 @@ let formStepsNum = 0;
 nextBtns.forEach((btn) => {
 
   btn.addEventListener("click", () => {
+
     if (formStepsNum === 2) {
       if (isVideoCompleted()) {
         formStepsNum++;
         updateFormSteps();
         updateProgressbar();
+        scrollToTop(); 
       } else {
-        alert("Error: Please finish watching the video before proceeding.");
+        // alert("Error: Please finish watching the video before proceeding.");
+        var alertElement = document.getElementById('videoAlert');
+        alertElement.style.display = 'block';
+        alertElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
       }
-    } else if (validateCurrentStep()) {
-      formStepsNum++;
-      updateFormSteps();
-      updateProgressbar();
     } else {
-      // Add your error handling or messages here
-      console.log("Error: Form validation failed.");
+      if (validateCurrentStep()) {
+        formStepsNum++;
+        updateFormSteps();
+        updateProgressbar();
+        scrollToTop(); 
+      } else {
+        // Scroll to the first unfilled field
+        scrollToFirstInvalidField();
+      }
     }
   });
 });
@@ -44,7 +53,7 @@ function isVideoCompleted() {
   console.log("Current time:", video.currentTime);
   console.log("Duration:", video.duration);
   
-   const hasVideoCompleted = video.currentTime >= video.duration - 30;
+   const hasVideoCompleted = video.currentTime >= video.duration - 5;
    if (hasVideoCompleted) {
     // Save a flag in localStorage to indicate that the video has been completed
     localStorage.setItem("videoCompleted", "true");
@@ -92,7 +101,37 @@ function validateCurrentStep() {
     }
   });
 
+  
   return isValid;
+}
+
+// not validate
+
+function scrollToFirstInvalidField() {
+  const currentFormStep = document.querySelector(".show");
+  const requiredFields = currentFormStep.querySelectorAll("input[required], select[required], [type='checkbox'][required]");
+
+  let firstInvalidField = null;
+
+  requiredFields.forEach((field) => {
+    const fieldMessage = field.closest('.form-checks').querySelector('.invalid-feedback');
+
+    if (field.type === "checkbox") {
+      if (!field.checked && !firstInvalidField) {
+        firstInvalidField = field;
+      }
+    } else if (field.tagName === "SELECT") {
+      if (field.value === "" && !firstInvalidField) {
+        firstInvalidField = field;
+      }
+    } else if (!field.value && !firstInvalidField) {
+      firstInvalidField = field;
+    }
+  });
+
+  if (firstInvalidField) {
+    firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 
 
@@ -138,4 +177,12 @@ function updateProgressbar() {
 
   });
 
+}
+
+// Function to scroll the view to the top
+function scrollToTop() {
+  window.scrollTo({
+    top: 200,
+    behavior: 'smooth'
+  });
 }

@@ -36,6 +36,11 @@ class Pre_MembershipController extends Controller
             'email' => 'nullable|email|max:255',
             'place_birth' => 'nullable|string|max:255',
             'present_address' => 'nullable|string|max:255',
+            'usercode' => 'nullable|string|size:8',
+            'occupation' => 'nullable|string|max:255',
+            'ofw_family_member' => 'nullable|string|max:255',
+
+           
             // evaluation data
             'branches' => 'nullable|array',
             'q_one' => 'required|string',
@@ -49,8 +54,7 @@ class Pre_MembershipController extends Controller
             'q_nine' => 'required|string',
             'q_ten' => 'required|string',
             'score' => 'nullable|integer',
-            'pass_status' => 'nullable|string',
-            'usercode' => 'nullable|string|size:8'
+            'pass_status' => 'nullable|string'
         ]);
 
         // Generate random usercode if not provided in the request

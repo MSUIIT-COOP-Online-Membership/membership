@@ -30,6 +30,8 @@ return new class extends Migration
             $table->longText('place_birth')->nullable();
             $table->longText('present_address')->nullable();
             $table->string('usercode')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('ofw_family_member')->nullable();
 
             // $table->string('duration_residency')->nullable();
             // $table->string('living_parents')->nullable();
@@ -37,8 +39,8 @@ return new class extends Migration
             // $table->decimal('house_month')->nullable();
             // $table->string('lot')->nullable();
             // $table->decimal('lot_month')->nullable();
-            // $table->integer('tin')->nullable();
-            // $table->longText('educational_attainment')->nullable();
+            $table->integer('tin')->nullable();
+            $table->longText('educational_attainment')->nullable();
             // $table->string('emp_stat')->nullable();
             // $table->string('emp_type')->nullable();
             // $table->longText('profession')->nullable();

@@ -20,8 +20,12 @@ header {
     align-items: center;
     text-align: center;
     font-weight: bolder;
-    color: #9C0D0F;
+    color: #004AAD;
 
+}
+
+header h1 {
+  font-size: 2rem;
 }
 
 .box-custom {
@@ -51,7 +55,7 @@ header {
 .step {
     width: 100%;
     background-color: #004AAD;
-    border-right: 1px solid #757575;
+    /* border-right: 1px solid #757575; */
     height: 100%;
     color: white;
     display: flex;

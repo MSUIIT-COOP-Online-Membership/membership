@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,600;1,700;1,900&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+    color: #004AAD;
+  }
+  .home-box{
+    margin-top:5rem;
+    margin-left:8rem;
+    margin-right:8rem;
+
+  }
+ 
+  .separator {
+    display: inline-block;
+    border: none;
+    width: 80%;
+    justify-content: center;
+    border-top: 1px solid #ccc;
+    margin-top: 1rem;
+  }
+ 
+  .result-box{
+    background-color: #E0E7F0;
+    border-radius: 20px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+ 
+  .Fail {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 2rem;
+  }
+
+  .Fail img{
+    height: 14rem;
+    width: auto;
+  }
+
+  .right {
+    padding-top: 1rem;
+    line-height: 2.4rem;
+    text-align: left;
+  }
+ 
+  .score{
+    font-size: 2rem;
+    font-weight: 300;
+    padding-bottom: 0.5rem;
+  }
+  .percentage{
+    font-size: 8rem;
+    font-weight: 700;
+  }
+
+  .results{
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+
+  .strong{
+    font-weight: 600;
+  }
+
+  .notify{
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .Pass {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 2rem;
+  }
+
+  .Pass img{
+    /* padding-top: 2rem; */
+    height: 10rem;
+    width: auto;
+  }
+ 
+  .btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .btn{
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 20px;
+  }
+ 
+  .btn-result{
+    width: 6rem;
+    height: 3rem;
+    background: #297AD8;
+    color: #FFF;
+  }

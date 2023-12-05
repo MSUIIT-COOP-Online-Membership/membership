@@ -1,16 +1,16 @@
 <div class="tabpanel">
     <div>
         <h1 class="tab-title">Evaluation Form</h1> <hr class="mb-3">
-            <!-- <div class="home-box instruction-box">
-                    <h2>Instruction</h2>
-                <p>There are 10 questions, and the passing score is 8. 
-                        If you fail, you have the option to watch the seminar video again or try the quiz again.
-                        <br><br><br> Good luck!</p>
+            <div class="home-box instruction-box quiz">
+                    <h2>Quiz Instructions:</h2>
+                    <p> Please carefully read each question and provide your response based on what you've learned from the seminar video.
+                        Your feedback is valuable in assessing various aspects of our organization. We will check your answers and evaluate your scores. <br><br>
+                        The <span>passing score will be 8 out of 10</span>. <br><br>If you pass, you will receive a certificate after this quiz. 
+                        However, if you fail, you can try again or watch the seminar video again. <br> <br>
+                        
+                        Wishing you the best of luck! </p>
 
-                <div class="btns-group start-btn">
-                     <button id="toReview" class="btn btn-next" type="button">Start</button>
-                </div>
-            </div> -->
+            </div>
 
             <div class="home-box instruction-box">
                 <div class="ques-num">
@@ -115,11 +115,11 @@
                     </div> --}}
                 </div>
 
-                <div class="eval-group">  
+                <!-- <div class="eval-group">  
                     <label for="referName">Name of referring person  (if none, kindly put NA)</label> <br>
                     <input class="mb-3" type="text" name="referName" placeholder="Your answer" class="form-input" id="referName" required/>                    
                     <span class="field-message">This field is required</span> <br> <br>
-                </div>
+                </div> -->
             </div>
 
             <div class="home-box instruction-box">
@@ -436,17 +436,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="home-box result-box">
-                    <h2>Results</h2>  <br> <br>
-                <p>Total Score is __</p> <br><br><br>
-
-                <div class="btn-container">
-                    <button id="toReview" class="btn btn-next" type="button">Try Again</button>
-                    <button id="toReview" class="btn btn-next" type="button">Proceed</button>
-                </div>
-            </div> -->
-
 
     <div class="btns-group">
         <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>

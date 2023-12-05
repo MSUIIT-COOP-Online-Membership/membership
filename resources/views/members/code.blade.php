@@ -41,12 +41,17 @@
     </div>
 
     <div class="form-container text-center">
-        <h1 class='mb-3'>Please Enter Your Code</h1>
-        <form action='code' method="POST" id="form">
+        <h1>Please Enter Your Code</h1>
+        <form action="{{ route('members.code') }}" method="POST" id="form">
             @csrf
 
             <center>
-                <input type="number" name="code" class='input-group col-6 mb-3'><br>
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                <input type="text" name="code" placeholder="Paste your usercode here"> <br> <br>
                 <button class="btn btn-next btn-primary">Enter</button>
             </center>
         </form>

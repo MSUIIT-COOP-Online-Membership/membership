@@ -22,9 +22,7 @@
     <body>
         @include('guest.header')
 
-<<<<<<< HEAD
-        {{-- <a href="http://127.0.0.1:8000/code">tina</a> --}}
-=======
+
         <!-- START CAROUSEL-->
         <div class="container">
         <h5 class="mt-4 mb-2">MSU-IIT NMPC Free Online Pre-Membership</h5>
@@ -187,7 +185,6 @@
         <!-- /.row -->
         </div>
         </div>
->>>>>>> 1cb68a1539adf813aa624a31534b936122d52e1b
     </body>
 
     <!-- Bootdrap CDN -->

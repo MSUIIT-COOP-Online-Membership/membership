@@ -6,7 +6,9 @@
     <title>Online Pre-membership</title>
     <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/premembership.css'); }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> --}}
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
@@ -96,7 +98,7 @@
                         </div>
                         <div id="videoAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
                             <strong>Warning!</strong> Please finish watching the video before proceeding.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
                         </div>
 
                         <div style="display: flex; justify-content: center; align-items: center;">

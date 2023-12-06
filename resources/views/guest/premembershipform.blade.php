@@ -59,7 +59,7 @@
             </div>
             <!-- form -->
             <div class="form-container">
-                <form method="post" action="{{ route('premembershipform.store') }}" id="form" class="needs-validation" novalidate>
+                <form method="post" action="{{ route('premembershipform.store') }}" id="form" >
                     @csrf 
 
                     @method('post')
@@ -116,7 +116,7 @@
                             </p>
                         </div>
                                 
-                                
+ 
 
                          <div class="btns-group">
                              <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
@@ -176,18 +176,18 @@
     );
             // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl())
-    // // Add geolocate control to the map.
-    // map.addControl(
-    // new mapboxgl.GeolocateControl({
-    // positionOptions: {
-    // enableHighAccuracy: true
-    // },
-    // // When active the map will receive updates to the device's location as it changes.
-    // trackUserLocation: true,
-    // // Draw an arrow next to the location dot to indicate which direction the device is heading.
-    // showUserHeading: true
-    // })
-    // );
+    // Add geolocate control to the map.
+    map.addControl(
+    new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+    },
+    // When active the map will receive updates to the device's location as it changes.
+    trackUserLocation: true,
+    // Draw an arrow next to the location dot to indicate which direction the device is heading.
+    showUserHeading: true
+    })
+    );
 
 
 // Define a variable to store the current marker

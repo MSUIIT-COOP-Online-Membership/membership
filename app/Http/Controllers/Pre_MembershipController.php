@@ -39,20 +39,22 @@ class Pre_MembershipController extends Controller
             'usercode' => 'nullable|string|size:8',
             'occupation' => 'nullable|string|max:255',
             'ofw_family_member' => 'nullable|string|max:255',
+            'latitude' => 'nullable|numeric', //new
+            'longitude' => 'nullable|numeric', //new
 
            
             // evaluation data
             'branches' => 'nullable|array',
-            'q_one' => 'required|string',
-            'q_two' => 'required|string',
-            'q_three' => 'required|string',
-            'q_four' => 'required|string',
-            'q_five' => 'required|string',
-            'q_six' => 'required|string',
-            'q_seven' => 'required|string',
-            'q_eight' => 'required|string',
-            'q_nine' => 'required|string',
-            'q_ten' => 'required|string',
+            'q_one' => 'nullable|string',
+            'q_two' => 'nullable|string',
+            'q_three' => 'nullable|string',
+            'q_four' => 'nullable|string',
+            'q_five' => 'nullable|string',
+            'q_six' => 'nullable|string',
+            'q_seven' => 'nullable|string',
+            'q_eight' => 'nullable|string',
+            'q_nine' => 'nullable|string',
+            'q_ten' => 'nullable|string',
             'score' => 'nullable|integer',
             'pass_status' => 'nullable|string'
         ]);

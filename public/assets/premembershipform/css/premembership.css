@@ -173,8 +173,8 @@ header h1 {
     flex-wrap: wrap;
   } */
 
-  .form-check {
-    margin-top: 0px;
+  .form-checks {
+    margin-top: 20px;
   }
 
   .input-group {
@@ -289,8 +289,6 @@ header h1 {
   #videoAlert {
     display: none;
   }
-  
-  
 
 
   @media only screen and (max-width: 800px) {
@@ -334,6 +332,12 @@ header h1 {
     .input-group {
         width: 100%;
       }
+
+     .mapboxgl-ctrl {
+        width: 50px; /* Adjust the width as needed */
+        padding: 8px;
+        font-size: 14px;
+    }
 
   }
   

@@ -1,16 +1,16 @@
 <div class="tabpanel">
     <div>
         <h1 class="tab-title">Evaluation Form</h1> <hr class="mb-3">
-            <!-- <div class="home-box instruction-box">
-                    <h2>Instruction</h2>
-                <p>There are 10 questions, and the passing score is 8. 
-                        If you fail, you have the option to watch the seminar video again or try the quiz again.
-                        <br><br><br> Good luck!</p>
+            <div class="home-box instruction-box quiz">
+                    <h2>Quiz Instructions:</h2>
+                    <p> Please carefully read each question and provide your response based on what you've learned from the seminar video.
+                        Your feedback is valuable in assessing various aspects of our organization. We will check your answers and evaluate your scores. <br><br>
+                        The <span>passing score will be 8 out of 10</span>. <br><br>If you pass, you will receive a certificate after this quiz. 
+                        However, if you fail, you can try again or watch the seminar video again. <br> <br>
+                        
+                        Wishing you the best of luck! </p>
 
-                <div class="btns-group start-btn">
-                     <button id="toReview" class="btn btn-next" type="button">Start</button>
-                </div>
-            </div> -->
+            </div>
 
             <div class="home-box instruction-box">
                 <div class="ques-num">
@@ -36,90 +36,15 @@
                     {{-- <div class="checkbox-container">
                         <input class="form-check-input" type="checkbox" id = "branch1" name="branch_id" value="29" />
                         <label for="branch1"> Bacolod LDN Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch2" name="branch_id" value="14"/>
-                        <label for="branch2"> Bulua Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch3" name="branch_id" value="21"/>
-                        <label for="branch3"> Buru-un Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch4" name="branch_id" value="26"/>
-                        <label for="branch4"> Butuan Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch5" name="branch_id" value="15"/>
-                        <label for="branch5"> Carmen Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch6" name="branch_id" value="16"/>
-                        <label for="branch6"> Cogon Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch7" name="branch_id" value="27"/>
-                        <label for="branch7"> Davao Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch8" name="branch_id" value="28"/>
-                        <label for="branch8"> General Santos Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch9" name="branch_id" value="22"/>
-                        <label for="branch9"> Kiwalan Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch10" name="branch_id" value="17" />
-                        <label for="branch10"> Laguindingan Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch11" name="branch_id" value="18" />
-                        <label for="branch11"> Manticao Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch12" name="branch_id" value="30" />
-                        <label for="branch12"> Maranding Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch13" name="branch_id" value="31"/>
-                        <label for="branch13"> Pagadian Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch14" name="branch_id" value="20"/>
-                        <label for="branch14"> Pala-o Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch15" name="branch_id" value="19"/>
-                        <label for="branch15"> Puerto Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch16" name="branch_id" value="23"/>
-                        <label for="branch16"> Poblacion Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch17" name="branch_id" value="24"/>
-                        <label for="branch17"> Suarez-Tominobo Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch18" name="branch_id" value="13" />
-                        <label for="branch18"> Tibanga-Main Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch19" name="branch_id" value="25"/>
-                        <label for="branch19"> Tubod Iligan Branch </label> <br>
-                    </div>
-                    <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch20" name="branch_id" value="32" required/>
-                        <label for="branch20"> Tubod LDN Branch </label> <br>
                     </div> --}}
+                  
                 </div>
 
-                {{-- <div class="eval-group">  
+                <div class="eval-group">  
                     <label for="referName">Name of referring person  (if none, kindly put NA)</label> <br>
                     <input class="mb-3" type="text" name="referName" placeholder="Your answer" class="form-input" id="referName" required/>                    
                     <span class="field-message">This field is required</span> <br> <br>
-                </div> --}}
+                </div>
             </div>
 
             <div class="home-box instruction-box">
@@ -436,17 +361,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="home-box result-box">
-                    <h2>Results</h2>  <br> <br>
-                <p>Total Score is __</p> <br><br><br>
-
-                <div class="btn-container">
-                    <button id="toReview" class="btn btn-next" type="button">Try Again</button>
-                    <button id="toReview" class="btn btn-next" type="button">Proceed</button>
-                </div>
-            </div> -->
-
 
     <div class="btns-group">
         <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>

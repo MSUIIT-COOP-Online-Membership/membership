@@ -1,3 +1,4 @@
+
 <div class="tabpanel">
     <div>
         <h1 class="tab-title">Evaluation Form</h1> <hr class="mb-3">
@@ -23,11 +24,16 @@
 
 
                     @forelse($branches as $branch)
-                    <div class="col-lg-4">
-                        <input type="checkbox" name="branches[]" id="{{ $branch->name }}" value="{{ $branch->id }}">
+                    <div class="col-lg-4 form-checks">
+                        <input class="form-check-input required-field" type="checkbox" name="branches[]" id="{{ $branch->name }}" value="{{ $branch->id }}" required>
                         <label for="{{ $branch->name }}"  >
                             {{ $branch->name }}
                         </label>
+
+                        <div class="invalid-feedback">
+                            Please select {{ $branch->name }}.
+                        </div>
+
                     </div>
                     @empty
                     @endforelse
@@ -110,7 +116,7 @@
                         <label for="branch19"> Tubod Iligan Branch </label> <br>
                     </div>
                     <div class="checkbox-container">
-                        <input class="form-check-input" type="checkbox" id = "branch20" name="branch_id" value="32" required/>
+                        <input class="form-check-input" type="checkbox" id = "branch20" name="branch_id" value="32" />
                         <label for="branch20"> Tubod LDN Branch </label> <br>
                     </div> --}}
                 </div>
@@ -122,7 +128,7 @@
                 </div> -->
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 1 to 10
                 </div>
@@ -133,44 +139,49 @@
                     <p class="lowHigh"> Lowest </p>
                     <div class="radio-label">
                         <label class ="radio1" for="eval1"> 
-                            <input class="form-check-input" type="radio" id = "eval1" name="q_one" value="1" required/>
+                            <input class="required-field form-check-input" type="radio" id = "eval1" name="q_one" value="1" required/>
                                 1 
                             <span></span>
                         </label> 
                     </div>
                     <div class="radio-label">
                         <label class ="radio1" for="eval2">
-                            <input class="form-check-input" type="radio" id = "eval2" name="q_one" value="2" required/>
+                            <input class="required-field form-check-input" type="radio" id = "eval2" name="q_one" value="2" required/>
                                 2 
                             <span></span>
                         </label>
                     </div>
                     <div class="radio-label">
                         <label class ="radio1" for="eval3">
-                            <input class="form-check-input" type="radio" id = "eval3" name="q_one" value="3" required/>
+                            <input class="required-field form-check-input" type="radio" id = "eval3" name="q_one" value="3" required/>
                                 3
                             <span></span>
                         </label>
                     </div>
                     <div class="radio-label">
                         <label class ="radio1" for="eval4">
-                            <input class="form-check-input" type="radio" id = "eval4" name="q_one" value="4" required/>
+                            <input class="required-field form-check-input" type="radio" id = "eval4" name="q_one" value="4" required/>
                                 4 
                             <span></span>
                         </label> 
                     </div>
                     <div class="radio-label">
                         <label class ="radio1" for="eval5">
-                            <input class="form-check-input" type="radio" id = "eval5" name="q_one" value="5" required/>
+                            <input class="required-field form-check-input" type="radio" id = "eval5" name="q_one" value="5" required/>
                                 5
                             <span></span>
                         </label> 
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 1.
+                    </div>
+
                     <p class="lowHigh"> Highest </p>
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 2 to 10
                 </div>
@@ -178,31 +189,36 @@
                     Who are the owners of MSU-IIT NMPC (IIT Coop)?  
                 </div>
                 <div class="option-container3">
-                <div class="radio-label">
+                    <div class="radio-label">
                         <label class ="radio" for="eval6">
-                            <input class="form-check-input" type="radio" id = "eval6" name="q_two" value="Board of Directors" required/>
+                            <input class="required-field form-check-input" type="radio" id = "eval6" name="q_two" value="Board of Directors" required/>
                             Board of Directors 
                             <span></span>
                         </label> <br>
                     </div>
                     <div class="radio-label">
                         <label class ="radio" for="eval7">
-                            <input class="form-check-input" type="radio" id = "eval7" name="q_two" value="Management and Staff" required/>
+                            <input class="required-field form-check-input" type="radio" id = "eval7" name="q_two" value="Management and Staff" required/>
                             Management and Staff
                             <span></span>
                         </label> <br>
                     </div>
                     <div class="radio-label">
                         <label class ="radio" for="eval8">
-                            <input class="form-check-input" type="radio" id = "eval8" name="q_two" value="Members" required/>
+                            <input class="required-field form-check-input" type="radio" id = "eval8" name="q_two" value="Members" required/>
                             Members 
                             <span></span>
                         </label> <br>
                     </div>
+                
+                    <div class="invalid-feedback">
+                        Please select an option for Question 2.
+                    </div>
+
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 3 to 10
                 </div>
@@ -212,29 +228,34 @@
                 <div class="option-container3">
                     <div class="radio-label">
                         <label class="radio" for="eval9">
-                            <input class="form-check-input" type="radio" id="eval9" name="q_three" value="1978" required/>
+                            <input class="required-field form-check-input" type="radio" id="eval9" name="q_three" value="1978" required/>
                             1978
                             <span></span>
                         </label>
                     </div>
                     <div class="radio-label">
                         <label class="radio" for="eval10">
-                            <input class="form-check-input" type="radio" id="eval10" name="q_three" value="1987" required/>
+                            <input class="required-field form-check-input" type="radio" id="eval10" name="q_three" value="1987" required/>
                             1987
                             <span></span>
                         </label>
                     </div>
                     <div class="radio-label">
                         <label class="radio" for="eval11">
-                            <input class="form-check-input" type="radio" id="eval11" name="q_three" value="1999" required/>
+                            <input class="required-field form-check-input" type="radio" id="eval11" name="q_three" value="1999" required/>
                             1999
                             <span></span>
                         </label>
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 3.
+                    </div>
+
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 4 to 10
                 </div>
@@ -270,10 +291,15 @@
                             <span></span>
                         </label> <br>
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 4.
+                    </div>
+
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 5 to 10
                 </div>
@@ -302,10 +328,14 @@
                             <span></span>
                         </label> <br>
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 5.
+                    </div>
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 6 to 10
                 </div>
@@ -334,10 +364,14 @@
                             <span></span>
                         </label> <br>
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 6.
+                    </div>
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 7 to 10
                 </div>
@@ -359,10 +393,14 @@
                             <span></span>
                         </label> <br>
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 7.
+                    </div>
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 8 to 10
                 </div>
@@ -384,10 +422,14 @@
                             <span></span>
                         </label> <br>
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 8.
+                    </div>
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 9 to 10
                 </div>
@@ -395,7 +437,7 @@
                     What is the health care program of IIT Coop?
                 </div>
                 <div class="option-container3">
-                    <div class="radio-label">
+                    <div class="radio-label ">
                         <label class ="radio" for="eval26">
                             <input class="form-check-input" type="radio" id = "eval26" name="q_nine" value="Sunshine Damayan" required/>
                             Sunshine Damayan
@@ -409,10 +451,14 @@
                             <span></span>
                         </label> <br>
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 9.
+                    </div>
                 </div>
             </div>
 
-            <div class="home-box instruction-box">
+            <div class="home-box instruction-box form-checks">
                 <div class="ques-num">
                     Question 10 to 10
                 </div>
@@ -434,13 +480,57 @@
                             <span></span>
                         </label> <br>
                     </div>
+
+                    <div class="invalid-feedback">
+                        Please select an option for Question 10.
+                    </div>
                 </div>
             </div>
 
-    <div class="btns-group">
+            <div class="btns-group">
+                <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
+                <button type="submit" class="submit">Submit</button>
+            </div>
+    <!-- <div class="btns-group">
         <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
         <div >
-          <input type='submit' class="submit">
+          <button  type='submit' class="submit"> Submit</button>
         </div>
-      </div>
+      </div> -->
+<!-- 
+        @push('scripts')
+            <script>
+                document.getElementById('evaluation-submit').addEventListener('click', function() {
+                    // Check if all evaluation questions have been answered
+                    if (validateEvaluationForm()) {
+                        // If all questions have been answered, submit the form
+                        document.getElementById('form').submit();
+                    } else {
+                        // If any question is unanswered, display an alert or handle it as needed
+                        alert('Please answer all evaluation questions before submitting.');
+                        // You can also highlight the unanswered questions or take other actions here
+                    }
+                });
+
+                function validateEvaluationForm() {
+                    // Add logic here to check if all questions have been answered
+                    // For example, you can select all the input fields for evaluation questions
+                    // and check if they have values or are checked (for checkboxes or radio buttons)
+                    // Return true if all questions have been answered, otherwise return false
+
+                    // Example logic:
+                    var inputs = document.querySelectorAll('.evaluation-question'); // Change this selector to match your input fields
+
+                    for (var i = 0; i < inputs.length; i++) {
+                        // Check if any question is unanswered
+                        if (!inputs[i].value) {
+                            return false; // Return false if any question is unanswered
+                        }
+                    }
+
+                    return true; // Return true if all questions have been answered
+                }
+            </script>
+            @endpush -->
+
 </div>

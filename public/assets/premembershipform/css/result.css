@@ -52,6 +52,7 @@ header {
     padding-top: 1rem;
     line-height: 2.4rem;
     text-align: left;
+    justify-content: left;
   }
  
   .score{
@@ -92,9 +93,7 @@ header {
   }
  
   .btn-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: left;
   }
  
   .btn{
@@ -113,3 +112,21 @@ header {
     background: #297AD8;
     color: #FFF;
   }
+
+  .btn-prev {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+
+}
+
+.btn-prev:hover {
+    background-color: #0056b3;
+    color: rgb(255, 255, 255);
+}

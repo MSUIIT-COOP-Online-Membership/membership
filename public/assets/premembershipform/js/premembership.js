@@ -4,6 +4,7 @@ const nextBtns = document.querySelectorAll(".btn-next");
 const progress = document.getElementById("progress-wrap");
 const formSteps = document.querySelectorAll(".tabpanel");
 const progressSteps = document.querySelectorAll(".step");
+const tryAgainButton = document.querySelector(".btn-prev");
 
 let formStepsNum = 0;
 
@@ -133,7 +134,6 @@ function scrollToFirstInvalidField() {
     firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
-
 
 
 function updateFormSteps() {

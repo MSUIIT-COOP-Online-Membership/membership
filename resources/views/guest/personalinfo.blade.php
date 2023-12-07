@@ -3,7 +3,7 @@
         <label for="fname" class="form-label">First name</label>
         <input type="text" class="form-control" name="fname" id="fname"  required>
         <div class="invalid-feedback">
-            Please provide a Firt Name.
+            Please provide a First Name.
           </div>
       </div>
 

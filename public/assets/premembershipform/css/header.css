@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    box-sizing: border-box; /* Set a valid value */
+
+}
+
+body {
+    /* font-family: 'Nunito', sans-serif; */
+}
+
+.header-logo  {
+    background: #9C0D0F;
+    border-bottom:1px solid #4a0000;
+    padding: 20px 0px 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
+}
+
+
+
+.header-logo a {
+    text-decoration: none;
+    /* text-align: center; */
+    color: white;
+    font-weight: 700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header-bottom {
+    background: #004AAD;
+    /* border-top: 3px solid #730000; */
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+}
+
+.header-bottom a{
+    color: rgba(255,255,255,.75);
+    font-weight: 600;
+}
+
+.brand-text > p {
+    margin-bottom: -5px;
+}
+
+.brand-slogan {
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+.custom-nav li {
+    /* margin-left:20px  */
+}
+
+.custom-nav li:hover a  {
+    /* background: white; */
+    color: white;
+    font-weight: bolder;
+    background-color: rgba(255, 255, 255, 0.2);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler-icon i {
+    color: white;
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+    html {
+        font-size: 80%;
+    }
+
+    .header-logo a{
+        flex-direction: column;
+      }
+  }
+
+  @media only screen and (max-width: 400px) {
+   .brand-text {
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+
+   }
+  }

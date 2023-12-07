@@ -5,15 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NMPC Membership Application</title>
-    <link rel="stylesheet" href="{{ asset('/assets/membershipapplication/css/membership.css'); }}">
+    <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/premembership.css'); }}">
+    <!-- <link rel="stylesheet" href="{{ asset('/assets/membershipapplication/css/membership.css'); }}"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/header.css'); }}">
+    <!-- Fonts -->
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
 
 </head>
 
 <body>
-    <nav>
-
-    </nav>
+@include('guest.header')
     <main>
         <header>
             <h1>Membership Form</h1>
@@ -30,10 +37,10 @@
             @endif
         </div>
 
-        <div class="box">
+        <div class="box-custom">
             <!-- progressive bar -->
             <div class="progress-wrap">
-                <div class="progress-bar">Your Data</div>
+                <div class="step">Your Data</div>
             </div>
             <!-- form -->
             <div class="form-container">
@@ -597,9 +604,11 @@
 
                         </div>
 
-                        <div class="btns-group" style="justify-content: flex-end !important;">
-                            <a href="{{ url('/pdf_download/pdf_view/' . $members->id . '/generate') }}">Export PDF</a>
-                            <a href="{{ url('/bookappointment/' . $members->id) }}">Set Walk-in Appointment</a>
+                        <div class="btns-group" style="justify-content: flex-end !important; gap:2rem;">
+                            <a href="{{ url('/pdf_download/pdf_view/' . $members->id . '/generate') }} "
+                            class="btn btn-next btn-primary">Export PDF</a>
+                            <a href="{{ url('/bookappointment/' . $members->id) }}"
+                            class="btn btn-next btn-primary">Set Walk-in Appointment</a>
                         </div>
 
 

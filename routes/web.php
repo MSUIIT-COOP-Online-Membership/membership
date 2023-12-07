@@ -25,8 +25,15 @@ use App\Http\Controllers\MembershipApplication;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
 Route::get('Premembership',[Pre_MembershipController::class, 'index'])->name('premembershipform.index');
-Route::post('Premembership',[Pre_MembershipController::class, 'store'])->name('premembershipform.store');
+// Route::get('Premembership/getbranch',[MemberController::class, 'DisplayBranch'])->name('premembershipform.getbranch');
+Route::post('Premembership/',[Pre_MembershipController::class, 'premembershipForm'])->name('premembershipform.store');
+Route::get('/certificate-mail-sent', [Pre_MembershipController::class, 'certificateEmail'])->name('certificate-mail-sent');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -137,8 +144,11 @@ Route::middleware(['auth', 'checkRole:System Administrator'])->group(function ()
     Route::resource('beneficiaries', BeneficiaryController::class);
 });
 
+
+// Route::get('/code/{userCode}', 'App\Http\Controllers\MembershipApplication@verifyCode')->name('verify.code');
 Route::get('/code', [App\Http\Controllers\MembershipApplication::class, 'index'])->name('members.code');
-Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'code'])->name('members.code');
+Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'verifyCode'])->name('members.code');
+// Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'verifyCode'])->name('members.code');
 Route::post('/membershipform/edit/{id}', [App\Http\Controllers\MembershipApplication::class, 'edit'])->name('members.membershipform.edit');
 Route::get('/get-sub-type-options', [App\Http\Controllers\MembershipApplication::class, 'getSubTypeOptions'])->name('members.get-sub-type-options');
 Route::get('/view/{id}', [App\Http\Controllers\MembershipApplication::class, 'view'])->name('members.view');

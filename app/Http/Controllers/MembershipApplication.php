@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Beneficiary;
+use Illuminate\Support\Facades\Redirect;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -16,17 +17,18 @@ class MembershipApplication extends Controller
         return view('members.code');
     }
 
-    public function code(Request $request)
+    public function verifyCode(Request $request)
     {
         $code = $request->input('code');
-        $members = Member::find($code);
+        $member = Member::where('usercode', $code)->first();
 
-        if (!$members) {
-            return view('members.index')->with('error', 'Item not found.');
+        if ($member) {
+            return redirect()->route('login');
+        } else {
+            return redirect()->back()->with('error', 'Code not found.');
         }
-
-        return view('members.membershipform', ['members' => $members]);
     }
+
     public function getSubTypeOptions(Request $request)
     {
         try {

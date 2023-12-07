@@ -3,20 +3,38 @@ const prevBtns = document.querySelectorAll(".btn-prev");
 const nextBtns = document.querySelectorAll(".btn-next");
 const progress = document.getElementById("progress-wrap");
 const formSteps = document.querySelectorAll(".tabpanel");
-const progressSteps = document.querySelectorAll(".progress-bar");
+const progressSteps = document.querySelectorAll(".step");
+const tryAgainButton = document.querySelector(".btn-prev");
 
 let formStepsNum = 0;
 
 nextBtns.forEach((btn) => {
 
   btn.addEventListener("click", () => {
-    if (validateCurrentStep()) {
-      formStepsNum++;
-      updateFormSteps();
-      updateProgressbar();
 
+    if (formStepsNum === 2) {
+      if (isVideoCompleted()) {
+        formStepsNum++;
+        updateFormSteps();
+        updateProgressbar();
+        scrollToTop(); 
+      } else {
+        // alert("Error: Please finish watching the video before proceeding.");
+        var alertElement = document.getElementById('videoAlert');
+        alertElement.style.display = 'block';
+        alertElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+      }
     } else {
-        // console.log("error next button");
+      if (validateCurrentStep()) {
+        formStepsNum++;
+        updateFormSteps();
+        updateProgressbar();
+        scrollToTop(); 
+      } else {
+        // Scroll to the first unfilled field
+        scrollToFirstInvalidField();
+      }
     }
   });
 });
@@ -29,6 +47,23 @@ prevBtns.forEach((btn) => {
   });
 });
 
+// Add this function to check whether the video is completed
+function isVideoCompleted() {
+  const video = document.getElementById("seminarVideo");
+  console.log("Video paused:", video.paused);
+  console.log("Current time:", video.currentTime);
+  console.log("Duration:", video.duration);
+  
+   const hasVideoCompleted = video.currentTime >= video.duration - 30;
+   if (hasVideoCompleted) {
+    // Save a flag in localStorage to indicate that the video has been completed
+    localStorage.setItem("videoCompleted", "true");
+
+  }
+
+  return hasVideoCompleted;
+}
+
 
 function validateCurrentStep() {
   
@@ -37,7 +72,8 @@ function validateCurrentStep() {
   let isValid = true;
 
   requiredFields.forEach((field) => {
-    const fieldMessage = field.nextElementSibling; // Assuming fieldMessage is a sibling of the input field
+    // const fieldMessage = field.nextElementSibling; // Assuming fieldMessage is a sibling of the input field
+    const fieldMessage = field.closest('.form-checks').querySelector('.invalid-feedback');
 
     if (field.type === "checkbox") {
       if (!field.checked) {
@@ -56,6 +92,16 @@ function validateCurrentStep() {
         fieldMessage.style.display = "none";
       }
     } 
+    else if (field.hidden) {
+      if (field.value === "") {
+        isValid = false;
+        var alertElement = document.getElementById('Alert');
+        alertElement.style.display = 'block';
+          
+      } else {
+       console.log("none");
+      }     
+    }
     else if (!field.value) {
       isValid = false;
       field.classList.add("error");
@@ -64,11 +110,41 @@ function validateCurrentStep() {
       field.classList.remove("error");
       fieldMessage.style.display = "none";
     }
+      
   });
 
+  
   return isValid;
 }
 
+// not validate
+
+function scrollToFirstInvalidField() {
+  const currentFormStep = document.querySelector(".show");
+  const requiredFields = currentFormStep.querySelectorAll("input[required], select[required], [type='checkbox'][required]");
+
+  let firstInvalidField = null;
+
+  requiredFields.forEach((field) => {
+    const fieldMessage = field.closest('.form-checks').querySelector('.invalid-feedback');
+
+    if (field.type === "checkbox") {
+      if (!field.checked && !firstInvalidField) {
+        firstInvalidField = field;
+      }
+    } else if (field.tagName === "SELECT") {
+      if (field.value === "" && !firstInvalidField) {
+        firstInvalidField = field;
+      }
+    } else if (!field.value && !firstInvalidField) {
+      firstInvalidField = field;
+    }
+  });
+
+  if (firstInvalidField) {
+    firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
 
 
 function updateFormSteps() {
@@ -113,3 +189,13 @@ function updateProgressbar() {
   });
 
 }
+
+// Function to scroll the view to the top
+function scrollToTop() {
+  window.scrollTo({
+    top: 200,
+    behavior: 'smooth'
+  });
+}
+
+

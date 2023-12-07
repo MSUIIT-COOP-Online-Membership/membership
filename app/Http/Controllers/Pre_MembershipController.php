@@ -40,11 +40,14 @@ class Pre_MembershipController extends Controller
             'place_birth' => 'nullable|string|max:255',
             'present_address' => 'nullable|string|max:255',
             'usercode' => 'nullable|string|size:8',
-            // 'occupation' => 'nullable|string|max:255',
-            // 'ofw_family_member' => 'nullable|string|max:255',
+            'occupation' => 'nullable|string|max:255',
+            'ofw_family_member' => 'nullable|string|max:255',
+            'latitude' => 'nullable|numeric', //new
+            'longitude' => 'nullable|numeric', //new
 
            
             // evaluation data
+<<<<<<< HEAD
             'branches' => 'required|array',
             'q_one' => 'required|string',
             'q_two' => 'required|string',
@@ -56,6 +59,19 @@ class Pre_MembershipController extends Controller
             'q_eight' => 'required|string',
             'q_nine' => 'required|string',
             'q_ten' => 'required|string',
+=======
+            'branches' => 'nullable|array',
+            'q_one' => 'nullable|string',
+            'q_two' => 'nullable|string',
+            'q_three' => 'nullable|string',
+            'q_four' => 'nullable|string',
+            'q_five' => 'nullable|string',
+            'q_six' => 'nullable|string',
+            'q_seven' => 'nullable|string',
+            'q_eight' => 'nullable|string',
+            'q_nine' => 'nullable|string',
+            'q_ten' => 'nullable|string',
+>>>>>>> ee60585955001707c9652e1046608be607549047
             'score' => 'nullable|integer',
             'pass_status' => 'nullable|string'
         ]);
@@ -67,7 +83,6 @@ class Pre_MembershipController extends Controller
          // Get the ID of the newly created Personal_info record
          $PrememberInfoId = $PrememberInfo->id;
 
-        // Debugging statements
         
         // Create an evaluation for each selected branch
         foreach ($data['branches'] as $branchId) {

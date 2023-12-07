@@ -41,6 +41,9 @@ return new class extends Migration
             // $table->decimal('lot_month')->nullable();
             $table->integer('tin')->nullable();
             $table->longText('educational_attainment')->nullable();
+            $table->integer('latitude')->nullable();
+            $table->integer('longitude')->nullable();
+
             // $table->string('emp_stat')->nullable();
             // $table->string('emp_type')->nullable();
             // $table->longText('profession')->nullable();

@@ -42,6 +42,7 @@
                     {{-- <div class="checkbox-container">
                         <input class="form-check-input" type="checkbox" id = "branch1" name="branch_id" value="29" />
                         <label for="branch1"> Bacolod LDN Branch </label> <br>
+<<<<<<< HEAD
                     </div>
                     <div class="checkbox-container">
                         <input class="form-check-input" type="checkbox" id = "branch2" name="branch_id" value="14"/>
@@ -118,14 +119,17 @@
                     <div class="checkbox-container">
                         <input class="form-check-input" type="checkbox" id = "branch20" name="branch_id" value="32" />
                         <label for="branch20"> Tubod LDN Branch </label> <br>
+=======
+>>>>>>> ee60585955001707c9652e1046608be607549047
                     </div> --}}
+                  
                 </div>
 
-                <!-- <div class="eval-group">  
+                <div class="eval-group">  
                     <label for="referName">Name of referring person  (if none, kindly put NA)</label> <br>
                     <input class="mb-3" type="text" name="referName" placeholder="Your answer" class="form-input" id="referName" required/>                    
                     <span class="field-message">This field is required</span> <br> <br>
-                </div> -->
+                </div>
             </div>
 
             <div class="home-box instruction-box form-checks">

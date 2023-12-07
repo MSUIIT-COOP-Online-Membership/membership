@@ -40,7 +40,7 @@
     <div class="step">Verification</div>
     </div>
 
-    <div class="form-container">
+    <div class="form-container text-center">
         <h1>Please Enter Your Code</h1>
         <form action="{{ route('members.code') }}" method="POST" id="form">
             @csrf

@@ -23,7 +23,7 @@ nextBtns.forEach((btn) => {
         var alertElement = document.getElementById('videoAlert');
         alertElement.style.display = 'block';
         alertElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
+          
       }
     } else {
       if (validateCurrentStep()) {
@@ -54,7 +54,7 @@ function isVideoCompleted() {
   console.log("Current time:", video.currentTime);
   console.log("Duration:", video.duration);
   
-   const hasVideoCompleted = video.currentTime >= video.duration - 5;
+   const hasVideoCompleted = video.currentTime >= video.duration - 30;
    if (hasVideoCompleted) {
     // Save a flag in localStorage to indicate that the video has been completed
     localStorage.setItem("videoCompleted", "true");
@@ -92,6 +92,16 @@ function validateCurrentStep() {
         fieldMessage.style.display = "none";
       }
     } 
+    else if (field.hidden) {
+      if (field.value === "") {
+        isValid = false;
+        var alertElement = document.getElementById('Alert');
+        alertElement.style.display = 'block';
+          
+      } else {
+       console.log("none");
+      }     
+    }
     else if (!field.value) {
       isValid = false;
       field.classList.add("error");
@@ -100,6 +110,7 @@ function validateCurrentStep() {
       field.classList.remove("error");
       fieldMessage.style.display = "none";
     }
+      
   });
 
   
@@ -186,3 +197,5 @@ function scrollToTop() {
     behavior: 'smooth'
   });
 }
+
+

@@ -46,6 +46,9 @@
         }
 
 
+        .disclaimer{
+            font-size: smaller;
+        }
         .footer{
             background-color: #E0E7F0;
             padding: 2.5rem;
@@ -72,25 +75,27 @@
 
             You can now proceed to the membership application form using this usercode: <strong>{{ $userCode }}</strong>.  <br> <br>
             
-            Please fill out the form at our membership portal: {{ $certificate_data['link'] }} <br>
+            Please fill out the form at our membership portal: {{ $certificate_data['link'] }} <br><br>
 
-            Have a great day! <br>
+            Join us, <strong>Grow with us!</strong> <br>
         </div>
 
 
         <div class="footer">
-            Should you have any questions, require additional information, or would like to discuss the topics covered in more detail, please list them for discussion during the Google Meet session. <br><br>
-
-
-            Thank you for your interest and see you! <br>
-
-
-            Join us, Grow with us! <br><br>
+            <i class="disclaimer">Disclaimer: This message contains confidential information and is intended only for the individual named. 
+            If you are not the named addressee you should not disseminate, distribute or copy this e-mail. 
+            Please notify the sender immediately by e-mail if you have received this e-mail by mistake and delete this e-mail from your system. 
+            E-mail transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted, lost, 
+            destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors or 
+            omissions in the contents of this message, which arise as a result of e-mail transmission. 
+            If verification is required please request a hard-copy version. <br>
+            https://www.msuiitcoop.org/ <br> </i>  <br> <br>
 
 
             Best regards, <br>
             <i>Admin of MSU-IIT NMPC</i> <br>
-            https://www.msuiitcoop.org/ <br>
+            (063) 223-5874
+            Gregorio T. Lluch Sr. Ave., Pala-o Iligan City, 9200, Philippines <br>
         </div>
     </div>
 </body>

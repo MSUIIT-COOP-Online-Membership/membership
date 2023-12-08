@@ -25,10 +25,15 @@ use App\Http\Controllers\MembershipApplication;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
 Route::get('Premembership',[Pre_MembershipController::class, 'index'])->name('premembershipform.index');
 // Route::get('Premembership/getbranch',[MemberController::class, 'DisplayBranch'])->name('premembershipform.getbranch');
 Route::post('Premembership/',[Pre_MembershipController::class, 'premembershipForm'])->name('premembershipform.store');
 Route::get('/certificate-mail-sent', [Pre_MembershipController::class, 'certificateEmail'])->name('certificate-mail-sent');
+
 
 Route::get('/', function () {
     return view('welcome');

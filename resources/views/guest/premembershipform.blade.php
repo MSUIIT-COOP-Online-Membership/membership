@@ -20,12 +20,13 @@
  
      <link rel="stylesheet" href="{{ asset('/assets/premembershipform/css/evaluationform.css'); }}">
 
+     @stack('scripts')
+
      <!-- Fonts -->
 
- <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
- 
-        {{-- Mapbox API --}}
+    {{-- Mapbox API --}}
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
@@ -54,13 +55,17 @@
             <div class="progress-wrap">
                 <div class="step active-prog-first ">WELCOME</div>
                 <div class="step ">Personal Information</div>
-                <!-- <div class="step">Seminar Video</div> -->
+                <div class="step">Seminar Video</div>
                 <div class="step">Evaluation Form</div>
-                <div class="step">Result</div>
             </div>
             <!-- form -->
             <div class="form-container">
+<<<<<<< HEAD
                 <form method="post" action="{{ route('premembershipform.store') }}" id="form" class="needs-validation" novalidate>
+                @yield('content')
+=======
+                <form method="post" action="{{ route('premembershipform.store') }}" id="form" >
+>>>>>>> ee60585955001707c9652e1046608be607549047
                     @csrf 
 
                     @method('post')
@@ -115,7 +120,7 @@
                             </p>
                         </div>
                                 
-                                
+ 
 
                          <div class="btns-group">
                              <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
@@ -124,8 +129,8 @@
 
                         
                     </div> -->
-                    <!-- tab -->
-                    @include('guest.evaluationform')
+                    <!-- tab --> 
+                    @include('guest.evaluationform') 
                     
                      <!-- tab -->
                      <div class="tabpanel show">
@@ -182,18 +187,18 @@
     );
             // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl())
-    // // Add geolocate control to the map.
-    // map.addControl(
-    // new mapboxgl.GeolocateControl({
-    // positionOptions: {
-    // enableHighAccuracy: true
-    // },
-    // // When active the map will receive updates to the device's location as it changes.
-    // trackUserLocation: true,
-    // // Draw an arrow next to the location dot to indicate which direction the device is heading.
-    // showUserHeading: true
-    // })
-    // );
+    // Add geolocate control to the map.
+    map.addControl(
+    new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+    },
+    // When active the map will receive updates to the device's location as it changes.
+    trackUserLocation: true,
+    // Draw an arrow next to the location dot to indicate which direction the device is heading.
+    showUserHeading: true
+    })
+    );
 
 
 // Define a variable to store the current marker

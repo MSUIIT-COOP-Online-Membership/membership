@@ -33,6 +33,9 @@ class Member extends Model
         // 'lot_month',
         'tin',
         'educational_attainment',
+        'latitude',
+        'longitude',
+
         // 'emp_stat',
         // 'emp_type',
         // 'profession',

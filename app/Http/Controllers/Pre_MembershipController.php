@@ -21,7 +21,6 @@ class Pre_MembershipController extends Controller
         return view('guest.premembershipform', compact('branches'));
     }
 
-
     public function premembershipForm(Request $request)
     {
 
@@ -41,12 +40,15 @@ class Pre_MembershipController extends Controller
             'place_birth' => 'nullable|string|max:255',
             'present_address' => 'nullable|string|max:255',
             'usercode' => 'nullable|string|size:8',
-            // 'occupation' => 'nullable|string|max:255',
-            // 'ofw_family_member' => 'nullable|string|max:255',
+            'occupation' => 'nullable|string|max:255',
+            'ofw_family_member' => 'nullable|string|max:255',
+            'latitude' => 'nullable|numeric', //new
+            'longitude' => 'nullable|numeric', //new
 
            
             // evaluation data
-            'branches' => 'nullable|array',
+<<<<<<< HEAD
+            'branches' => 'required|array',
             'q_one' => 'required|string',
             'q_two' => 'required|string',
             'q_three' => 'required|string',
@@ -57,6 +59,19 @@ class Pre_MembershipController extends Controller
             'q_eight' => 'required|string',
             'q_nine' => 'required|string',
             'q_ten' => 'required|string',
+=======
+            'branches' => 'nullable|array',
+            'q_one' => 'nullable|string',
+            'q_two' => 'nullable|string',
+            'q_three' => 'nullable|string',
+            'q_four' => 'nullable|string',
+            'q_five' => 'nullable|string',
+            'q_six' => 'nullable|string',
+            'q_seven' => 'nullable|string',
+            'q_eight' => 'nullable|string',
+            'q_nine' => 'nullable|string',
+            'q_ten' => 'nullable|string',
+>>>>>>> ee60585955001707c9652e1046608be607549047
             'score' => 'nullable|integer',
             'pass_status' => 'nullable|string'
         ]);
@@ -68,7 +83,6 @@ class Pre_MembershipController extends Controller
          // Get the ID of the newly created Personal_info record
          $PrememberInfoId = $PrememberInfo->id;
 
-        // Debugging statements
         
         // Create an evaluation for each selected branch
         foreach ($data['branches'] as $branchId) {
@@ -88,7 +102,6 @@ class Pre_MembershipController extends Controller
                 'score' => 'nullable|integer',
                 'pass_status' => 'nullable|string',
             ];
-    
                 
                 $includedFields = ['q_one', 'q_two', 'q_three', 'q_four', 'q_five', 'q_six', 'q_seven', 'q_eight', 'q_nine', 'q_ten'];
                 $submittedAnswers = $request->only($includedFields);
@@ -97,7 +110,7 @@ class Pre_MembershipController extends Controller
                     'q_one' => '5',
                     'q_two' => 'Board of Directors',
                     'q_three' => '1978',
-                    'q_four' => '1.50 % per annum',
+                    'q_four' => '0.75 % per annum',
                     'q_five' => 'Savings Deposit',
                     'q_six' => 'Voluntary and Open Membership',
                     'q_seven' => 'Yes',
@@ -132,7 +145,7 @@ class Pre_MembershipController extends Controller
                     
                 
                     try {
-                        // $pdfPath = $this->certificatePDF($data);
+                        // $pdfContent = $this->generatePDF($certificate_data);
                 
                         Mail::to($data['email'])->send(new CertificateMail($certificate_data, $data['usercode']));
                 
@@ -154,6 +167,7 @@ class Pre_MembershipController extends Controller
             }
     
             return view('guest.result', compact('percentageScore', 'passOrFail'));
-        }
+        } 
+
 
     }

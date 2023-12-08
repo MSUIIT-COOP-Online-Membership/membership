@@ -3,16 +3,13 @@
         <label for="fname" class="form-label">First name</label>
         <input type="text" class="form-control" name="fname" id="fname"  required>
         <div class="invalid-feedback">
-            Please provide a Firt Name.
+            Please provide a First Name.
           </div>
       </div>
 
       <div class="col-md-3 form-checks">
         <label for="lname" class="form-label">Last name</label>
         <input type="text" class="form-control" name="lname" id="lname"  required>
-        {{-- <div class="valid-feedback">
-          Looks good!
-        </div> --}}
         <div class="invalid-feedback">
             This is required Field.
         </div>
@@ -21,9 +18,7 @@
       <div class="col-md-3 form-checks">
         <label for="mname" class="form-label">Middle name</label>
         <input type="text" class="form-control" name="mname" id="mname"  required>
-        {{-- <div class="valid-feedback">
-          Looks good!
-        </div> --}}
+
         <div class="invalid-feedback">
             This is required Field.
           </div>
@@ -93,9 +88,7 @@
       <div class="col-md-4 form-checks">
         <label for="tel_no" class="form-label">Telephone Number</label>
         <input type="number" class="form-control" name="tel_no" id="tel_no"  >
-        {{-- <div class="valid-feedback">
-          Looks good!
-        </div> --}}
+      
         <div class="invalid-feedback">
             This is required Field.
         </div>
@@ -158,38 +151,29 @@
       </div>
 </div>
 
-<div style="margin-top: 50px; border-top: 1px solid #297AD8; padding-top:40px; text-align: center;">
+<div style="margin-top: 50px; border-top: 1px solid #297AD8; padding-top:40px; ">
 
-    <h3 style="margin-bottom: 20px; color: #297AD8;">Plot Your Home on the Map</h3>
-      <p style="margin-bottom: 50px;">Plot your home on the provided map by using the search or zoom functions to locate your area. Alternatively, you can input the longitude and latitude of your home directly. Once you've found the location, 
-        click or tap on the map, and a red marker should be displayed to indicate your home</p>
+  <div id="Alert" class="alert alert-primary alert-dismissible fade show" role="alert">
+    <strong>Reminder!</strong> Please ensure you have marked your home on the map for accurate information before proceeding.
+  </div>
+
+    <h3 style="margin-bottom: 20px; color: #297AD8; text-align: center;">Plot Your Home on the Map</h3>
+      <p style="margin-bottom: 50px; text-align: center;">
+        Plot your home on the provided map by 
+        clicking or tapping on the specific
+         area. Utilize the search or zoom functions 
+         to locate your area. 
+         Once you've found the location, click or tap on the map. 
+          A red marker should be displayed to indicate that you
+           have successfully plotted your home.</p>
   
-        {{-- <div class="col-md-8 mx-auto" style="margin-bottom:30px;">
-          <div class="row">
-              <div class="col-md-3 ">
-                  <label for="longitude">Longitude</label>
-              </div>
-              <div class="col-md-3 form-checks">
-                <input type="text" name="longitude" class="form-control" id="longitude" required>
-                <div class="invalid-feedback">
-                    Please plot your address on the map.
-                </div>
-            </div>
-              <div class="col-md-3">
-                  <label for="latitude">Latitude</label>
-              </div>
-            
-              <div class="col-md-3 form-checks">
-                  <input type="text" name="latitude" class="form-control" id="latitude" required>
-                  <div class="invalid-feedback">
-                      Please plot your address on the map.
-                  </div>
-              </div>
-          </div>
-      </div> --}}
       
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18143.212881589046!2d124.24463043170778!3d8.238363280367714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325576785fc4d679%3A0x73c07711931c8cce!2sMindanao%20State%20University%20-%20Iligan%20Institute%20of%20Technology!5e0!3m2!1sen!2sph!4v1701235848269!5m2!1sen!2sph" width="90%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="form-checks" >
+        <input type="number" step="any" name="latitude" class="form-control" id="latitude" hidden  required>
+        <input type="number" step="any" name="longitude" class="form-control" id="longitude" hidden  >
 
-  {{-- <div id="map"></div> --}}
+      </div>
+
+      <div id="map"></div>
 
 </div>

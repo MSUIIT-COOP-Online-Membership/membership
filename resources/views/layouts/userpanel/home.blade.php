@@ -122,6 +122,7 @@
               <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
           </li>
+          
           <!-- Notifications Dropdown Menu -->
           <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -155,7 +156,7 @@
                 {{ Auth::user()->name }}
             </a>
                 <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px;">
-                    <a href="{{ route('profile.show') }}" class="dropdown-item">
+                    <a href="{{ route('userprofile.show') }}" class="dropdown-item">
                         <i class="mr-2 fas fa-user"></i>
                         {{ __('My profile') }}
                     </a>

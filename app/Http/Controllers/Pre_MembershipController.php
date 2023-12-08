@@ -47,19 +47,6 @@ class Pre_MembershipController extends Controller
 
            
             // evaluation data
-<<<<<<< HEAD
-            'branches' => 'required|array',
-            'q_one' => 'required|string',
-            'q_two' => 'required|string',
-            'q_three' => 'required|string',
-            'q_four' => 'required|string',
-            'q_five' => 'required|string',
-            'q_six' => 'required|string',
-            'q_seven' => 'required|string',
-            'q_eight' => 'required|string',
-            'q_nine' => 'required|string',
-            'q_ten' => 'required|string',
-=======
             'branches' => 'nullable|array',
             'q_one' => 'nullable|string',
             'q_two' => 'nullable|string',
@@ -71,7 +58,6 @@ class Pre_MembershipController extends Controller
             'q_eight' => 'nullable|string',
             'q_nine' => 'nullable|string',
             'q_ten' => 'nullable|string',
->>>>>>> ee60585955001707c9652e1046608be607549047
             'score' => 'nullable|integer',
             'pass_status' => 'nullable|string'
         ]);

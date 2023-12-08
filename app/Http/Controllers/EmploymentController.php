@@ -63,7 +63,7 @@ class EmploymentController extends Controller
                 'asset_size' => 'nullable|string|max:255',
             ]);
 
-            // Create a new employment
+            // Create a new evaluation
             Employment::create($request->all());
             
             Alert::success('Success!', 'Added employment entry successfully.');

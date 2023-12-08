@@ -126,7 +126,7 @@ header h1 {
     display: none;
   }
 
-  .btns-group {
+  .btns-group{
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
@@ -134,6 +134,9 @@ header h1 {
     padding-right: 10px;
     align-items: center;
   }
+
+
+
   .tab-header {
     /* text-align: center; */
     text-transform: uppercase;
@@ -225,7 +228,6 @@ header h1 {
     cursor: pointer;
     text-align: center;
     margin-bottom: 20px;
-
   }
   
   .btn-next, .submit {
@@ -236,7 +238,8 @@ header h1 {
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
   }
 
-  
+
+
   .btn:hover {
     /* background: var(--color-1-hover); */
     /* box-shadow: blue; */
@@ -244,14 +247,27 @@ header h1 {
     font-weight: bolder;
 }
 
-  .btns-group a {
+  .btns-group a,
+  .button a{
     text-decoration: none
   }
 
-  .btns-group a .bx {
+  .btns-group a .bx,
+  .button a .bx {
     vertical-align: middle;
     font-size: 1.4rem;
   }
+
+  .btn-export,
+  .btn-set {
+      text-decoration: none;
+      width: 15rem;
+      height: 3rem;
+      background: #297AD8;
+      color: #FFF;
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  }
+
 
   .field-message{
     color: red;

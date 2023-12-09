@@ -21,7 +21,6 @@ class Pre_MembershipController extends Controller
         return view('guest.premembershipform', compact('branches'));
     }
 
-
     public function premembershipForm(Request $request)
     {
 
@@ -89,7 +88,6 @@ class Pre_MembershipController extends Controller
                 'score' => 'nullable|integer',
                 'pass_status' => 'nullable|string',
             ];
-    
                 
                 $includedFields = ['q_one', 'q_two', 'q_three', 'q_four', 'q_five', 'q_six', 'q_seven', 'q_eight', 'q_nine', 'q_ten'];
                 $submittedAnswers = $request->only($includedFields);
@@ -98,7 +96,7 @@ class Pre_MembershipController extends Controller
                     'q_one' => '5',
                     'q_two' => 'Board of Directors',
                     'q_three' => '1978',
-                    'q_four' => '1.50 % per annum',
+                    'q_four' => '0.75 % per annum',
                     'q_five' => 'Savings Deposit',
                     'q_six' => 'Voluntary and Open Membership',
                     'q_seven' => 'Yes',
@@ -133,7 +131,7 @@ class Pre_MembershipController extends Controller
                     
                 
                     try {
-                        // $pdfPath = $this->certificatePDF($data);
+                        // $pdfContent = $this->generatePDF($certificate_data);
                 
                         Mail::to($data['email'])->send(new CertificateMail($certificate_data, $data['usercode']));
                 
@@ -155,6 +153,7 @@ class Pre_MembershipController extends Controller
             }
     
             return view('guest.result', compact('percentageScore', 'passOrFail'));
-        }
+        } 
+
 
     }

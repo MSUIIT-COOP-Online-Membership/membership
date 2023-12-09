@@ -1,0 +1,366 @@
+html {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+body {
+  font-size: small;
+  line-height: 1.4;
+}
+
+p {
+  margin: 0;
+}
+
+.divider {
+  display: block;
+  color: #ffff;
+  background-color: #004AAD;
+}
+
+hr{
+  background-color: #004AAD;
+  color: #004AAD;
+}
+
+.next-page{
+  margin-top: 50px !important;
+}
+
+h3 {
+  margin-left: 10px;
+}
+
+.first-row{
+  margin-top: 10px !important;
+}
+
+.input-group {
+  display: inline-block;
+  margin-top: 0px;
+  /* Adjust as needed */
+}
+
+.input-group label {
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  display: inline-block;
+  width: 265px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+img{
+  width:192px;
+  height:192px;
+  float: right;
+  position: relative;
+  top: -26;
+  left: -5;
+  margin-right: -100px !important;
+}
+
+#fname, #lname, #ben_lname, #ben_fname {
+  width:271px;
+}
+
+#suffix, #sex, #ben_suffix, #ben_dob{
+  width: 121px;
+}
+
+#ben_mname{
+  width:210px;
+}
+
+#ben_relationship{
+  width:300px;
+}
+
+#civil_status, #dob, #age{
+  width: 95px;
+}
+
+#telephone_number, #mobile_number{
+  width: 137px;
+}
+
+#email{
+  width: 220px;
+}
+
+#religion{
+  width: 122px;
+}
+
+#place_birth{
+  width: 421px;
+}
+
+#present_address{
+  width: 408px;
+}
+
+#duration_residency{
+  width: 244px;
+}
+
+#living_parents{
+  width: 50px;
+}
+
+#house, #house_month{
+  width:100px;
+  margin-top: 13px;
+}
+
+#lot, #lot_month, #tin{
+  width:100px;
+  margin-top: -2px;
+}
+
+#educational_attainment{
+  width: 240px;
+}
+
+#emp_stat, #profession{
+  width: 247px;
+}
+
+#emp_type, #emp_others{
+  width: 213px;
+}
+
+#business_type, #asset_size{
+  width: 261px;
+}
+
+#employer_name{
+  width:305px;
+}
+
+#service_length{
+  width:150px;
+}
+
+#employer_status{
+  width:120px;
+}
+
+#employer_address{
+  width: 296px;
+}
+
+#employer_contact, #monthly_salary{
+  width: 201px;
+}
+
+#business_name{
+  width:320px;
+}
+
+#business_tin{
+  width:100px;
+}
+
+#business_address{
+  width: 271px;
+}
+
+#business_contact{
+  width: 140px;
+}
+
+#op_duration_year, #op_duration_month{
+  width: 271px;
+}
+
+#no_workers, #yearly_income{
+  width: 212px;
+  margin-top:14px;
+}
+
+#source_income, #monthly_income{
+  width: 176px;
+}
+
+#father_lname, #father_fname{
+  width: 222px;
+}
+
+#father_mname, #father_suffix{
+  width:228px;
+}
+
+#father_dob, #father_contact, #father_occu, #mother_dob, #mother_contact, #mother_occu, #spouse_dob, #spouse_contact, #spouse_occu{
+  width: 103px;
+}
+
+#father_age, #mother_age, #spouse_age{
+  width:50px
+}
+
+#mother_lname, #mother_fname{
+  width: 216px;
+}
+
+#mother_mname, #mother_suffix, #spouse_mname, #spouse_suffix{
+  width: 222px;
+}
+
+#spouse_lname, #spouse_fname{
+  width: 217px;
+}
+
+#spouse_emp_name, #spouse_emp_stat{
+  width: 222px;
+}
+
+#no_child, #no_child_contrib, #no_child_work, #no_child_study, #no_child_notstudy{
+  width: 50px;
+}
+
+#total_monthly_contrib{
+  width:150px;
+}
+
+#emer_name{
+  width: 500px;
+}
+
+#emer_contact{
+  width: 150px;
+}
+
+#emer_address{
+  width: 375px;
+  margin-top: 10px;
+}
+
+.performance-facts {
+  margin: 30px;
+  float: left;
+  width: 90%;
+  padding: 0.5rem;
+
+  table {
+    border-collapse: collapse;
+  }
+}
+
+.performance-facts__title {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.performance-facts__header {
+  padding: 0 0 0 0;
+  margin: 0 0 0.5rem 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+
+
+.performance-facts__table {
+  width: 100%;
+
+  thead tr {
+
+    th,
+    td {
+      border: 0;
+    }
+  }
+
+  th,
+  td {
+    font-weight: normal;
+    text-align: left;
+    padding: 0.25rem 0;
+    border-top: 1px solid black;
+    white-space: nowrap;
+  }
+
+  td {
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  .blank-cell {
+    width: 1rem;
+    border-top: 0;
+  }
+
+  .thick-row {
+
+    th,
+    td {
+      border-top-width: 5px;
+    }
+  }
+}
+
+.small-info {
+  font-size: 0.7rem;
+}
+
+.performance-facts__table--small {
+  @extend .performance-facts__table;
+  border-bottom: 1px solid #999;
+  margin: 0 0 0.5rem 0;
+
+  thead {
+    tr {
+      border-bottom: 1px solid black;
+    }
+  }
+
+  td {
+    &:last-child {
+      text-align: left;
+    }
+  }
+
+  th,
+  td {
+    border: 0;
+    padding: 0;
+  }
+}
+
+.performance-facts__table--grid {
+  @extend .performance-facts__table;
+  margin: 0 0 0.5rem 0;
+
+  td {
+    &:last-child {
+      text-align: left;
+
+      &::before {
+        content: "•";
+        font-weight: bold;
+        margin: 0 0.25rem 0 0;
+      }
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.thick-end {
+  border-bottom: 10px solid black;
+}
+
+.thin-end {
+  border-bottom: 1px solid black;
+}

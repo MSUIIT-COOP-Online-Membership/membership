@@ -25,10 +25,15 @@ use App\Http\Controllers\MembershipApplication;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+
 Route::get('Premembership',[Pre_MembershipController::class, 'index'])->name('premembershipform.index');
 // Route::get('Premembership/getbranch',[MemberController::class, 'DisplayBranch'])->name('premembershipform.getbranch');
 Route::post('Premembership/',[Pre_MembershipController::class, 'premembershipForm'])->name('premembershipform.store');
 Route::get('/certificate-mail-sent', [Pre_MembershipController::class, 'certificateEmail'])->name('certificate-mail-sent');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -144,9 +149,9 @@ Route::middleware(['auth', 'checkRole:System Administrator'])->group(function ()
 Route::get('/code', [App\Http\Controllers\MembershipApplication::class, 'index'])->name('members.code');
 Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'verifyCode'])->name('members.code');
 // Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'verifyCode'])->name('members.code');
-Route::post('/membershipform/edit/{id}', [App\Http\Controllers\MembershipApplication::class, 'edit'])->name('members.membershipform.edit');
-Route::get('/get-sub-type-options', [App\Http\Controllers\MembershipForm::class, 'getSubTypeOptions'])->name('members.get-sub-type-options');
-Route::get('/view/{id}', [App\Http\Controllers\MembershipApplication::class, 'view'])->name('members.view');
-Route::get('/pdf_download/pdf_view/{id}/generate', [App\Http\Controllers\MembershipApplication::class, 'generatePDF'])->name('members.pdf_download.generatePDF');
-Route::get('/bookappointment/{id}', [App\Http\Controllers\AppointmentFormController::class, 'bookappointment'])->name('members.bookappointment');
+Route::post('/membershipform/edit/{usercode}', [App\Http\Controllers\MembershipApplication::class, 'edit'])->name('members.membershipform.edit');
+Route::get('/get-sub-type-options', [App\Http\Controllers\MembershipApplication::class, 'getSubTypeOptions'])->name('members.get-sub-type-options');
+Route::get('/view/{usercode}', [App\Http\Controllers\MembershipApplication::class, 'view'])->name('members.view');
+Route::get('/pdf_download/pdf_view/{usercode}/generate', [App\Http\Controllers\MembershipApplication::class, 'generatePDF'])->name('members.pdf_download.generatePDF');
+Route::get('/bookappointment/{usercode}', [App\Http\Controllers\AppointmentFormController::class, 'bookappointment'])->name('members.bookappointment');
 Route::post('/bookappointment', [App\Http\Controllers\AppointmentFormController::class, 'addappointment'])->name('members.bookappointment');

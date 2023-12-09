@@ -8,17 +8,19 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,600;1,700;1,900&display=swap');
 
+        @page {
+            size: landscape; /* Set page orientation to landscape */
+            margin: 0; /* Reset margin */
+        }
+
         *{
             margin: 0;
             padding: 0;
-            max-width: 100%;
-            max-height: 100%;
         }
 
         body{
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            /* background-image: url('/public/images/email/bg.png'); */
             background-color: #E8ECEF;
             margin: 2rem;
         }
@@ -117,9 +119,8 @@
 <body>
     <header>
         <div class="head">
-        <img src="{{ $message->embed(asset('images/email/nmpc-logo-nobg.png')) }}" alt="MSU-IIT NMPC Logo">
-            
-            <p> Mindanao State University <br>
+        <!-- <img src="{{ public_path('images/npmc-logo-nobg.png') }}" alt="MSU-IIT NMPC Logo"> -->
+                <p> Mindanao State University <br>
                 Iligan Institute of Technology<br>
                 National Multi-purpose Cooperative 
             </p>

@@ -25,7 +25,7 @@
 
                     @forelse($branches as $branch)
                     <div class="col-lg-4 form-checks">
-                        <input class="form-check-input required-field" type="checkbox" name="branches[]" id="{{ $branch->name }}" value="{{ $branch->id }}" required>
+                        <input class="form-check-input required-field" type="checkbox" name="branches[]" id="{{ $branch->name }}" value="{{ $branch->id }}">
                         <label for="{{ $branch->name }}"  >
                             {{ $branch->name }}
                         </label>
@@ -124,12 +124,12 @@
                     </div> --}}
                   
                 </div>
-
+<!-- 
                 <div class="eval-group">  
                     <label for="referName">Name of referring person  (if none, kindly put NA)</label> <br>
                     <input class="mb-3" type="text" name="referName" placeholder="Your answer" class="form-input" id="referName" required/>                    
                     <span class="field-message">This field is required</span> <br> <br>
-                </div>
+                </div> -->
             </div>
 
             <div class="home-box instruction-box form-checks">

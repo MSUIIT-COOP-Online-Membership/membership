@@ -68,15 +68,27 @@
                                     <input type="hidden" name="member_email" class="form-input" id="member_email" value='{{ $members->email }}' readonly>
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" name="fname" class="form-input" id="fname" value='{{ $members->fname }}' readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <label for="mname">Middle Name</label>
+                                    <input type="text" name="mname" class="form-input" id="mname" value='{{ $members->mname }}' readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <label for="suffix">Suffix</label>
+                                    <input type="text" name="suffix" class="form-input" id="suffix" value='{{ $members->suffix }}' readonly>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
-                            <div class="col">
-                                <div class="input-group">
-                                    <label for="lname">Last Name</label>
-                                    <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
-                                </div>
-                            </div>
                         @endforeach
                             <div class="input-group">
                                 <label for="branch">Branch</label>

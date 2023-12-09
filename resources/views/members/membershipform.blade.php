@@ -91,7 +91,17 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <label for="suffix">Suffix</label>
-                                    <input type="text" name="suffix" placeholder="Suffix" class="form-input" id="suffix" />
+                                    <select class="form-input" name="suffix" id="suffix">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
                                 </div>
                             </div>
 
@@ -120,7 +130,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <label for="age">Age</label>
-                                    <input type="number" name="age" placeholder="Age" class="form-input" id="age" required /> <!-- required -->
+                                    <input type="number" name="age" placeholder="Age" class="form-input" id="age"  /> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -151,7 +161,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <label for="religion">Religion</label>
-                                    <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" required/> <!-- required -->
+                                    <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" value='{{ $members->religion }}'/> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -160,7 +170,7 @@
                             <div class="col-md-6 mt-4">
                                 <div class="input-group">
                                     <label for="place_birth">Place of Birth</label>
-                                    <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth"  required/> <!-- required -->
+                                    <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth"  /> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -176,7 +186,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="duration_residency">Duration of Residency With Present Address</label>
-                                <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency"  required/> <!-- required -->
+                                <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency"  /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -184,7 +194,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="living_parents">Living With Parents</label>
-                                <select name="living_parents" id="living_parents" required> <!-- required -->
+                                <select name="living_parents" id="living_parents" > <!-- required -->
                                     <option value="">Living With Parents?</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -238,7 +248,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="tin">TIN</label>
-                                <input type="number" name="tin" placeholder="TIN" class="form-input" id="tin" required/> <!-- required -->
+                                <input type="number" name="tin" placeholder="TIN" class="form-input" id="tin"/> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -246,7 +256,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="educational_attainment">Educational Attainment</label>
-                                <select name="educational_attainment" id="educational_attainment" required> <!-- required -->
+                                <select name="educational_attainment" id="educational_attainment" > <!-- required -->
                                     <option value="">Educational Attainment</option>
                                     <option value="Elementary Level">Elementary Level</option>
                                     <option value="Elementary Graduate">Elementary Graduate</option>
@@ -264,7 +274,7 @@
                             <div class="col">
                                 <div class="input-group">
                                     <label for="image">ID Picture</label>
-                                    <input type="file" name="image" class="form-input" id="image" required /> <!-- required -->
+                                    <input type="file" name="image" class="form-input" id="image"  /> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -343,19 +353,27 @@
                             
                             <div class="col-md-6">
                                 <div class="input-group" id="typeOtherInputContainer" style="display: none;">
-                                <label for="emp_type">Others, Please Specify</label>
-                                <input type="text" name="emp_type" placeholder="Others, Please Specify" class="form-input" id="emp_type" />
+                                <label for="emp_type_others">Others, Please Specify</label>
+                                <input type="text" name="emp_type_others" placeholder="Others, Please Specify" class="form-input" id="emp_type_others" />
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
                             
                             <div class="col-md-6">
-                                <div class="input-group" id="empSubTypeInputContainer" style="display: none;">
+                                <div class="input-group" id="empSubTypeInputContainer" onchange="updateSubTypeOthers()" style="display: none;">
                                 <label for="emp_others">Employment Sub-Type</label>
                                 <select name="emp_others" id="emp_others">
                                     <option value="">Employment Sub-Type</option>
                                 </select>
 
+                                <span class="field-message">This field is required</span>
+                            </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="input-group" id="subtypeOtherInputContainer" style="display: none;">
+                                <label for="emp_subtype_others">Others, Please Specify</label>
+                                <input type="text" name="emp_subtype_others" placeholder="Others, Please Specify" class="form-input" id="emp_subtype_others" />
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -588,6 +606,23 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
+
+                            <div class="col-md-4">
+                            <div class="input-group">
+                                    <label for="father_suffix">Father's Suffix</label>
+                                    <select class="form-input" name="father_suffix" id="father_suffix">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
+                                </div>
+                            </div>
                             
                             <div class="col-md-4">
                                 <div class="input-group">
@@ -644,6 +679,23 @@
                                 <input type="text" name="mother_mname" placeholder="Mother's Middle Name" class="form-input" id="mother_mname" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div> 
+                            </div>
+
+                            <div class="col-md-4">
+                            <div class="input-group">
+                                    <label for="mother_suffix">Mother's Suffix</label>
+                                    <select class="form-input" name="mother_suffix" id="mother_suffix">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
+                                </div>
                             </div>
                             
                             <div class="col-md-4">
@@ -706,6 +758,23 @@
                                 <input type="text" name="spouse_mname" placeholder="Spouse's Middle Name" class="form-input" id="spouse_mname" />
                                 <span class="field-message">This field is required</span>
                             </div> 
+                            </div>
+
+                            <div class="col-md-6">
+                            <div class="input-group">
+                                    <label for="spouse_suffix">Spouse's Suffix</label>
+                                    <select class="form-input" name="spouse_suffix" id="spouse_suffix">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="col-md-6">
@@ -890,64 +959,10 @@
                         <div class="row g-3">
                             <div class="col-md">
                                 <div class="input-group">
-                                <label for="beneficiaries[0][ben_lname]">Last Name</label>
-                                <input type="text" name="beneficiaries[0][ben_lname]" placeholder="Last Name" class="form-input" id="beneficiaries[0][ben_lname]" />
-                                <span class="field-message">This field is required</span>
-                            </div>
-                            </div>
-                            
-                            <div class="col-md">
-                                <div class="input-group">
-                                <label for="beneficiaries[0][ben_fname]">First Name</label>
-                                <input type="text" name="beneficiaries[0][ben_fname]" placeholder="First Name" class="form-input" id="beneficiaries[0][ben_fname]" />
-                                <span class="field-message">This field is required</span>
-                            </div>
-                            </div>
-
-                            <div class="col-md">
-                                <div class="input-group">
-                                <label for="beneficiaries[0][ben_mname]">Middle Name</label>
-                                <input type="text" name="beneficiaries[0][ben_mname]" placeholder="Middle Name" class="form-input" id="beneficiaries[0][ben_mname]" />
-                                <span class="field-message">This field is required</span>
-                            </div>
-                            </div>
-
-                            <div class="col-md">
-                                <div class="input-group">
-                                <label for="beneficiaries[0][ben_suffix]">Suffix</label>
-                                <input type="text" name="beneficiaries[0][ben_suffix]" placeholder="Suffix" class="form-input" id="beneficiaries[0][ben_suffix]" />
-                                <span class="field-message">This field is required</span>
-                            </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                <label for="beneficiaries[0][ben_dob]">Date of Birth</label>
-                                <input type="date" name="beneficiaries[0][ben_dob]" placeholder="Date of Birth" class="form-input" id="beneficiaries[0][ben_dob]" />
-                                <span class="field-message">This field is required</span>
-                            </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                <label for="beneficiaries[0][ben_relationship]">Relationship</label>
-                                <input type="text" name="beneficiaries[0][ben_relationship]" placeholder="Relationship" class="form-input" id="beneficiaries[0][ben_relationship]" />
-                                <span class="field-message">This field is required</span>
-                            </div>
-                            </div>
-                            
-                        </div>
-
-                        <div class="tab-subhead mt-4">
-                            <div><h6>Beneficiary 2</h6><hr></div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-md">
-                               <div class="input-group">
                                 <label for="beneficiaries[1][ben_lname]">Last Name</label>
                                 <input type="text" name="beneficiaries[1][ben_lname]" placeholder="Last Name" class="form-input" id="beneficiaries[1][ben_lname]" />
                                 <span class="field-message">This field is required</span>
-                            </div> 
+                            </div>
                             </div>
                             
                             <div class="col-md">
@@ -993,15 +1008,15 @@
                         </div>
 
                         <div class="tab-subhead mt-4">
-                        <div><h6>Beneficiary 3</h6><hr></div>
+                            <div><h6>Beneficiary 2</h6><hr></div>
                         </div>
                         <div class="row g-3">
                             <div class="col-md">
-                                <div class="input-group">
+                               <div class="input-group">
                                 <label for="beneficiaries[2][ben_lname]">Last Name</label>
                                 <input type="text" name="beneficiaries[2][ben_lname]" placeholder="Last Name" class="form-input" id="beneficiaries[2][ben_lname]" />
                                 <span class="field-message">This field is required</span>
-                            </div>
+                            </div> 
                             </div>
                             
                             <div class="col-md">
@@ -1043,15 +1058,13 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
-
                             
                         </div>
 
-                        <div class="tab-subhead mt-3">
-                        <div><h6>Beneficiary 4</h6><hr></div>
+                        <div class="tab-subhead mt-4">
+                        <div><h6>Beneficiary 3</h6><hr></div>
                         </div>
                         <div class="row g-3">
-
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[3][ben_lname]">Last Name</label>
@@ -1059,7 +1072,7 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
-
+                            
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[3][ben_fname]">First Name</label>
@@ -1067,7 +1080,7 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
-                            
+
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[3][ben_mname]">Middle Name</label>
@@ -1099,12 +1112,15 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
+
+                            
                         </div>
 
-                        <div class="tab-subhead mt-4">
-                        <div><h6>Beneficiary 5</h6><hr></div>
+                        <div class="tab-subhead mt-3">
+                        <div><h6>Beneficiary 4</h6><hr></div>
                         </div>
                         <div class="row g-3">
+
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[4][ben_lname]">Last Name</label>
@@ -1120,7 +1136,7 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
-
+                            
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[4][ben_mname]">Middle Name</label>
@@ -1152,12 +1168,10 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
-
-                            
                         </div>
 
                         <div class="tab-subhead mt-4">
-                        <div><h6>Beneficiary 6</h6><hr></div>
+                        <div><h6>Beneficiary 5</h6><hr></div>
                         </div>
                         <div class="row g-3">
                             <div class="col-md">
@@ -1175,7 +1189,7 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
-                            
+
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[5][ben_mname]">Middle Name</label>
@@ -1183,7 +1197,7 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
-                            
+
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[5][ben_suffix]">Suffix</label>
@@ -1191,7 +1205,7 @@
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="beneficiaries[5][ben_dob]">Date of Birth</label>
@@ -1204,6 +1218,61 @@
                                 <div class="input-group">
                                 <label for="beneficiaries[5][ben_relationship]">Relationship</label>
                                 <input type="text" name="beneficiaries[5][ben_relationship]" placeholder="Relationship" class="form-input" id="beneficiaries[5][ben_relationship]" />
+                                <span class="field-message">This field is required</span>
+                            </div>
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="tab-subhead mt-4">
+                        <div><h6>Beneficiary 6</h6><hr></div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md">
+                                <div class="input-group">
+                                <label for="beneficiaries[6][ben_lname]">Last Name</label>
+                                <input type="text" name="beneficiaries[6][ben_lname]" placeholder="Last Name" class="form-input" id="beneficiaries[6][ben_lname]" />
+                                <span class="field-message">This field is required</span>
+                            </div>
+                            </div>
+
+                            <div class="col-md">
+                                <div class="input-group">
+                                <label for="beneficiaries[6][ben_fname]">First Name</label>
+                                <input type="text" name="beneficiaries[6][ben_fname]" placeholder="First Name" class="form-input" id="beneficiaries[6][ben_fname]" />
+                                <span class="field-message">This field is required</span>
+                            </div>
+                            </div>
+                            
+                            <div class="col-md">
+                                <div class="input-group">
+                                <label for="beneficiaries[6][ben_mname]">Middle Name</label>
+                                <input type="text" name="beneficiaries[6][ben_mname]" placeholder="Middle Name" class="form-input" id="beneficiaries[6][ben_mname]" />
+                                <span class="field-message">This field is required</span>
+                            </div>
+                            </div>
+                            
+                            <div class="col-md">
+                                <div class="input-group">
+                                <label for="beneficiaries[6][ben_suffix]">Suffix</label>
+                                <input type="text" name="beneficiaries[6][ben_suffix]" placeholder="Suffix" class="form-input" id="beneficiaries[6][ben_suffix]" />
+                                <span class="field-message">This field is required</span>
+                            </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                <label for="beneficiaries[6][ben_dob]">Date of Birth</label>
+                                <input type="date" name="beneficiaries[6][ben_dob]" placeholder="Date of Birth" class="form-input" id="beneficiaries[6][ben_dob]" />
+                                <span class="field-message">This field is required</span>
+                            </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                <label for="beneficiaries[6][ben_relationship]">Relationship</label>
+                                <input type="text" name="beneficiaries[6][ben_relationship]" placeholder="Relationship" class="form-input" id="beneficiaries[6][ben_relationship]" />
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -1335,6 +1404,11 @@
             $("#businessInputContainer").hide();
             $("#assetSizeInputContainer").hide();
             $("#empSubTypeInputContainer").hide();
+        } else if (selectedEmpSubType === "Others") {
+            $("#typeOtherInputContainer").hide();
+            $("#businessInputContainer").hide();
+            $("#assetSizeInputContainer").hide();
+            $("#empSubTypeInputContainer").hide();
         }
 
         // Make an AJAX request to get the options for the second dropdown
@@ -1350,9 +1424,20 @@
 
             // Enable or disable the second dropdown based on whether options are available
             empSubTypeSelect.prop("disabled", data.options.length === 0);
+
         }).fail(function() {
             console.log("AJAX request failed");
         });
+    }
+
+    function updateSubTypeOthers(){
+        console.log("updateSubTypeOthers is called");
+        var empSubTypeSelect = $("#emp_others");
+        var selectedEmpSubType = empSubTypeSelect.val();
+        console.log("value: "+selectedEmpSubType);
+        if (selectedEmpSubType === "Others"){
+            $("#subtypeOtherInputContainer").show();
+        }
     }
 </script>
 

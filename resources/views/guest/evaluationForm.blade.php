@@ -25,7 +25,7 @@
 
                     @forelse($branches as $branch)
                     <div class="col-lg-4 form-checks">
-                        <input class="form-check-input required-field" type="checkbox" name="branches[]" id="{{ $branch->name }}" value="{{ $branch->id }}" required>
+                        <input class="form-check-input required-field" type="checkbox" name="branches[]" id="{{ $branch->name }}" value="{{ $branch->id }}" >
                         <label for="{{ $branch->name }}"  >
                             {{ $branch->name }}
                         </label>

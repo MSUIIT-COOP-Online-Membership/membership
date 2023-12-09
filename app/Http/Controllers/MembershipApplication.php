@@ -370,7 +370,7 @@ class MembershipApplication extends Controller
 
             // Load HTML content
             $html = view('members.pdf_download.pdf_view', $data)->render();
-            $htmlWithStyles = '<style>' . file_get_contents('C:\Users\Acer\membership\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
+            $htmlWithStyles = '<style>' . file_get_contents('C:\xampp\htdocs\Laravel\coopmembership\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
 
             // Load HTML to Dompdf
             $dompdf->loadHtml($htmlWithStyles);

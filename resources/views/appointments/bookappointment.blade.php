@@ -44,6 +44,8 @@
                             <h1>Submission Appointment</h1>
                         </div>
                         <div class="fields">
+
+                        @foreach($members as $index => $members)
                                 <input type="hidden" name="member_id" class="form-input" id="member_id" value='{{ $members->id }}' readonly>
                                 <input type="hidden" name="member_email" class="form-input" id="member_email" value='{{ $members->email }}' readonly>
 
@@ -62,7 +64,7 @@
                                 <label for="mname">Middle Name</label>
                                 <input type="text" name="mname" class="form-input" id="mname" value='{{ $members->mname }}' readonly>
                             </div>
-
+                        @endforeach
                             <div class="input-group">
                                 <label for="branch">Branch</label>
                                 <select name="branch" id="branch">

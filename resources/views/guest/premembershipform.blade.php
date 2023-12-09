@@ -60,12 +60,7 @@
             </div>
             <!-- form -->
             <div class="form-container">
-<<<<<<< HEAD
-                <form method="post" action="{{ route('premembershipform.store') }}" id="form" class="needs-validation" novalidate>
-                @yield('content')
-=======
                 <form method="post" action="{{ route('premembershipform.store') }}" id="form" >
->>>>>>> ee60585955001707c9652e1046608be607549047
                     @csrf 
 
                     @method('post')
@@ -95,7 +90,7 @@
                     </div>
 
                     <!-- tab -->
-                    <!-- <div class="tabpanel">
+                     <div class="tabpanel">
 
                         <div class="tab-header">
                           <h3>Seminar</h3>
@@ -128,7 +123,7 @@
                           </div>
 
                         
-                    </div> -->
+                    </div> 
                     <!-- tab --> 
                     @include('guest.evaluationform') 
                     

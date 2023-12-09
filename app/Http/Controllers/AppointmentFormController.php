@@ -11,11 +11,11 @@ use App\Models\Appointment;
 
 class AppointmentFormController extends Controller
 {
-    public function bookappointment(int $id)
+    public function bookappointment($usercode)
     {
-        $appointment = Member::findOrfail($id);
+        $members = Member::where('usercode', $usercode)->get();
         $branch = Branch::all();
-        return view('appointments.bookappointment', ['members' => $appointment], ['branch' => $branch]);
+        return view('appointments.bookappointment', ['members' => $members], ['branch' => $branch]);
     }
 
     public function addappointment(Request $request)

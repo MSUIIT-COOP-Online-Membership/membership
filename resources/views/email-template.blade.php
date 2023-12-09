@@ -72,7 +72,7 @@
                 <li>Marriage contract if any</li>
             </ul>
 
-            Please take note that <strong>the minimum initital contribution is 500 pesos.</strong>
+            Please take note that <strong>the minimum initital contribution is 500 pesos.</strong><br>
 
             Join us, <strong>Grow with us!</strong>
         </div>

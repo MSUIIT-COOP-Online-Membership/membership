@@ -130,7 +130,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <label for="age">Age</label>
-                                    <input type="number" name="age" placeholder="Age" class="form-input" id="age"  /> <!-- required -->
+                                    <input type="number" name="age" placeholder="Age" class="form-input" id="age" required/> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <label for="religion">Religion</label>
-                                    <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" value='{{ $members->religion }}'/> <!-- required -->
+                                    <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" value='{{ $members->religion }}' required/> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@
                             <div class="col-md-6 mt-4">
                                 <div class="input-group">
                                     <label for="place_birth">Place of Birth</label>
-                                    <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth"  /> <!-- required -->
+                                    <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth"  required/> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -186,7 +186,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="duration_residency">Duration of Residency With Present Address</label>
-                                <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency"  /> <!-- required -->
+                                <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency"  required/> <!-- required -->
                                 <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="living_parents">Living With Parents</label>
-                                <select name="living_parents" id="living_parents" > <!-- required -->
+                                <select name="living_parents" id="living_parents" required> <!-- required -->
                                     <option value="">Living With Parents?</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -206,7 +206,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="house">House</label>
-                                <select name="house" id="house" > <!-- required -->
+                                <select name="house" id="house" required> <!-- required -->
                                     <option value="">House</option>
                                     <option value="Own">Own</option>
                                     <option value="Rent">Rent</option>
@@ -227,7 +227,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="lot">Lot</label>
-                                <select name="lot" id="lot"> <!-- required -->
+                                <select name="lot" id="lot" required> <!-- required -->
                                     <option value="">Lot</option>
                                     <option value="Own">Own</option>
                                     <option value="Rent">Rent</option>
@@ -248,7 +248,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="tin">TIN</label>
-                                <input type="number" name="tin" placeholder="TIN" class="form-input" id="tin"/> <!-- required -->
+                                <input type="number" name="tin" placeholder="TIN" class="form-input" id="tin"/>
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -256,7 +256,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="educational_attainment">Educational Attainment</label>
-                                <select name="educational_attainment" id="educational_attainment" > <!-- required -->
+                                <select name="educational_attainment" id="educational_attainment" required> <!-- required -->
                                     <option value="">Educational Attainment</option>
                                     <option value="Elementary Level">Elementary Level</option>
                                     <option value="Elementary Graduate">Elementary Graduate</option>
@@ -273,8 +273,8 @@
 
                             <div class="col">
                                 <div class="input-group">
-                                    <label for="image">ID Picture</label>
-                                    <input type="file" name="image" class="form-input" id="image"  /> <!-- required -->
+                                    <label for="image">2x2 ID Picture</label>
+                                    <input type="file" name="image" class="form-input" id="image"  required/> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -984,7 +984,17 @@
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[1][ben_suffix]">Suffix</label>
-                                <input type="text" name="beneficiaries[1][ben_suffix]" placeholder="Suffix" class="form-input" id="beneficiaries[1][ben_suffix]" />
+                                    <select class="form-input" name="beneficiaries[1][ben_suffix]" id="beneficiaries[1][ben_suffix]">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -1038,7 +1048,17 @@
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[2][ben_suffix]">Suffix</label>
-                                <input type="text" name="beneficiaries[2][ben_suffix]" placeholder="Suffix" class="form-input" id="beneficiaries[2][ben_suffix]" />
+                                    <select class="form-input" name="beneficiaries[2][ben_suffix]" id="beneficiaries[2][ben_suffix]">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -1092,7 +1112,17 @@
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[3][ben_suffix]">Suffix</label>
-                                <input type="text" name="beneficiaries[3][ben_suffix]" placeholder="Suffix" class="form-input" id="beneficiaries[3][ben_suffix]" />
+                                    <select class="form-input" name="beneficiaries[3][ben_suffix]" id="beneficiaries[3][ben_suffix]">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -1148,7 +1178,17 @@
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[4][ben_suffix]">Suffix</label>
-                                <input type="text" name="beneficiaries[4][ben_suffix]" placeholder="Suffix" class="form-input" id="beneficiaries[4][ben_suffix]" />
+                                    <select class="form-input" name="beneficiaries[4][ben_suffix]" id="beneficiaries[4][ben_suffix]">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -1201,7 +1241,17 @@
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[5][ben_suffix]">Suffix</label>
-                                <input type="text" name="beneficiaries[5][ben_suffix]" placeholder="Suffix" class="form-input" id="beneficiaries[5][ben_suffix]" />
+                                    <select class="form-input" name="beneficiaries[5][ben_suffix]" id="beneficiaries[5][ben_suffix]">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -1256,7 +1306,17 @@
                             <div class="col-md">
                                 <div class="input-group">
                                 <label for="beneficiaries[6][ben_suffix]">Suffix</label>
-                                <input type="text" name="beneficiaries[6][ben_suffix]" placeholder="Suffix" class="form-input" id="beneficiaries[6][ben_suffix]" />
+                                    <select class="form-input" name="beneficiaries[6][ben_suffix]" id="beneficiaries[6][ben_suffix]">
+                                        <option selected disabled value="">Select...</option>
+                                        <option value="Sr.">Sr.</option>
+                                        <option value="Jr.">Jr.</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+
+                                    </select>
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>

@@ -92,17 +92,19 @@
                         @endforeach
                             <div class="input-group">
                                 <label for="branch">Branch</label>
-                                <select name="branch" id="branch">
+                                <select name="branch" id="branch" required>
                                     <option value="">Choose a Branch</option>
                                     @foreach ($branch as $branch)
                                         <option value="{{$branch->id}}">{{$branch->name}}</option>
                                     @endforeach
                                 </select>
+                                <span class="field-message">This field is required</span>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <label for="subject">Subject</label>
                                     <input type="text" name="subject" class="form-input" id="subject" required>
+                                    <span class="field-message">This field is required</span>
                                 </div>
                             </div>
                         </div>
@@ -112,18 +114,21 @@
                                 <div class="input-group">
                                     <label for="date">Date</label>
                                     <input type="date" name="date" class="form-input" id="date" required>
+                                    <span class="field-message">This field is required</span>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-group">
                                     <label for="start_time">Start Time</label>
                                     <input type="time" name="start_time" class="form-input" id="start_time" required>
+                                    <span class="field-message">This field is required</span>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-group">
                                     <label for="end_time">End Time</label>
                                     <input type="time" name="end_time" class="form-input" id="end_time" required>
+                                    <span class="field-message">This field is required</span>
                                 </div>
                             </div>
                         </div>

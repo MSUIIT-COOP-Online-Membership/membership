@@ -54,7 +54,7 @@
             <div class="progress-wrap">
                 <div class="step active-prog-first ">WELCOME</div>
                 <div class="step ">Personal Information</div>
-                <!-- <div class="step">Seminar Video</div> -->
+                <div class="step">Seminar Video</div> 
                 <div class="step">Evaluation Form</div>
                 <div class="step">Result</div>
             </div>
@@ -90,7 +90,7 @@
                     </div>
 
                     <!-- tab -->
-                    <!-- <div class="tabpanel">
+                      <div class="tabpanel">
 
                         <div class="tab-header">
                           <h3>Seminar</h3>
@@ -123,7 +123,7 @@
                           </div>
 
                         
-                    </div> -->
+                    </div> 
                     <!-- tab -->
                     @include('guest.evaluationform')
                     

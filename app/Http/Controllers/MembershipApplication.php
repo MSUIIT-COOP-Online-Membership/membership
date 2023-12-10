@@ -6,6 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Beneficiary;
+use App\Models\Employments;
+use App\Models\Employers;
+use App\Models\Businesses;
+use App\Models\Childrens;
+use App\Models\Emergencies;
+use App\Models\Fathers;
+use App\Models\Mothers;
+use App\Models\Houses;
+use App\Models\Spouses;
 use Illuminate\Support\Facades\Redirect;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -23,7 +32,7 @@ class MembershipApplication extends Controller
         $member = Member::where('usercode', $code)->first();
 
         if ($member) {
-            return redirect()->route('login');
+            return view('members.membershipform', ['members' => $member], ['usercode' => $code]);
         } else {
             return redirect()->back()->with('error', 'Code not found.');
         }
@@ -65,9 +74,9 @@ class MembershipApplication extends Controller
         }
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Request $request, $user_code)
     {
-        $members = Member::find($id);
+        $members = Member::where('usercode', $user_code)->first();
 
         // Check if the member record exists
         if (!$members) {
@@ -122,72 +131,8 @@ class MembershipApplication extends Controller
             'email' => $request->input('email'),
             'place_birth' => $request->input('place_birth'),
             'present_address' => $request->input('present_address'),
-            'duration_residency' => $request->input('duration_residency'),
-            'living_parents' => $request->input('living_parents'),
-            'house' => $request->input('house'),
-            'house_month' => $request->input('house_month'),
-            'lot' => $request->input('lot'),
-            'lot_month' => $request->input('lot_month'),
             'tin' => $request->input('tin'),
             'educational_attainment' => $request->input('educational_attainment'),
-            'emp_stat' => $request->input('emp_stat'),
-            'emp_type' => $request->input('emp_type'),
-            'profession' => $request->input('profession'),
-            'emp_others' => $request->input('emp_others'),
-            'business_type' => $request->input('business_type'),
-            'asset_size' => $request->input('asset_size'),
-            'employer_name' => $request->input('employer_name'),
-            'service_length' => $request->input('service_length'),
-            'employer_status' => $request->input('employer_status'),
-            'employer_address' => $request->input('employer_address'),
-            'employer_contact' => $request->input('employer_contact'),
-            'monthly_salary' => $request->input('monthly_salary'),
-            'business_name' => $request->input('business_name'),
-            'business_tin' => $request->input('business_tin'),
-            'business_address' => $request->input('business_address'),
-            'business_contact' => $request->input('business_contact'),
-            'op_duration_year' => $request->input('op_duration_year'),
-            'op_duration_month' => $request->input('op_duration_month'),
-            'no_workers' => $request->input('no_workers'),
-            'yearly_income' => $request->input('yearly_income'),
-            'source_income' => $request->input('source_income'),
-            'monthly_income' => $request->input('monthly_income'),
-            'father_fname' => $request->input('father_fname'),
-            'father_mname' => $request->input('father_mname'),
-            'father_lname' => $request->input('father_lname'),
-            'father_suffix' => $request->input('father_suffix'),
-            'father_dob' => $request->input('father_dob'),
-            'father_age' => $request->input('father_age'),
-            'father_contact' => $request->input('father_contact'),
-            'father_occu' => $request->input('father_occu'),
-            'mother_fname' => $request->input('mother_fname'),
-            'mother_mname' => $request->input('mother_mname'),
-            'mother_lname' => $request->input('mother_lname'),
-            'mother_suffix' => $request->input('mother_suffix'),
-            'mother_dob' => $request->input('mother_dob'),
-            'mother_age' => $request->input('mother_age'),
-            'mother_contact' => $request->input('mother_contact'),
-            'mother_occu' => $request->input('mother_occu'),
-            'spouse_fname' => $request->input('spouse_fname'),
-            'spouse_mname' => $request->input('spouse_mname'),
-            'spouse_lname' => $request->input('spouse_lname'),
-            'spouse_suffix' => $request->input('spouse_suffix'),
-            'spouse_dob' => $request->input('spouse_dob'),
-            'spouse_age' => $request->input('spouse_age'),
-            'spouse_contact' => $request->input('spouse_contact'),
-            'spouse_occu' => $request->input('spouse_occu'),
-            'spouse_emp_name' => $request->input('spouse_emp_name'),
-            'spouse_monthly_income' => $request->input('spouse_monthly_income'),
-            'no_child' => $request->input('no_child'),
-            'no_child_contrib' => $request->input('no_child_contrib'),
-            'total_monthly_contrib' => $request->input('total_monthly_contrib'),
-            'no_child_work' => $request->input('no_child_work'),
-            'no_child_study' => $request->input('no_child_study'),
-            'no_child_notstudy' => $request->input('no_child_notstudy'),
-            'house_yearly_income' => $request->input('house_yearly_income'),
-            'emer_name' => $request->input('emer_name'),
-            'emer_contact' => $request->input('emer_contact'),
-            'emer_address' => $request->input('emer_address'),
             'ben_fname' => $request->input('ben_fname'),
             'ben_mname' => $request->input('ben_mname'),
             'ben_lname' => $request->input('ben_lname'),
@@ -198,8 +143,109 @@ class MembershipApplication extends Controller
 
         ]);
 
+        $employments = new Employments();
+        $employments->member_id = request('members_id');
+        $employments->emp_stat = request('emp_stat');
+        $employments->emp_type = request('emp_type');
+        $employments->profession = request('profession');
+        $employments->emp_others = request('emp_others');
+        $employments->business_type = request('business_type');
+        $employments->asset_size = request('asset_size');
+        $employments->save();
+
+        $employers = new Employers();
+        $employers->member_id = request('members_id');
+        $employers->employer_name = request('employer_name');
+        $employers->service_length = request('service_length');
+        $employers->employer_status = request('employer_status');
+        $employers->employer_address = request('employer_address');
+        $employers->employer_contact = request('employer_contact');
+        $employers->monthly_salary = request('monthly_salary');
+        $employers->save();
+
+        $businesses = new Businesses();
+        $businesses->member_id = request('members_id');
+        $businesses->business_name = request('business_name');
+        $businesses->business_tin = request('business_tin');
+        $businesses->business_address = request('business_address');
+        $businesses->business_contact = request('business_contact');
+        $businesses->op_duration_year = request('op_duration_year');
+        $businesses->op_duration_month = request('op_duration_month');
+        $businesses->no_workers = request('no_workers');
+        $businesses->yearly_income = request('yearly_income');
+        $businesses->source_income = request('source_income');
+        $businesses->monthly_income = request('monthly_income');
+        $businesses->save();
+
+        $fathers = new Fathers();
+        $fathers->member_id = request('members_id');
+        $fathers->father_fname = request('father_fname');
+        $fathers->father_lname = request('father_lname');
+        $fathers->father_mname = request('father_mname');
+        $fathers->father_suffix = request('father_suffix');
+        $fathers->father_dob = request('father_dob');
+        $fathers->father_age = request('father_age');
+        $fathers->father_contact = request('father_contact');
+        $fathers->father_occu = request('father_occu');
+        $fathers->save();
+
+        $mothers = new Mothers();
+        $mothers->member_id = request('members_id');
+        $mothers->mother_fname = request('mother_fname');
+        $mothers->mother_lname = request('mother_lname');
+        $mothers->mother_mname = request('mother_mname');
+        $mothers->mother_suffix = request('mother_suffix');
+        $mothers->mother_dob = request('mother_dob');
+        $mothers->mother_age = request('mother_age');
+        $mothers->mother_contact = request('mother_contact');
+        $mothers->mother_occu = request('mother_occu');
+        $mothers->save();
+
+        $spouses = new Spouses();
+        $spouses->member_id = request('members_id');
+        $spouses->spouse_fname = request('spouse_fname');
+        $spouses->spouse_lname = request('spouse_lname');
+        $spouses->spouse_mname = request('spouse_mname');
+        $spouses->spouse_suffix = request('spouse_suffix');
+        $spouses->spouse_dob = request('spouse_dob');
+        $spouses->spouse_age = request('spouse_age');
+        $spouses->spouse_contact = request('spouse_contact');
+        $spouses->spouse_occu = request('spouse_occu');
+        $spouses->spouse_emp_name = request('spouse_emp_name');
+        $spouses->spouse_emp_stat = request('spouse_emp_stat');
+        $spouses->spouse_monthly_income = request('spouse_monthly_income');
+        $spouses->save();
+
+        $child = new Childrens();
+        $child->member_id = request('members_id');
+        $child->no_child = request('no_child');
+        $child->no_child_contrib = request('no_child_contrib');
+        $child->total_monthly_contrib = request('total_monthly_contrib');
+        $child->no_child_work = request('no_child_work');
+        $child->no_child_study = request('no_child_study');
+        $child->no_child_notstudy = request('no_child_notstudy');
+        $child->save();
+
+        $emer = new Emergencies();
+        $emer->member_id = request('members_id');
+        $emer->emer_name = request('emer_name');
+        $emer->emer_contact = request('emer_contact');
+        $emer->emer_address = request('emer_address');
+        $emer->save();
+
+        $house = new Houses();
+        $house->member_id = request('members_id');
+        $house->duration_residency = request('duration_residency');
+        $house->living_parents = request('living_parents');
+        $house->house = request('house');
+        $house->house_month = request('house_month');
+        $house->lot = request('lot');
+        $house->lot_month = request('lot_month');
+        $house->house_yearly_income = request('house_yearly_income');
+        $house->save();
+
         $beneficiariesData = $request->input('beneficiaries');
-        $validIndices = [];
+        $validBens = [];
 
         if ($request->filled('beneficiaries')) {
             foreach ($beneficiariesData as $index => $beneficiaryData) {
@@ -212,12 +258,12 @@ class MembershipApplication extends Controller
                     !is_null($beneficiaryData['ben_relationship'])
                 ) {
                     // Add the valid index to the list
-                    $validIndices[] = $index;
+                    $validBens[] = $index;
                 }
             }
 
             // Store data for valid indices in the database
-            foreach ($validIndices as $index) {
+            foreach ($validBens as $index) {
                 $beneficiaryData = $beneficiariesData[$index];
 
                 $beneficiaries = new Beneficiary();
@@ -233,41 +279,95 @@ class MembershipApplication extends Controller
         }
 
         $members->save();
-        return redirect('/view/' . $members->id);
+        return redirect('/view/' . $members->usercode);
     }
 
-    public function view(int $id)
+    public function view($usercode)
     {
-        $members = Member::findOrfail($id);
-        $beneficiaries = Beneficiary::where('member_id', $id)->get();
-        return view('members.view', ['members' => $members], ['beneficiaries' => $beneficiaries]);
+        $members = Member::where('usercode', $usercode)->get();
+        // Check if at least one member is found
+        if ($members->isNotEmpty()) {
+        // Get the id from the first member (assuming usercodes are unique)
+            $id = $members->first()->id;
+
+            $businesses = Businesses::where('member_id', $id)->get();
+            $childrens = Childrens::where('member_id', $id)->get();
+            $emergencies = Emergencies::where('member_id', $id)->get();
+            $employments = Employments::where('member_id', $id)->get();
+            $employers = Employers::where('member_id', $id)->get();
+            $fathers = Fathers::where('member_id', $id)->get();
+            $houses = Houses::where('member_id', $id)->get();
+            $mothers = Mothers::where('member_id', $id)->get();
+            $spouses = Spouses::where('member_id', $id)->get();
+            $beneficiaries = Beneficiary::where('member_id', $id)->get(); 
+
+            return view('members.view', [
+                'members' => $members,
+                'businesses' => $businesses,
+                'childrens' => $childrens,
+                'emergencies' => $emergencies,
+                'employments' => $employments,
+                'employers' => $employers,
+                'fathers' => $fathers,
+                'houses' => $houses,
+                'mothers' => $mothers,
+                'spouses' => $spouses,
+                'beneficiaries' => $beneficiaries,
+            ]);
+        }
     }
 
-    public function generatePDF(int $id)
+    public function generatePDF($usercode)
     {
-        $members = Member::findOrFail($id);
-        $beneficiaries = Beneficiary::where('member_id', $id)->get();
-        $data = ['members' => $members, 'beneficiaries' => $beneficiaries];
+        $members = Member::where('usercode', $usercode)->get();
+        // Check if at least one member is found
+        if ($members->isNotEmpty()) {
+        // Get the id from the first member (assuming usercodes are unique)
+            $id = $members->first()->id;
 
-        // Create a new instance of Dompdf
-        $options = new Options();
-        $options->set('isHtml5ParserEnabled', true);
-        $options->set('isPhpEnabled', true);
-        $dompdf = new Dompdf($options);
+            $businesses = Businesses::where('member_id', $id)->get();
+            $childrens = Childrens::where('member_id', $id)->get();
+            $emergencies = Emergencies::where('member_id', $id)->get();
+            $employments = Employments::where('member_id', $id)->get();
+            $employers = Employers::where('member_id', $id)->get();
+            $fathers = Fathers::where('member_id', $id)->get();
+            $houses = Houses::where('member_id', $id)->get();
+            $mothers = Mothers::where('member_id', $id)->get();
+            $spouses = Spouses::where('member_id', $id)->get();
+            $beneficiaries = Beneficiary::where('member_id', $id)->get(); 
 
-        // Load HTML content
-        $html = view('members.pdf_download.pdf_view', $data)->render();
+            $beneficiaries = Beneficiary::where('member_id', $id)->get();
+            $data = ['members' => $members,
+            'businesses' => $businesses,
+            'childrens' => $childrens,
+            'emergencies' => $emergencies,
+            'employments' => $employments,
+            'employers' => $employers,
+            'fathers' => $fathers,
+            'houses' => $houses,
+            'mothers' => $mothers,
+            'spouses' => $spouses,
+            'beneficiaries' => $beneficiaries];
 
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
+            // Create a new instance of Dompdf
+            $options = new Options();
+            $options->set('isHtml5ParserEnabled', true);
+            $options->set('isPhpEnabled', true);
+            $dompdf = new Dompdf($options);
 
-        // Set paper size and orientation
-        $dompdf->setPaper('A4', 'portrait');
+            // Load HTML content
+            $html = view('members.pdf_download.pdf_view', $data)->render();
+            $htmlWithStyles = '<style>' . file_get_contents('C:\Users\Acer\membership\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
 
-        // Render PDF
-        $dompdf->render();
+            // Load HTML to Dompdf
+            $dompdf->loadHtml($htmlWithStyles);
+            $dompdf->setPaper('A4', 'Portrait');
 
-        // Stream the file for download
-        $dompdf->stream('membership_application.pdf', ['Attachment' => 0]);
+            // Render PDF
+            $dompdf->render();
+
+            // Stream the file for download
+            $dompdf->stream('membership_application.pdf', ['Attachment' => 0]);
+        }
     }
 }

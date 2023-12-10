@@ -172,15 +172,11 @@
                                         </div>
                                     </div>
                                 </div>
-
-                      
                                 <div class="form-group row mt-4">
                                     <div class=" col-sm-2 text-left">
                                         <button type="submit" class="btn btn-primary btn-block">{{ __('Submit') }}</button>
                                     </div>
                                 </div>
-
-
                       </div>
                     </form>
                   </div>

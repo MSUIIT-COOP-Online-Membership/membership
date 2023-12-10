@@ -44,16 +44,17 @@ Auth::routes();
 Route::get('userpanel/regular', [App\Http\Controllers\HomeController::class, 'showRegular'])->name('regular');
 
 Route::middleware(['auth', 'checkRole:Regular Member'])->group(function () {
-    Route::get('userprofile', [\App\Http\Controllers\UserProfileController::class, 'show'])->name('userprofile.show');
-    Route::put('userprofile', [\App\Http\Controllers\UserProfileController::class, 'update'])->name('userprofile.update');
+    Route::get('userprofile/regular', [\App\Http\Controllers\UserProfileController::class, 'show'])->name('userprofile.show');
+    Route::put('userprofile/regular', [\App\Http\Controllers\UserProfileController::class, 'update'])->name('userprofile.update');
 });
 
 Route::get('userpanel/associate', [App\Http\Controllers\HomeController::class, 'showAssociate'])->name('associate');
 
 Route::middleware(['auth', 'checkRole:Associate Member'])->group(function () {
-    Route::get('userprofile', [\App\Http\Controllers\UserProfileController::class, 'show'])->name('userprofile.show');
-    Route::put('userprofile', [\App\Http\Controllers\UserProfileController::class, 'update'])->name('userprofile.update');
+    Route::get('userprofile/associate', [\App\Http\Controllers\UserProfileController::class, 'show'])->name('userprofile.show');
+    Route::put('userprofile/associate', [\App\Http\Controllers\UserProfileController::class, 'update'])->name('userprofile.update');
 });
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -155,9 +156,9 @@ Route::middleware(['auth', 'checkRole:System Administrator'])->group(function ()
 Route::get('/code', [App\Http\Controllers\MembershipApplication::class, 'index'])->name('members.code');
 Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'verifyCode'])->name('members.code');
 // Route::post('/code', [App\Http\Controllers\MembershipApplication::class, 'verifyCode'])->name('members.code');
-Route::post('/membershipform/edit/{id}', [App\Http\Controllers\MembershipApplication::class, 'edit'])->name('members.membershipform.edit');
-Route::get('/get-sub-type-options', [App\Http\Controllers\MembershipForm::class, 'getSubTypeOptions'])->name('members.get-sub-type-options');
-Route::get('/view/{id}', [App\Http\Controllers\MembershipApplication::class, 'view'])->name('members.view');
-Route::get('/pdf_download/pdf_view/{id}/generate', [App\Http\Controllers\MembershipApplication::class, 'generatePDF'])->name('members.pdf_download.generatePDF');
-Route::get('/bookappointment/{id}', [App\Http\Controllers\AppointmentFormController::class, 'bookappointment'])->name('members.bookappointment');
+Route::post('/membershipform/edit/{usercode}', [App\Http\Controllers\MembershipApplication::class, 'edit'])->name('members.membershipform.edit');
+Route::get('/get-sub-type-options', [App\Http\Controllers\MembershipApplication::class, 'getSubTypeOptions'])->name('members.get-sub-type-options');
+Route::get('/view/{usercode}', [App\Http\Controllers\MembershipApplication::class, 'view'])->name('members.view');
+Route::get('/pdf_download/pdf_view/{usercode}/generate', [App\Http\Controllers\MembershipApplication::class, 'generatePDF'])->name('members.pdf_download.generatePDF');
+Route::get('/bookappointment/{usercode}', [App\Http\Controllers\AppointmentFormController::class, 'bookappointment'])->name('members.bookappointment');
 Route::post('/bookappointment', [App\Http\Controllers\AppointmentFormController::class, 'addappointment'])->name('members.bookappointment');

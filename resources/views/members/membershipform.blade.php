@@ -46,7 +46,7 @@
             </div>
             <!-- form -->
             <div class="form-container">
-                <form method="POST" action="{{ route('members.membershipform.edit', ['id' => $members->id]) }}" enctype="multipart/form-data" id="form">
+                <form method="POST" action="{{ route('members.membershipform.edit', ['usercode' => $members->usercode]) }}" enctype="multipart/form-data" id="form">
                     @csrf
 
                     <!-- Welcome Page -->
@@ -63,6 +63,7 @@
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <input type="hidden" name="members_id" class="form-input" id="members_id" value='{{ $members->id }}' readonly>
+                                <input type="hidden" name="members_usercode" class="form-input" id="members_usercode" value='{{ $members->usercode }}' readonly>
                                 <div class="input-group">
                                     <label for="lname">Last Name</label>
                                     <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
@@ -195,7 +196,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="house">House</label>
-                                <select name="House" id="House" required> <!-- required -->
+                                <select name="house" id="house" > <!-- required -->
                                     <option value="">House</option>
                                     <option value="Own">Own</option>
                                     <option value="Rent">Rent</option>
@@ -216,8 +217,8 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="lot">Lot</label>
-                                <select name="lot" id="lot" required> <!-- required -->
-                                    <option value="">House</option>
+                                <select name="lot" id="lot"> <!-- required -->
+                                    <option value="">Lot</option>
                                     <option value="Own">Own</option>
                                     <option value="Rent">Rent</option>
                                     <option value="Mortgage">Mortgage</option>
@@ -361,7 +362,7 @@
                             
                             <div class="col-md-6">
                                 <div class="input-group" id="businessInputContainer" style="display: none;">
-                                <label for="business_type">Profession</label>
+                                <label for="business_type">Business Type</label>
                                 <input type="text" name="business_type" placeholder="Business Type" class="form-input" id="business_type" />
                                 <span class="field-message">This field is required</span>
                             </div>

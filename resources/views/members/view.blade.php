@@ -56,6 +56,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md">
+                            @foreach($members as $index => $members)
                                 <div class="input-group">
                                     <label for="lname">Last Name</label>
                                     <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
@@ -162,11 +163,13 @@
 
                             </div>
                             </div>
+                            @endforeach
 
+                            @foreach($houses as $index => $house)
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="duration_residency">Duration of Residency With Present Address</label>
-                                <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency" value='{{ $members->duration_residency }}' readonly />
+                                <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency" value='{{ $house->duration_residency }}' readonly />
 
                             </div>
                             </div>
@@ -174,28 +177,28 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="living_parents">Living With Parents</label>
-                                <input type="text" name="living_parents" class="form-input" id="living_parents" value='{{ $members->living_parents }}' readonly />
+                                <input type="text" name="living_parents" class="form-input" id="living_parents" value='{{ $house->living_parents }}' readonly />
                             </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="house">House</label>
-                                <input name="House" id="House" value='{{ $members->house }}' readonly>
+                                <input name="House" id="House" value='{{ $house->house }}' readonly>
                             </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="house_month">House Rental/Mortgage Per Month</label>
-                                <input type="number" name="house_month" placeholder="House Rental/Mortgage Per Month" class="form-input" id="house_month" value='{{ $members->house_month }}' readonly />
+                                <input type="number" name="house_month" placeholder="House Rental/Mortgage Per Month" class="form-input" id="house_month" value='{{ $house->house_month }}' readonly />
                             </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="lot">Lot</label>
-                                <select name="lot" id="lot" value='{{ $members->lot }}' readonly>
+                                <select name="lot" id="lot" value='{{ $house->lot }}' readonly>
                                 </select>
 
                             </div>
@@ -204,10 +207,11 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="lot_month">Lot Rental/Mortgage Per Month</label>
-                                <input type="number" name="lot_month" placeholder="Lot Rental/Mortgage Per Month" class="form-input" id="lot_month" value='{{ $members->lot_month }}' readonly />
+                                <input type="number" name="lot_month" placeholder="Lot Rental/Mortgage Per Month" class="form-input" id="lot_month" value='{{ $house->lot_month }}' readonly />
 
                             </div>
                             </div>
+                            @endforeach
 
                             <div class="col-md-4">
                                 <div class="input-group">
@@ -242,6 +246,7 @@
                         <div class="tab-subhead mb-4">
                             <h3>Basic Information</h3><span><hr></span>
                         </div>
+                        
                         <div class="row">
                             <div class="col-md">
                                 <div class="input-group">

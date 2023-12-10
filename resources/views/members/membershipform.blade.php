@@ -46,7 +46,7 @@
             </div>
             <!-- form -->
             <div class="form-container">
-                <form method="POST" action="{{ route('members.membershipform.edit', ['id' => $members->id]) }}" enctype="multipart/form-data" id="form">
+                <form method="POST" action="{{ route('members.membershipform.edit', ['usercode' => $members->usercode]) }}" enctype="multipart/form-data" id="form">
                     @csrf
 
                     <!-- Welcome Page -->
@@ -63,6 +63,7 @@
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <input type="hidden" name="members_id" class="form-input" id="members_id" value='{{ $members->id }}' readonly>
+                                <input type="hidden" name="members_usercode" class="form-input" id="members_usercode" value='{{ $members->usercode }}' readonly>
                                 <div class="input-group">
                                     <label for="lname">Last Name</label>
                                     <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
@@ -119,7 +120,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <label for="age">Age</label>
-                                    <input type="number" name="age" placeholder="Age" class="form-input" id="age"  /> <!-- required -->
+                                    <input type="number" name="age" placeholder="Age" class="form-input" id="age" required /> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -150,7 +151,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <label for="religion">Religion</label>
-                                    <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" /> <!-- required -->
+                                    <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" required/> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -159,7 +160,7 @@
                             <div class="col-md-6 mt-4">
                                 <div class="input-group">
                                     <label for="place_birth">Place of Birth</label>
-                                    <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth"  /> <!-- required -->
+                                    <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth"  required/> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -175,7 +176,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="duration_residency">Duration of Residency With Present Address</label>
-                                <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency"  /> <!-- required -->
+                                <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency"  required/> <!-- required -->
                                 <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -183,7 +184,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="living_parents">Living With Parents</label>
-                                <select name="living_parents" id="living_parents"> <!-- required -->
+                                <select name="living_parents" id="living_parents" required> <!-- required -->
                                     <option value="">Living With Parents?</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -195,7 +196,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="house">House</label>
-                                <select name="House" id="House" > <!-- required -->
+                                <select name="house" id="house" > <!-- required -->
                                     <option value="">House</option>
                                     <option value="Own">Own</option>
                                     <option value="Rent">Rent</option>
@@ -217,7 +218,7 @@
                                 <div class="input-group">
                                 <label for="lot">Lot</label>
                                 <select name="lot" id="lot"> <!-- required -->
-                                    <option value="">House</option>
+                                    <option value="">Lot</option>
                                     <option value="Own">Own</option>
                                     <option value="Rent">Rent</option>
                                     <option value="Mortgage">Mortgage</option>
@@ -237,7 +238,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="tin">TIN</label>
-                                <input type="number" name="tin" placeholder="TIN" class="form-input" id="tin" /> <!-- required -->
+                                <input type="number" name="tin" placeholder="TIN" class="form-input" id="tin" required/> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -245,7 +246,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="educational_attainment">Educational Attainment</label>
-                                <select name="educational_attainment" id="educational_attainment" > <!-- required -->
+                                <select name="educational_attainment" id="educational_attainment" required> <!-- required -->
                                     <option value="">Educational Attainment</option>
                                     <option value="Elementary Level">Elementary Level</option>
                                     <option value="Elementary Graduate">Elementary Graduate</option>
@@ -263,7 +264,7 @@
                             <div class="col">
                                 <div class="input-group">
                                     <label for="image">ID Picture</label>
-                                    <input type="file" name="image" class="form-input" id="image" /> <!-- required -->
+                                    <input type="file" name="image" class="form-input" id="image" required /> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -288,7 +289,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <label for="emp_stat">Employment Status</label>
-                                    <select name="emp_stat" id="emp_stat" > <!-- required -->
+                                    <select name="emp_stat" id="emp_stat" required> <!-- required -->
                                         <option value="">Employment Status</option>
                                         <option value="Private Employee">Private Employee</option>
                                         <option value="Government Employee">Government Employee</option>
@@ -305,7 +306,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <label for="profession">Profession</label>
-                                    <input type="text" name="profession" placeholder="Profession" class="form-input" id="profession"  /> <!-- required -->
+                                    <input type="text" name="profession" placeholder="Profession" class="form-input" id="profession" required /> <!-- required -->
                                     <span class="field-message">This field is required</span>
                                 </div>
                             </div>
@@ -313,7 +314,7 @@
                             <div class="col-md-6">
                             <div class="input-group">
                                 <label for="emp_type">Employment Type</label>
-                                <select name="emp_type" id="emp_type"  onchange="updateSubTypeOptions()"> <!-- required -->
+                                <select name="emp_type" id="emp_type"  onchange="updateSubTypeOptions()" required> <!-- required -->
                                     <option value="">Employment Type</option>
                                     <option value="Office Worker">Office Worker</option>
                                     <option value="Skilled Worker">Skilled Worker</option>
@@ -361,7 +362,7 @@
                             
                             <div class="col-md-6">
                                 <div class="input-group" id="businessInputContainer" style="display: none;">
-                                <label for="business_type">Profession</label>
+                                <label for="business_type">Business Type</label>
                                 <input type="text" name="business_type" placeholder="Business Type" class="form-input" id="business_type" />
                                 <span class="field-message">This field is required</span>
                             </div>
@@ -567,7 +568,7 @@
                             <div class="col-md-4">
                                <div class="input-group">
                                 <label for="father_lname">Father's Last Name</label>
-                                <input type="text" name="father_lname" placeholder="Father's Last Name" class="form-input" id="father_lname"  /> <!-- required -->
+                                <input type="text" name="father_lname" placeholder="Father's Last Name" class="form-input" id="father_lname" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div> 
                             </div>
@@ -575,7 +576,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="father_fname">Father's First Name</label>
-                                <input type="text" name="father_fname" placeholder="Father's First Name" class="form-input" id="father_fname"  /> <!-- required -->
+                                <input type="text" name="father_fname" placeholder="Father's First Name" class="form-input" id="father_fname" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -583,7 +584,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="father_mname">Father's Middle Name</label>
-                                <input type="text" name="father_mname" placeholder="Father's Middle Name" class="form-input" id="father_mname"  /> <!-- required -->
+                                <input type="text" name="father_mname" placeholder="Father's Middle Name" class="form-input" id="father_mname" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -591,7 +592,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="father_dob">Date of Birth</label>
-                                <input type="date" name="father_dob" class="form-input" id="father_dob"  /> <!-- required -->
+                                <input type="date" name="father_dob" class="form-input" id="father_dob" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -599,7 +600,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="father_age">Age</label>
-                                <input type="text" name="father_age" placeholder="Age" class="form-input" id="father_age"  /> <!-- required -->
+                                <input type="text" name="father_age" placeholder="Age" class="form-input" id="father_age" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -607,7 +608,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="father_contact">Mobile Number</label>
-                                <input type="text" name="father_contact" placeholder="Mobile Number" class="form-input" id="father_contact"  /> <!-- required -->
+                                <input type="text" name="father_contact" placeholder="Mobile Number" class="form-input" id="father_contact" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -615,7 +616,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="father_occu">Occupation</label>
-                                <input type="text" name="father_occu" placeholder="Occupation" class="form-input" id="father_occu"  /> <!-- required -->
+                                <input type="text" name="father_occu" placeholder="Occupation" class="form-input" id="father_occu" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -624,7 +625,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="mother_lname">Mother's Last Name</label>
-                                <input type="text" name="mother_lname" placeholder="Mother's Last Name" class="form-input" id="mother_lname"  /> <!-- required -->
+                                <input type="text" name="mother_lname" placeholder="Mother's Last Name" class="form-input" id="mother_lname" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -632,7 +633,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="mother_fname">Mother's First Name</label>
-                                <input type="text" name="mother_fname" placeholder="Mother's First Name" class="form-input" id="mother_fname"  /> <!-- required -->
+                                <input type="text" name="mother_fname" placeholder="Mother's First Name" class="form-input" id="mother_fname" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -640,7 +641,7 @@
                             <div class="col-md-4">
                                <div class="input-group">
                                 <label for="mother_mname">Mother's Middle Name</label>
-                                <input type="text" name="mother_mname" placeholder="Mother's Middle Name" class="form-input" id="mother_mname"  /> <!-- required -->
+                                <input type="text" name="mother_mname" placeholder="Mother's Middle Name" class="form-input" id="mother_mname" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div> 
                             </div>
@@ -648,7 +649,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="mother_dob">Date of Birth</label>
-                                <input type="date" name="mother_dob" class="form-input" id="mother_dob"  /> <!-- required -->
+                                <input type="date" name="mother_dob" class="form-input" id="mother_dob" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -656,7 +657,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="mother_age">Age</label>
-                                <input type="text" name="mother_age" placeholder="Age" class="form-input" id="mother_age" /> <!-- required -->
+                                <input type="text" name="mother_age" placeholder="Age" class="form-input" id="mother_age" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -664,7 +665,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="mother_contact">Mobile Number</label>
-                                <input type="text" name="mother_contact" placeholder="Mobile Number" class="form-input" id="mother_contact"  /> <!-- required -->
+                                <input type="text" name="mother_contact" placeholder="Mobile Number" class="form-input" id="mother_contact" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>
@@ -672,7 +673,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="mother_occu">Occupation</label>
-                                <input type="text" name="mother_occu" placeholder="Occupation" class="form-input" id="mother_occu"  /> <!-- required -->
+                                <input type="text" name="mother_occu" placeholder="Occupation" class="form-input" id="mother_occu" required /> <!-- required -->
                                 <span class="field-message">This field is required</span>
                             </div>
                             </div>

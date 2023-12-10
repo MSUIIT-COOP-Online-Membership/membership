@@ -53,13 +53,11 @@
             <div class="progress-wrap">
                 <div class="step active-prog-first ">WELCOME</div>
                 <div class="step ">Personal Information</div>
-                <div class="step">Seminar Video</div>
+                <div class="step">Seminar Video</div> 
                 <div class="step">Evaluation Form</div>
             </div>
             <!-- form -->
             <div class="form-container">
-                <!-- <form method="post" action="{{ route('premembershipform.store') }}" id="form" class="needs-validation" novalidate>
-                @yield('content') -->
                 <form method="post" action="{{ route('premembershipform.store') }}" id="form" >
                     @csrf 
 
@@ -90,7 +88,7 @@
                     </div>
 
                     <!-- tab -->
-                    <div class="tabpanel">
+                      <div class="tabpanel">
 
                         <div class="tab-header">
                           <h3>Seminar</h3>
@@ -123,9 +121,9 @@
                           </div>
 
                         
-                    </div>
-                    <!-- tab --> 
-                    @include('guest.evaluationform') 
+                    </div> 
+                    <!-- tab -->
+                    @include('guest.evaluationform')
                     
                      <!-- tab -->
                      <div class="tabpanel show">

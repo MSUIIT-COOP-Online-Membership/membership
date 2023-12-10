@@ -24,6 +24,7 @@ class CertificateMail extends Mailable
     public function build()
     {
         $pdfContent = $this->generatePDF();
+        $imagePath = public_path('images/npmc-logo-nobg.png/' . $this->certificate_data['img']);
 
         return $this->from('msuiitnmpc.iligan@gmail.com', 'MSU-IIT NMPC')
         ->subject('E-Certificate - Completion of the Pre-Membership Form from MSUIIT NMPC')
@@ -34,7 +35,9 @@ class CertificateMail extends Mailable
         ->with([
             'certificate_data' => $this->certificate_data,
             'userCode' => $this->userCode,
+            'imagePath' => $imagePath, 
         ]);
+    
     }
     protected function generatePDF()
     {

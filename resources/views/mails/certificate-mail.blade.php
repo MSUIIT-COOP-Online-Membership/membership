@@ -59,7 +59,7 @@
 <body style="background-image: #F4F4F4;">
     <div class="container">
         <div class="logo">
-            <img src= "{{ $message->embed(public_path('images/email/nmpc logo.png')) }}" alt="MSU-IIT NMPC Logo">
+            <img src= "{{ $message->embed($imagePath) }}" alt="MSU-IIT NMPC Logo">
         </div>
 
 

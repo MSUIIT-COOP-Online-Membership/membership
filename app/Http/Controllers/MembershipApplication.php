@@ -98,7 +98,7 @@ class MembershipApplication extends Controller
             $imageName = 'id_pic_' . time() . '.' . $image->getClientOriginalExtension();
 
             // Store the file in the public/images/e_signatures directory
-            $image->storeAs('images/id_pic', $imageName, 'public');
+            $image->move(public_path('images/id_photos/'), $imageName);
 
             $members->img = str_replace('public/', '', $imageName);
         }
@@ -110,7 +110,7 @@ class MembershipApplication extends Controller
             $esignName = 'e_sign_' . time() . '.' . $esign->getClientOriginalExtension();
 
             // Store the file in the public/images/e_signatures directory
-            $esign->storeAs('images/e_signatures', $esignName, 'public');
+            $esign->move(public_path('images/e_sign/'), $esignName);
 
             $members->e_signature = str_replace('public/', '', $esignName);
         }
@@ -143,12 +143,25 @@ class MembershipApplication extends Controller
 
         ]);
 
+        if (request('emp_type') === NULL) {
+            $emp_type = request('emp_type_others');
+        } else {
+            $emp_type = request('emp_type');
+        }
+
+        if (request('emp_others') === NULL) {
+            $emp_others = request('emp_subtype_others');
+        } else {
+            $emp_others = request('emp_others');
+        }
+        
+
         $employments = new Employments();
         $employments->member_id = request('members_id');
         $employments->emp_stat = request('emp_stat');
-        $employments->emp_type = request('emp_type');
+        $employments->emp_type = $emp_type;
         $employments->profession = request('profession');
-        $employments->emp_others = request('emp_others');
+        $employments->emp_others = $emp_others;
         $employments->business_type = request('business_type');
         $employments->asset_size = request('asset_size');
         $employments->save();
@@ -357,7 +370,7 @@ class MembershipApplication extends Controller
 
             // Load HTML content
             $html = view('members.pdf_download.pdf_view', $data)->render();
-            $htmlWithStyles = '<style>' . file_get_contents('C:\Users\Acer\membership\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
+            $htmlWithStyles = '<style>' . file_get_contents('C:\xampp\htdocs\Laravel\coopmembership\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
 
             // Load HTML to Dompdf
             $dompdf->loadHtml($htmlWithStyles);

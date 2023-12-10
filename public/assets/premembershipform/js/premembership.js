@@ -54,7 +54,7 @@ function isVideoCompleted() {
   console.log("Current time:", video.currentTime);
   console.log("Duration:", video.duration);
   
-   const hasVideoCompleted = video.currentTime >= video.duration - 30;
+   const hasVideoCompleted = video.currentTime >= video.duration;
    if (hasVideoCompleted) {
     // Save a flag in localStorage to indicate that the video has been completed
     localStorage.setItem("videoCompleted", "true");

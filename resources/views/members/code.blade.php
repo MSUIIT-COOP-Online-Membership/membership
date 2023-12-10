@@ -18,7 +18,7 @@
 
 </head>
 <body>
-@include('guest.header')
+@include('guest.head')
     <main>
     <header>
             <h1>Membership Application</h1>

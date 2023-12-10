@@ -174,6 +174,8 @@
 
       </div>
 
-      <div id="map"></div>
+      <div id="map" style="width: 90%;
+      height: 400px;
+      margin: auto;"></div>
 
 </div>

@@ -32,11 +32,14 @@ class AppointmentFormController extends Controller
 
         $branch = Branch::find($request->input('branch'));
         $branchName = $branch ? $branch->name : 'Unknown Branch';
+        $branchAddress = $branch ? $branch->address : 'Unknown Address';
         $data = [
             'lname' => $request->input('lname'),
             'fname' => $request->input('fname'),
             'mname' => $request->input('mname'),
+            'suffix' => $request->input('suffix'),
             'branch' => $branchName,
+            'address' => $branchAddress,
             'date' => $request->input('date'),
             'start_time' => $request->input('start_time'),
             'branch_id' => $request->input('branch_id'),

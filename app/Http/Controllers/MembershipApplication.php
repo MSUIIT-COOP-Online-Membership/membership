@@ -29,12 +29,42 @@ class MembershipApplication extends Controller
     public function verifyCode(Request $request)
     {
         $code = $request->input('code');
-        $member = Member::where('usercode', $code)->first();
+        $members = Member::where('usercode', $code)->first();
+        // Check if at least one member is found
+        if ($members) {
+        // Get the id from the first member (assuming usercodes are unique)
+            $img = $members->img;
 
-        if ($member) {
-            return view('members.membershipform', ['members' => $member], ['usercode' => $code]);
-        } else {
-            return redirect()->back()->with('error', 'Code not found.');
+            if($img !== NULL){
+                $id = $members->id;
+
+                $businesses = Businesses::where('member_id', $id)->get();
+                $childrens = Childrens::where('member_id', $id)->get();
+                $emergencies = Emergencies::where('member_id', $id)->get();
+                $employments = Employments::where('member_id', $id)->get();
+                $employers = Employers::where('member_id', $id)->get();
+                $fathers = Fathers::where('member_id', $id)->get();
+                $houses = Houses::where('member_id', $id)->get();
+                $mothers = Mothers::where('member_id', $id)->get();
+                $spouses = Spouses::where('member_id', $id)->get();
+                $beneficiaries = Beneficiary::where('member_id', $id)->get(); 
+
+                return view('members.view', [
+                    'members' => $members,
+                    'businesses' => $businesses,
+                    'childrens' => $childrens,
+                    'emergencies' => $emergencies,
+                    'employments' => $employments,
+                    'employers' => $employers,
+                    'fathers' => $fathers,
+                    'houses' => $houses,
+                    'mothers' => $mothers,
+                    'spouses' => $spouses,
+                    'beneficiaries' => $beneficiaries,
+                ]);
+            }else {
+                return view('members.membershipform', ['members' => $members, 'usercode' => $code]);
+            }
         }
     }
 
@@ -98,7 +128,7 @@ class MembershipApplication extends Controller
             $imageName = 'id_pic_' . time() . '.' . $image->getClientOriginalExtension();
 
             // Store the file in the public/images/e_signatures directory
-            $image->storeAs('images/id_pic', $imageName, 'public');
+            $image->move(public_path('images/id_photos/'), $imageName);
 
             $members->img = str_replace('public/', '', $imageName);
         }
@@ -110,7 +140,7 @@ class MembershipApplication extends Controller
             $esignName = 'e_sign_' . time() . '.' . $esign->getClientOriginalExtension();
 
             // Store the file in the public/images/e_signatures directory
-            $esign->storeAs('images/e_signatures', $esignName, 'public');
+            $esign->move(public_path('images/e_sign/'), $esignName);
 
             $members->e_signature = str_replace('public/', '', $esignName);
         }
@@ -143,12 +173,25 @@ class MembershipApplication extends Controller
 
         ]);
 
+        if (request('emp_type') === NULL) {
+            $emp_type = request('emp_type_others');
+        } else {
+            $emp_type = request('emp_type');
+        }
+
+        if (request('emp_others') === NULL) {
+            $emp_others = request('emp_subtype_others');
+        } else {
+            $emp_others = request('emp_others');
+        }
+        
+
         $employments = new Employments();
         $employments->member_id = request('members_id');
         $employments->emp_stat = request('emp_stat');
-        $employments->emp_type = request('emp_type');
+        $employments->emp_type = $emp_type;
         $employments->profession = request('profession');
-        $employments->emp_others = request('emp_others');
+        $employments->emp_others = $emp_others;
         $employments->business_type = request('business_type');
         $employments->asset_size = request('asset_size');
         $employments->save();
@@ -284,9 +327,9 @@ class MembershipApplication extends Controller
 
     public function view($usercode)
     {
-        $members = Member::where('usercode', $usercode)->get();
+        $members = Member::where('usercode', $usercode)->first();
         // Check if at least one member is found
-        if ($members->isNotEmpty()) {
+        if ($members) {
         // Get the id from the first member (assuming usercodes are unique)
             $id = $members->first()->id;
 
@@ -319,11 +362,34 @@ class MembershipApplication extends Controller
 
     public function generatePDF($usercode)
     {
-        $members = Member::where('usercode', $usercode)->get();
+        $members = Member::where('usercode', $usercode)->first();
         // Check if at least one member is found
-        if ($members->isNotEmpty()) {
+        if ($members) {
         // Get the id from the first member (assuming usercodes are unique)
-            $id = $members->first()->id;
+            $id = $members->id;
+
+            $imagePath = public_path('images/id_photos/' . $members->img);
+            $e_sigPath = public_path('images/e_sign/' . $members->e_signature);
+            $logoPath = public_path('images/logo/npmc-logo-nobg.jpg');
+            $logo2Path = public_path('images/logo/logo.jpg');
+            
+            $imageData = file_get_contents($imagePath);
+            $e_sigData = file_get_contents($e_sigPath);
+            $logoData = file_get_contents($logoPath);
+            $logo2Data = file_get_contents($logo2Path);
+            
+
+            // Encode the image content in base64
+            $base64ID = base64_encode($imageData);
+            $base64e_sig = base64_encode($e_sigData);
+            $base64logo = base64_encode($logoData);
+            $base64logo2 = base64_encode($logo2Data);
+
+            // Build the data URI with the base64-encoded content
+            $dataID = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . $base64ID;
+            $datae_sig = 'data:image/' . pathinfo($e_sigData, PATHINFO_EXTENSION) . ';base64,' . $base64e_sig;
+            $datalogo = 'data:image/' . pathinfo($logoData, PATHINFO_EXTENSION) . ';base64,' . $base64logo;
+            $datalogo2 = 'data:image/' . pathinfo($logo2Data, PATHINFO_EXTENSION) . ';base64,' . $base64logo2;
 
             $businesses = Businesses::where('member_id', $id)->get();
             $childrens = Childrens::where('member_id', $id)->get();
@@ -347,7 +413,11 @@ class MembershipApplication extends Controller
             'houses' => $houses,
             'mothers' => $mothers,
             'spouses' => $spouses,
-            'beneficiaries' => $beneficiaries];
+            'beneficiaries' => $beneficiaries,
+            'id_picture' => $dataID,
+            'e_sign' => $datae_sig,
+            'logo' => $datalogo,
+            'logo2' => $datalogo2];
 
             // Create a new instance of Dompdf
             $options = new Options();
@@ -357,7 +427,7 @@ class MembershipApplication extends Controller
 
             // Load HTML content
             $html = view('members.pdf_download.pdf_view', $data)->render();
-            $htmlWithStyles = '<style>' . file_get_contents('C:\xampp\htdocs\Laravel\coopmembership\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
+            $htmlWithStyles = '<style>' . file_get_contents('C:\Users\Acer\membership\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
 
             // Load HTML to Dompdf
             $dompdf->loadHtml($htmlWithStyles);

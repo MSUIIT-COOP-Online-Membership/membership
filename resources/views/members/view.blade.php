@@ -20,7 +20,7 @@
 </head>
 
 <body>
-@include('guest.header')
+@include('guest.head')
     <main>
         <header>
             <h1>Membership Form</h1>
@@ -54,11 +54,12 @@
                         <div class="tab-subhead mb-4">
                             <h3>Basic Information</h3><span><hr></span>
                         </div>
-                        <div class="fields">
-                        @foreach($members as $index => $members)
-                            <div class="input-group">
-                                <label for="lname">Last Name</label>
-                                <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
+                        <div class="row">
+                            <div class="col-md">
+                            
+                                <div class="input-group">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
 
                                 </div>
                             </div>
@@ -146,25 +147,9 @@
                             </div>
                         </div>
 
-                            <div class="input-group">
-                                <label for="mobile_no">Mobile Number </label>
-                                <input type="number" name="mobile_no" class="form-input" id="mobile_number" value='{{ $members->mobile_no }}' readonly />
-
-                            </div>
-
-                            <div class="input-group">
-                                <label for="email">Email Address</label>
-                                <input type="text" name="email" class="form-input" id="email" value='{{ $members->email }}' readonly />
-
-                            </div>
-
-                            <div class="input-group">
-                                <label for="religion">Religion</label>
-                                <input type="text" name="religion" placeholder="Religion" class="form-input" id="religion" value='{{ $members->religion }}' readonly />
-
-                            </div>
-
-                            <div class="input-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
                                 <label for="place_birth">Place of Birth</label>
                                 <input type="text" name="place_birth" placeholder="Place of Birth" class="form-input" id="place_birth" value='{{ $members->place_birth }}' readonly />
 
@@ -177,10 +162,11 @@
                                 <input type="text" name="present_address" class="form-input" id="present_address" value='{{ $members->present_address }}' readonly />
 
                             </div>
-                        @endforeach
+                            </div>
 
-                        @foreach($houses as $index => $house)
-                            <div class="input-group">
+                            @foreach($houses as $index => $house)
+                            <div class="col-md-4">
+                                <div class="input-group">
                                 <label for="duration_residency">Duration of Residency With Present Address</label>
                                 <input type="text" name="duration_residency" placeholder="No. of years/No. of months" class="form-input" id="duration_residency" value='{{ $house->duration_residency }}' readonly />
 
@@ -211,7 +197,8 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                 <label for="lot">Lot</label>
-                                <input type="number" name="lot" placeholder="Lot" class="form-input" id="lot" value='{{ $house->lot }}' readonly />
+                                <input name="lot" id="lot" value='{{ $house->lot }}' readonly>
+                            
 
                             </div>
                             </div>
@@ -222,29 +209,35 @@
                                 <input type="number" name="lot_month" placeholder="Lot Rental/Mortgage Per Month" class="form-input" id="lot_month" value='{{ $house->lot_month }}' readonly />
 
                             </div>
-                        @endforeach
-                        
-                            <div class="input-group">
+                            </div>
+                            @endforeach
+
+                            <div class="col-md-4">
+                                <div class="input-group">
                                 <label for="tin">TIN</label>
                                 <input type="number" name="tin" placeholder="TIN" class="form-input" id="tin" value='{{ $members->tin }}' readonly />
 
                             </div>
-                            <div class="input-group">
-                                <label for="educational_attainment">Educational Attainment</label>
-                                <input type="text" name="educational_attainment" id="educational_attainment" value='{{ $members->educational_attainment }}' readonly>
-
                             </div>
-                        
 
-                            <div class="col-lg-4">
+                            <div class="col-md-4">
                                 <div class="input-group">
-                                <label for="image">ID Picture</label>
-                                <input type="text" name="image" class="form-input" id="image" value='{{ $members->img }}' readonly />
-
+                                    <label for="educational_attainment">Educational Attainment</label>
+                                    <input name="educational_attainment" id="educational_attainment" value='{{ $members->educational_attainment }}' readonly>
+                                </div>
                             </div>
+                        </div>
+
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="input-group">
+                                        <label for="img">2x2 ID Picture </label>
+                                        <img src="{{ asset('images/id_photos/' . $members->img) }}" alt="ID Picture" id="img" style="width:200px; height:auto;">
+                                    </div>
+                                </div>
                             </div>
                             
-                        </div>
+                        
 
                         <div class="tab-header mt-4">
                             <h1>Employment/ Occupation/ Business Data</h1>
@@ -253,8 +246,9 @@
                             <h3>Basic Information</h3><span><hr></span>
                         </div>
                         @foreach($employments as $index => $employment)
-                        <div class="fields">
-                            <div class="input-group">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="input-group">
                                 <label for="emp_stat">Employment Status</label>
                                 <input name="emp_stat" id="emp_stat" value='{{ $employment->emp_stat }}' readonly>
                             </div>
@@ -280,29 +274,17 @@
                                 <label for="emp_others">Employment Sub-Type</label>
                                 <input name="emp_others" id="emp_others" value='{{ $employment->emp_others }}' readonly>
                             </div>
-
-                            <div class="input-group">
-                                <label for="business_type">Business Type</label>
-                                <input name="business_type" id="business_type" value='{{ $employment->business_type }}' readonly>
                             </div>
-
-                            <div class="input-group">
-                                <label for="asset_size">Asset Size</label>
-                                <input name="asset_size" id="asset_size" value='{{ $employment->asset_size }}' readonly>
-                            </div>
-                        @endforeach
                         </div>
-                    
-
-
+                        @endforeach
                     
                         <div class="tab-subhead mt-4 mb-4">
                             <h3>For Employed</h3><span><hr></span>
                         </div>
-                        <div class="fields">
-
                         @foreach($employers as $index => $employer)
-                            <div class="input-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="employer_name">Name of Employer</label>
                                 <input type="text" name="employer_name" placeholder="Name of Employer" class="form-input" id="employer_name" value='{{ $employer->employer_name }}' readonly />
                             </div>
@@ -341,15 +323,17 @@
                                 <label for="monthly_salary">Gross Monthly Salary</label>
                                 <input name="monthly_salary" id="monthly_salary" value='{{ $employer->monthly_salary }}' readonly>
                             </div>
-                        @endforeach
+                            </div>
                         </div>
+                        @endforeach
 
                         <div class="tab-subhead mt-4 mb-4">
                             <h3>For Those Who Have Existing Business</h3><span><hr></span>
                         </div>
-                        <div class="fields">
                         @foreach($businesses as $index => $business)
-                            <div class="input-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
                                 <label for="business_name">Registered Business Name</label>
                                 <input type="text" name="business_name" placeholder="Business Name" class="form-input" id="business_name" value='{{ $business->business_name }}' readonly />
                             </div>
@@ -410,8 +394,9 @@
                                 <label for="monthly_income">Gross Monthly Income</label>
                                 <input name="monthly_income" id="monthly_income" value='{{ $business->monthly_income }}' readonly>
                             </div>
-                        @endforeach
+                            </div>
                         </div>
+                        @endforeach
 
                         <div class="tab-header mt-4">
                             <h1>Family Background</h1>
@@ -419,9 +404,10 @@
                         <div class="tab-subhead mb-4">
                             <h3>Basic Information</h3><span><hr></span>
                         </div>
-                        <div class="fields">
                         @foreach($fathers as $index => $father)
-                            <div class="input-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                               <div class="input-group">
                                 <label for="father_lname">Father's Last Name</label>
                                 <input type="text" name="father_lname" placeholder="Father's Last Name" class="form-input" id="father_lname" value='{{ $father->father_lname }}' readonly />
 
@@ -442,10 +428,12 @@
                                 <input type="text" name="father_mname" placeholder="Father's Middle Name" class="form-input" id="father_mname" value='{{ $father->father_mname }}' readonly />
 
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="father_suffix">Father's Suffix</label>
-                                <input type="text" name="father_suffix" placeholder="Father's Middle Name" class="form-input" id="father_suffix" value='{{ $father->father_suffix }}' readonly />
+                                <input type="text" name="father_suffix" placeholder="Father's Suffix" class="form-input" id="father_suffix" value='{{ $father->father_suffix }}' readonly />
 
                             </div>
                             </div>
@@ -478,11 +466,13 @@
                                 <div class="input-group">
                                 <label for="father_occu">Occupation</label>
                                 <input type="text" name="father_occu" placeholder="Occupation" class="form-input" id="father_occu" value='{{ $father->father_occu }}' readonly />
-                        
+
+                            </div>
                             </div>
                             @endforeach
                             @foreach($mothers as $index => $mother)
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="mother_lname">Mother's Last Name</label>
                                 <input type="text" name="mother_lname" placeholder="Mother's Last Name" class="form-input" id="mother_lname" value='{{ $mother->mother_lname }}' readonly />
 
@@ -503,10 +493,12 @@
                                 <input type="text" name="mother_mname" placeholder="Mother's Middle Name" class="form-input" id="mother_mname" value='{{ $mother->mother_mname }}' readonly />
 
                             </div>
+                            </div>
 
-                            <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="mother_suffix">Mother's Suffix</label>
-                                <input type="text" name="mother_suffix" placeholder="Mother's Middle Name" class="form-input" id="mother_suffix" value='{{ $mother->mother_suffix }}' readonly />
+                                <input type="text" name="mother_suffix" placeholder="Mother's Suffix" class="form-input" id="mother_suffix" value='{{ $mother->mother_suffix }}' readonly />
 
                             </div>
                             </div>
@@ -541,15 +533,19 @@
                                 <input type="text" name="mother_occu" placeholder="Occupation" class="form-input" id="mother_occu" value='{{ $mother->mother_occu }}' readonly />
 
                             </div>
+                            </div>
                             @endforeach
                         </div>
+
 
                         <div class="tab-subhead mt-4 mb-4">
                             <h3>If Married</h3><span><hr></span>
                         </div>
-                        <div class="fields">
-                        @foreach($spouses as $index => $spouse)
-                            <div class="input-group">
+                        
+                        <div class="row">
+                            @foreach($spouses as $index => $spouse)
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="spouse_lname">Spouse's Last Name</label>
                                 <input type="text" name="spouse_lname" placeholder="Spouse's Last Name" class="form-input" id="spouse_lname" value='{{ $spouse->spouse_lname }}' readonly />
 
@@ -559,8 +555,8 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="spouse_fname">Spouse's First Name</label>
-                                <input type="text" name="spouse_fname" placeholder="Spouse's First Name" class="form-input" id="spouse_fname" value='{{ $spouse->souse_fname }}' readonly />
-
+                                <input type="text" name="spouse_fname" placeholder="Spouse's First Name" class="form-input" id="spouse_fname" value='{{ $spouse->spouse_fname }}' readonly />
+                            </div>
                             </div>
 
                             <div class="col-md-6">
@@ -569,7 +565,10 @@
                                 <input type="text" name="spouse_mname" placeholder="Spouse's Middle Name" class="form-input" id="spouse_mname" value='{{ $spouse->spouse_mname }}' readonly />
 
                             </div>
-                            <div class="input-group">
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="spouse_suffix">Spouse's Suffix</label>
                                 <input type="text" name="spouse_suffix" placeholder="Spouse's Suffix" class="form-input" id="spouse_suffix" value='{{ $spouse->spouse_suffix }}' readonly />
 
@@ -629,9 +628,11 @@
                                 <input type="number" name="spouse_monthly_income" placeholder="Monthly Income" class="form-input" id="spouse_monthly_income" value='{{ $spouse->spouse_monthly_income }}' readonly />
 
                             </div>
-                        @endforeach
-                        @foreach($childrens as $index => $children)
-                            <div class="input-group">
+                            </div>
+                            @endforeach
+                            @foreach($childrens as $index => $children)
+                            <div class="col-md-6">
+                                <div class="input-group">
                                 <label for="no_child">No. of Children Living With You</label>
                                 <input type="number" name="no_child" placeholder="No. of Children Living With You" class="form-input" id="no_child" value='{{ $children->no_child }}' readonly />
 
@@ -676,23 +677,24 @@
                                 <input type="number" name="no_child_notstudy" placeholder="No. of Studying Children" class="form-input" id="no_child_notstudy" value='{{ $children->no_child_notstudy }}' readonly />
 
                             </div>
-                        @endforeach
+                            </div>
+                            @endforeach
 
                             <div class="col-md-6">
                                 <div class="input-group">
-                                <label for="house_yearly_income">HouseholdGross Yearly Income</label>
-                                <input name="house_yearly_income" id="house_yearly_income" value='{{ $members->house_yearly_income }}' readonly>
+                                <label for="house_yearly_income">Household Gross Yearly Income</label>
+                                <input name="house_yearly_income" id="house_yearly_income" value='{{ $house->house_yearly_income }}' readonly>
                             </div>
                             </div>
                             
                         </div>
 
-                        @foreach($emergencies as $index => $emergency)
-                        <div class="tab-subhead">
-                            <h3>In case of Emergency</h3>
+                        <div class="tab-subhead mt-4 mb-4">
+                            <h3>In case of Emergency</h3><span><hr></span>
                         </div>
                         <div class="row">
-                            <div class="col">
+                        @foreach($emergencies as $index => $emergency)
+                            <div class="col-md">
                                 <div class="input-group">
                                 <label for="emer_name">Name of Person/s To Be Notified</label>
                                 <input type="text" name="emer_name" placeholder="Name of Person/s To Be Notified" class="form-input" id="emer_name" value='{{ $emergency->emer_name }}' readonly />
@@ -700,7 +702,7 @@
                             </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col-md">
                                 <div class="input-group">
                                 <label for="emer_contact">Contact Number</label>
                                 <input type="text" name="emer_contact" placeholder="Contact Number" class="form-input" id="emer_contact" value='{{ $emergency->emer_contact }}' readonly />
@@ -708,13 +710,16 @@
                             </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col-md">
                                 <div class="input-group">
                                 <label for="emer_address">Address</label>
                                 <input type="text" name="emer_address" placeholder="Address" class="form-input" id="emer_address" value='{{ $emergency->emer_address }}' readonly />
 
                             </div>
-                        @endforeach
+                            </div>
+                            @endforeach
+
+                            
                         </div>
 
                         <div class="tab-header mt-4">
@@ -799,8 +804,9 @@
 
                         <div class="input-group col-6">
                             <label for="e_signature">Signature</label>
-                            <input type="image" name="e_signature" class="form-input" id="e_signature" value='{{ $members->e_signature }}' readonly />
-
+                            <img src="{{ asset('images/e_sign/' . $members->e_signature) }}" alt="Signature" style="width:192px; height:75px;">
+                            
+                            
                         </div>
 
                         <div class="input-group col-6">
@@ -809,11 +815,20 @@
 
                         </div>
 
-                        <div class="btns-group" style="justify-content: flex-end !important; gap:2rem;">
-                            <a href="{{ url('/pdf_download/pdf_view/' . $members->usercode . '/generate') }} "
-                            class="btn btn-next btn-primary">Export PDF</a>
-                            <a href="{{ url('/bookappointment/' . $members->usercode) }}"
-                            class="btn btn-next btn-primary">Set Walk-in Appointment</a>
+                        <!-- <div class="button d-flex justify-content-end mt-4" style='gap: 10px;'>
+                            <a href="{{ url('/pdf_download/pdf_view/' . $members->id . '/generate') }} "
+                            class="btn btn-export btn-primary"><i class='bx bxs-file-export'></i> Export PDF </a>
+                            <a href="{{ url('/bookappointment/' . $members->id) }}"
+                            class="btn btn-set btn-primary"><i class='bx bx-calendar-event'></i> Set Walk-in Appointment </a>
+                        </div> -->
+
+                        <div class="button d-flex justify-content-end mt-4" style='gap: 10px;'>
+                            <a href="{{ url('/pdf_download/pdf_view/' . $members->usercode . '/generate') }}" class="btn btn-export btn-primary">
+                                <i class='bx bxs-file-export'></i> Export PDF
+                            </a>
+                            <a href="{{ url('/bookappointment/' . $members->usercode) }}" class="btn btn-set btn-primary">
+                                <i class='bx bx-calendar-event'></i> Set Walk-in Appointment
+                            </a>
                         </div>
 
 

@@ -40,14 +40,17 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 Route::get('userpanel/regular', [App\Http\Controllers\HomeController::class, 'showRegular'])->name('regular');
-Route::middleware(['auth', 'checkRole:Regular Member'])->group(function () {
-
-});
 Route::get('userpanel/associate', [App\Http\Controllers\HomeController::class, 'showAssociate'])->name('associate');
-Route::middleware(['auth', 'checkRole:Regular Member'])->group(function () {
 
+Route::middleware(['auth', 'checkRole:Regular Member,Associate Member'])->group(function () {
+    Route::get('userprofile', [\App\Http\Controllers\UserProfileController::class, 'show'])->name('userprofile.show');
+    Route::put('userprofile', [\App\Http\Controllers\UserProfileController::class, 'update'])->name('userprofile.update');
 });
+
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

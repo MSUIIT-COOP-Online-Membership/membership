@@ -132,7 +132,7 @@
 
                                 <div class="form-group">
                                     <label for="duration_residency">{{ __('Duration of Residency (years and months)') }}</label>
-                                    <input id="duration_residency" type="text" class="form-control" name="houses[duration_residency]">
+                                    <input id="duration_residency" type="text" class="form-control" name="houses[duration_residency]" value="{{ old('houses.duration_residency', $member->houses['duration_residency'] ?? '') }}">
                                 </div>
 
                                 <div class="form-group">
@@ -756,40 +756,10 @@
                                     <a href="{{ route('members.index') }}" class="btn btn-danger"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
                                     <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
                                     <button type="button" class="btn btn-secondary" onclick="showSection('section6')"><i class="fas fa-arrow-circle-left mr-1"></i>Previous</button>
-                                    <button type="button" class="btn btn-primary" onclick="showSection('section8')"><i class="fas fa-arrow-circle-right mr-1"></i>Next</button> 
-                                    <!-- <button type="submit" class="btn btn-success"><i class="fas fa-check-circle mr-1"></i>Submit</button> -->
+                                    <!-- <button type="button" class="btn btn-primary" onclick="showSection('section8')"><i class="fas fa-yarrow-circle-right mr-1"></i>Next</button>  -->
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-check-circle mr-1"></i>Submit</button>
                                 </div>
                             </div>
-
-                           <!-- Section 8: Overall Preview -->
-                            <div id="section8" style="display: none;">
-                                <div class="card-header bg-dark text-white">
-                                    <h7 class="mb-0">{{ __('Overall Preview') }}</h7>
-                                </div><br>
-
-                                <!-- Display user inputs for review -->
-                                <div class="form-group">
-                                    <label>{{ __('ID Photo') }}:</label>
-                                    @if(old('id_photo'))
-                                        <img src="{{ asset('images/id_photos/' . old('id_photo')) }}" alt="ID Photo">
-                                    @else
-                                        <p>No ID Photo uploaded.</p>
-                                    @endif
-                                    <button type="button" class="btn btn-link" onclick="editField('id_photo')">{{ __('Edit') }}</button>
-                                </div>
-
-                                <!-- Repeat the above block for each input field -->
-                                
-                                <!-- Buttons for navigation -->
-                                <div class="form-group mt-5 d-flex justify-content-between">
-                                    <!-- Add similar "Edit" buttons for other sections -->
-                                    <a href="{{ route('members.index') }}" class="btn btn-danger"><i class="fas fa-times-circle mr-1"></i>{{ __('Cancel') }}</a>
-                                    <button type="reset" class="btn btn-warning"><i class="fas fa-sync-alt mr-1"></i>{{ __('Reset') }}</button>
-                                    <button type="button" class="btn btn-secondary" onclick="editSection('section8')"><i class="fas fa-edit mr-1"></i>Edit</button>
-                                    <button type="button" class="btn btn-success" onclick="submitForm()"><i class="fas fa-check-circle mr-1"></i>Submit</button>
-                                </div>
-                            </div>
-
 
                             </form>
                         </div>
@@ -843,7 +813,7 @@ function showSection(sectionId) {
     document.getElementById('section5').style.display = 'none';
     document.getElementById('section6').style.display = 'none';
     document.getElementById('section7').style.display = 'none';
-    document.getElementById('section8').style.display = 'none';
+    // document.getElementById('section8').style.display = 'none';
 
     // Show the selected section
     document.getElementById(sectionId).style.display = 'block';

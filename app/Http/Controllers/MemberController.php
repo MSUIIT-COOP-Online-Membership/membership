@@ -425,7 +425,29 @@ class MemberController extends Controller
                 'app_date' => 'nullable|date',
         ]);
 
-        $member = Member::find($id);
+        $member = Member::findOrFail($id);
+
+        $member->update([
+            'id_photo' => $request->input('id_photo'),
+            'lname' => $request->input('lname'),
+            'mname' => $request->input('mname'),
+            'fname' => $request->input('fname'),
+            'suffix' => $request->input('suffix'),
+            'sex' => $request->input('sex'),
+            'civil_status' => $request->input('civil_status'),
+            'dob' => $request->input('dob'),
+            'age' => $request->input('age'),
+            'tel_no' => $request->input('tel_no'),
+            'mobile_no' => $request->input('mobile_no'),
+            'religion' => $request->input('religion'),
+            'email' => $request->input('email'),
+            'place_birth' => $request->input('place_birth'),
+            'present_address' => $request->input('present_address'),
+            'tin' => $request->input('tin'),
+            'educational_attainment' => $request->input('educational_attainment'),
+            'e_signature' => $request->input('e_signature'),
+            'app_date' => $request->input('app_date'),
+        ]);
         
         if ($request->hasFile('id_photo')) {
             $image = $request->file('id_photo');
@@ -441,8 +463,19 @@ class MemberController extends Controller
             $request->merge(['e_signature' => $imageName]);
         }
 
-        // Update the member instance with the validated data
-        $member->save();
+         // Retrieve and update the related House model
+         if ($member->house) {
+            $member->house->update([
+                'duration_residency' => $request->input('houses.duration_residency'),
+                'living_parents' => $request->input('houses.living_parents'),
+                'house' => $request->input('houses.house'),
+                'house_month' => $request->input('houses.house_month'),
+                'lot' => $request->input('houses.lot'),
+                'lot_month' => $request->input('houses.lot_month'),
+                'house_yearly_income' => $request->input('houses.house_yearly_income'),
+            ]);
+        }
+
 
         Alert::success('Success!', 'Updated member successfully.');
 

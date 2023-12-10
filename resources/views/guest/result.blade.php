@@ -31,7 +31,7 @@
                         @if($passOrFail === 'Fail')
                             <div class="Fail">
                                 <div>
-                                    <img src="{{ asset('images/email/X-no-bg.png') }}" alt="Failed">
+                                    <img src="{{ asset('images/email/32-removebg.png') }}" alt="Failed">
                                 </div>
                                 <div class="right">
                                     <h1 class="score"> YOUR SCORE </h1> <br> 
@@ -43,7 +43,7 @@
                         @else
                             <div class="Pass">
                                 <div>
-                                <img src= "{{ asset('images/email/C-no-bg.png') }}" alt="Passed">
+                                <img src= "{{ asset('images/email/34-removebg.png') }}" alt="Passed">
                                 </div>
                                 <div class="right">
                                     <h1 class="score"> YOUR SCORE </h1> <br> 

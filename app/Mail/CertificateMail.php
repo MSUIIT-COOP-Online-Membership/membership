@@ -24,21 +24,19 @@ class CertificateMail extends Mailable
     public function build()
     {
         $pdfContent = $this->generatePDF();
-        $imagePath = public_path('images/npmc-logo-nobg.png/' . $this->certificate_data['img']);
-
+      
         return $this->from('msuiitnmpc.iligan@gmail.com', 'MSU-IIT NMPC')
-        ->subject('E-Certificate - Completion of the Pre-Membership Form from MSUIIT NMPC')
-        ->view('mails.certificate-mail')
-        ->attachData($pdfContent, 'certificate_' . $this->certificate_data['fname'] . $this->certificate_data['lname'] . '.pdf', [
-            'mime' => 'application/pdf'
-        ])
-        ->with([
-            'certificate_data' => $this->certificate_data,
-            'userCode' => $this->userCode,
-            'imagePath' => $imagePath, 
-        ]);
-    
+            ->subject('E-Certificate - Completion of the Pre-Membership Form from MSUIIT NMPC')
+            ->view('mails.certificate-mail')
+            ->attachData($pdfContent, 'certificate_' . $this->certificate_data['fname'] . $this->certificate_data['lname'] . '.pdf', [
+                'mime' => 'application/pdf'
+            ])
+            ->with([
+                'certificate_data' => $this->certificate_data,
+                'userCode' => $this->userCode,
+            ]);
     }
+
     protected function generatePDF()
     {
         // Render the certificate PDF content using the Blade template
@@ -58,6 +56,4 @@ class CertificateMail extends Mailable
         // Return the generated PDF content
         return $dompdf->output();
     }
-
-
 }

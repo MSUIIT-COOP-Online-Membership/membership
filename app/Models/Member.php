@@ -103,5 +103,6 @@ class Member extends Model
         // 'ben_relationship',
         'e_signature',
         'app_date',
+        'img',
     ];        
 }

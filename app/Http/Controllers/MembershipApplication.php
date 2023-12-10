@@ -29,12 +29,42 @@ class MembershipApplication extends Controller
     public function verifyCode(Request $request)
     {
         $code = $request->input('code');
-        $member = Member::where('usercode', $code)->first();
+        $members = Member::where('usercode', $code)->first();
+        // Check if at least one member is found
+        if ($members) {
+        // Get the id from the first member (assuming usercodes are unique)
+            $img = $members->img;
 
-        if ($member) {
-            return view('members.membershipform', ['members' => $member], ['usercode' => $code]);
-        } else {
-            return redirect()->back()->with('error', 'Code not found.');
+            if($img !== NULL){
+                $id = $members->id;
+
+                $businesses = Businesses::where('member_id', $id)->get();
+                $childrens = Childrens::where('member_id', $id)->get();
+                $emergencies = Emergencies::where('member_id', $id)->get();
+                $employments = Employments::where('member_id', $id)->get();
+                $employers = Employers::where('member_id', $id)->get();
+                $fathers = Fathers::where('member_id', $id)->get();
+                $houses = Houses::where('member_id', $id)->get();
+                $mothers = Mothers::where('member_id', $id)->get();
+                $spouses = Spouses::where('member_id', $id)->get();
+                $beneficiaries = Beneficiary::where('member_id', $id)->get(); 
+
+                return view('members.view', [
+                    'members' => $members,
+                    'businesses' => $businesses,
+                    'childrens' => $childrens,
+                    'emergencies' => $emergencies,
+                    'employments' => $employments,
+                    'employers' => $employers,
+                    'fathers' => $fathers,
+                    'houses' => $houses,
+                    'mothers' => $mothers,
+                    'spouses' => $spouses,
+                    'beneficiaries' => $beneficiaries,
+                ]);
+            }else {
+                return view('members.membershipform', ['members' => $members, 'usercode' => $code]);
+            }
         }
     }
 
@@ -297,9 +327,9 @@ class MembershipApplication extends Controller
 
     public function view($usercode)
     {
-        $members = Member::where('usercode', $usercode)->get();
+        $members = Member::where('usercode', $usercode)->first();
         // Check if at least one member is found
-        if ($members->isNotEmpty()) {
+        if ($members) {
         // Get the id from the first member (assuming usercodes are unique)
             $id = $members->first()->id;
 

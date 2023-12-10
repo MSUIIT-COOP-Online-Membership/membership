@@ -56,7 +56,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md">
-                            @foreach($members as $index => $members)
+                            
                                 <div class="input-group">
                                     <label for="lname">Last Name</label>
                                     <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
@@ -163,7 +163,6 @@
 
                             </div>
                             </div>
-                            @endforeach
 
                             @foreach($houses as $index => $house)
                             <div class="col-md-4">

@@ -31,6 +31,8 @@ nextBtns.forEach((btn) => {
         updateFormSteps();
         updateProgressbar();
         scrollToTop(); 
+        initializeMap()
+
       } else {
         // Scroll to the first unfilled field
         scrollToFirstInvalidField();
@@ -195,6 +197,60 @@ function scrollToTop() {
   window.scrollTo({
     top: 200,
     behavior: 'smooth'
+  });
+}
+
+function initializeMap() {
+  console.log('Initializing the map...');
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoidnJvbmFseW4iLCJhIjoiY2xjMDJnNWhtMWJxYzN1bXFjZmdnNDR3dSJ9.LkEnrvW8i-KTy-8lVyZs-g';
+
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v12',
+    center: [124.240967, 8.231000],
+    zoom: 15
+  });
+
+  map.addControl(
+    new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+    })
+  );
+
+  map.addControl(new mapboxgl.NavigationControl());
+
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserHeading: true
+    })
+  );
+
+  let currentMarker;
+
+  map.on('click', (e) => {
+    const coordinates = e.lngLat;
+
+    if (currentMarker) {
+      currentMarker.remove();
+    }
+
+    const marker = new mapboxgl.Marker({ color: '#FF0000' })
+      .setLngLat(coordinates)
+      .addTo(map);
+
+    document.getElementById('longitude').value = coordinates.lng.toFixed(6);
+    document.getElementById('latitude').value = coordinates.lat.toFixed(6);
+
+    currentMarker = marker;
+
+    console.log('Longitude:', coordinates.lng);
+    console.log('Latitude:', coordinates.lat);
   });
 }
 

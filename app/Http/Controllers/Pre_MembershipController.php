@@ -40,10 +40,10 @@ class Pre_MembershipController extends Controller
             'place_birth' => 'nullable|string|max:255',
             'present_address' => 'nullable|string|max:255',
             'usercode' => 'nullable|string|size:8',
-            'occupation' => 'nullable|string|max:255',
-            'ofw_family_member' => 'nullable|string|max:255',
-            'latitude' => 'nullable|numeric', //new
-            'longitude' => 'nullable|numeric', //new
+            // 'occupation' => 'nullable|string|max:255',
+            // 'ofw_family_member' => 'nullable|string|max:255',
+            // 'latitude' => 'nullable|numeric', //new
+            // 'longitude' => 'nullable|numeric', //new
 
            
             // evaluation data

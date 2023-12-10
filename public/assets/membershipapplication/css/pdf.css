@@ -54,7 +54,7 @@ h3 {
   margin-right: 5px;
 }
 
-img{
+.ID{
   width:192px;
   height:192px;
   float: right;
@@ -180,7 +180,6 @@ img{
 
 #no_workers, #yearly_income{
   width: 212px;
-  margin-top:14px;
 }
 
 #source_income, #monthly_income{
@@ -239,6 +238,15 @@ img{
   width: 375px;
   margin-top: 10px;
 }
+
+.third-page{
+  height:50px;
+}
+
+.brand-text{
+  text-align: center;
+}
+
 
 .performance-facts {
   margin: 30px;

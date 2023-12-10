@@ -732,6 +732,7 @@
                             
                         </div>
 
+                        @if ($members->civil_status != 'Single')
                         <div class="tab-subhead mt-4">
                         <div><h6>If Married</h6><hr></div>
                         </div>
@@ -910,6 +911,7 @@
                             </div>
                             </div>
                         </div>
+                        @endif
 
                         <div class="tab-subhead mt-4">
                         <div><h6>In Case of Emergency</h6><hr></div>

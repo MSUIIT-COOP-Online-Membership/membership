@@ -9,25 +9,21 @@
 
 
 <section class="performance-facts">
-  <header class="performance-facts__header">
-  <div class="header-logo  navbar-expand-lg ">
-        <a href="">
-              <img src="C:\Users\Acer\membership\public\images\npmc-logo-nobg.png" alt="MSUIIT COOP"
-                 class="brand-image img-circle elevation-4"
-                 style="opacity: 1; width: 70px; height:70px;">
-            <div class="brand-text"> <!-- Add some margin to separate the image and text -->
-                <p class=" font-weight-bolder">MSU-IIT NATIONAL MULTI-PURPOSE COOPERATIVE</p>
-                <p class="brand-slogan"> Join Us Grow With Us!</p>
-            </div>
-        </a>
+<div class="brand-text">
+    <img src="{{ $logo }}" style="float: right; margin-right:100px; margin-top:15px; opacity: 1; width: 90px; height: 60px; z-index: -1;">
+    <img src="{{ $logo2 }}" style="float: left; margin-left:100px; margin-top:15px; opacity: 1; width: 90px; height: 60px; z-index: -1;">
+    <div>
+        <p class="font-weight-bolder">MSU-IIT NATIONAL MULTI-PURPOSE COOPERATIVE</p>
+        <p style="font-size: 10px;">Quezon Ave. Ext, Pala-o, Iligan City 9200, Philippines <br> Telephone No. (063) 22-5874<br>www.msuiit.coop.org</p>
+        <p class="brand-slogan"> Join Us Grow With Us!</p><br>
+        <p style="font-size: 20px;"><strong>MEMBERSHIP APPLICATION FORM</strong></p>
+    </div>
 </div>
-  </header>
   <div class="divider">
     <h3>Personal Data</h3>
   </div>
   
   <div class="info">
-  @foreach($members as $index => $members)
   <div class="input-group first-row">
         <label for="lname">Last Name</label>
         <input type="text" name="lname" class="form-input" id="lname" value='{{ $members->lname }}' readonly>
@@ -43,7 +39,7 @@
 
     <div class="input-group">
         <label for="suffix">Suffix</label>
-        <input type="text" name="suffix" placeholder="Suffix" class="form-input" id="suffix" value='{{ $members->suffix}}' readonly />
+        <input type="text" name="suffix" placeholder="Suffix" class="form-input" id="suffix" value='{{ $members->suffix }}' readonly />
     </div>
     <div class="input-group">
        <label for="sex">Sex</label>
@@ -67,7 +63,7 @@
     </div>
 
     <div class="input-group">
-        <img src="#" class="id_pic">
+        <img src="{{ $id_picture }}" alt="ID Picture" class="ID" style="width:192px; height:192px;">
     </div>
 
     <div class="input-group">
@@ -103,7 +99,6 @@
         <input type="text" name="present_address" class="form-input" id="present_address" value='{{ $members->present_address }}' readonly />
 
     </div>
-  @endforeach
 
   @foreach($houses as $index => $house)
   <div class="input-group">
@@ -249,8 +244,9 @@
       <label for="business_duration">Duration of Operation</label>
       <input type="text" name="op_duration_year" placeholder="No. of Years" class="form-input" id="op_duration_year" value='{{ $business->op_duration_year }} Year/s' readonly />
       <input type="text" name="op_duration_month" placeholder="No. of Months" class="form-input" id="op_duration_month" value='{{ $business->op_duration_month }} Month/s' readonly />
-  </div>
+  </div><br style="page-break-before: always;">
 
+  <div style="height: 50px;"></div>
   <div class="input-group">
       <label for="no_workers">Number of Workers</label>
       <input type="text" name="no_workers" placeholder="No. of Workers" class="form-input" id="no_workers" value='{{ $business->no_workers }}' readonly />
@@ -271,7 +267,7 @@
       <input type="text" name="monthly_income" id="monthly_income" value='{{ $business->monthly_income }}' readonly>
   </div>@endforeach
 
-  <div class="divider next-page" style="margin-top: 50px !important;">
+  <div class="divider next-page" style="margin-top: 20px !important;">
     <h3>Family Background</h3>
   </div>
   @foreach($fathers as $index => $father)
@@ -501,7 +497,7 @@
 
       </div>
   @endforeach
-  <div class="divider next-page" style="margin-top: 50px !important;">
+  <div class="divider next-page" style="margin-top: 20px !important;">
     <h3>Beneficiaries</h3>
   </div>
   @foreach($beneficiaries as $index => $beneficiary)
@@ -540,10 +536,80 @@
           <input type="text" name="ben_relationship" placeholder="Relationship" class="form-input" id="ben_relationship" value="{{ $beneficiary->ben_relationship }}" readonly/>
 
       </div>
-  @endforeach
-  <div class="divider next-page" style="margin-top: 50px !important;">
-    <h3>Declaration and Specimen Signature</h3>
-  </div>
+      @if($index == 1) <!-- Stop the loop after the third iteration -->
+            @break
+      @endif
+    @endforeach<br style="page-break-before: always;">
+    <div class="third-page"></div>
+    @foreach($beneficiaries as $index => $beneficiary)
+    @if($index < 2)
+        @continue
+    @endif
+    <div class="input-group">
+          <label for="ben_lname">Last Name</label>
+          <input type="text" name="ben_lname" placeholder="Last Name" class="form-input" id="ben_lname" value="{{ $beneficiary->ben_lname }}" readonly />
+
+      </div>
+
+      <div class="input-group">
+          <label for="ben_fname">First Name</label>
+          <input type="text" name="ben_fname" placeholder="First Name" class="form-input" id="ben_fname" value="{{ $beneficiary->ben_fname }}" readonly/>
+
+      </div>
+
+      <div class="input-group">
+          <label for="ben_mname">Middle Name</label>
+          <input type="text" name="ben_mname" placeholder="Middle Name" class="form-input" id="ben_mname" value="{{ $beneficiary->ben_mname }}" readonly/>
+
+      </div>
+
+      <div class="input-group">
+          <label for="ben_suffix">Suffix</label>
+          <input type="text" name="ben_suffix" placeholder="Suffix" class="form-input" id="ben_suffix" value="{{ $beneficiary->ben_suffix }}" readonly/>
+
+      </div>
+
+      <div class="input-group">
+          <label for="ben_dob">Date of Birth</label>
+          <input type="text" name="ben_dob" placeholder="Date of Birth" class="form-input" id="ben_dob" value="{{ $beneficiary->ben_dob }}" readonly/>
+
+      </div>
+
+      <div class="input-group" style="margin-bottom: 7px;">
+          <label for="ben_relationship">Relationship</label>
+          <input type="text" name="ben_relationship" placeholder="Relationship" class="form-input" id="ben_relationship" value="{{ $beneficiary->ben_relationship }}" readonly/>
+
+      </div>
+@endforeach
+    <div class="divider next-page">
+        <h3>Declaration and Specimen Signature</h3>
+    </div>
+            <p>1. I, whose specimen signature appears below, confirm that all the information disclosed in this membership
+                application <br>&nbsp;&nbsp;&nbsp; form is correct and complete. Any changes in the foregoing information shall be communicated to
+                Cooperative. I hereby <br>&nbsp;&nbsp;&nbsp; authorize the Cooperative to verify and investigate any and all the information given
+                by me which the Coop may deem <br>&nbsp;&nbsp;&nbsp; appropriate.
+            </p><br>
+            <p>2. I hereby acknowledge and authorize the Cooperative:</p><br>
+            <p>&nbsp;&nbsp;&nbsp; 1. the regular submission and disclosure of my basic credit data (as defined by Republic Act No. 9510 and investigate
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; implementing Rules and Regulation) to the Credit Information Corporation (CIC) as well as any updates or corrections
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; thereof;</p><br>
+            <p>&nbsp;&nbsp;&nbsp; 2. the sharing of my basic credit data with other lenders authorized by the CIC, and credit reporting agencies duly
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; accredited by the CIC.
+            </p><br><br><br><br>
+
+            <div class="input-group" style="text-align: center; padding: 10px;">
+                <img src="{{ $e_sign }}" alt="Signature" style="width: 192px; height: 75px;">
+                <p style="margin: 0; padding: 0;">{{ $members->fname }} {{ $members->mname }} {{ $members->lname }} {{ $members->suffix }}</p>
+                <p style="margin: 0; padding: 0;">Signature Over Printed Name</p>
+            </div>
+            <div class="input-group" style="width: 180px;"></div>
+
+
+            <div class="input-group" style="text-align: center; padding: 10px;">
+                <input type="text" name="app_date" class="form-input" id="app_date" value='{{ $members->app_date }}' readonly />
+                <p>Date</p>
+            </div>
+        </div>
 </section>
 </body>
 </html>

@@ -45,12 +45,12 @@
                     </div> --}}
                   
                 </div>
-
+<!-- 
                 <div class="eval-group">  
                     <label for="referName">Name of referring person  (if none, kindly put NA)</label> <br>
                     <input class="mb-3" type="text" name="referName" placeholder="Your answer" class="form-input" id="referName" required/>                    
                     <span class="field-message">This field is required</span> <br> <br>
-                </div>
+                </div> -->
             </div>
 
             <div class="home-box instruction-box form-checks">
@@ -416,46 +416,5 @@
                 <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
                 <button type="submit" class="submit">Submit</button>
             </div>
-    <!-- <div class="btns-group">
-        <a href="#" class="btn-prev"><i class='bx bx-chevron-left'></i>Back</a>
-        <div >
-          <button  type='submit' class="submit"> Submit</button>
-        </div>
-      </div> -->
-<!-- 
-        @push('scripts')
-            <script>
-                document.getElementById('evaluation-submit').addEventListener('click', function() {
-                    // Check if all evaluation questions have been answered
-                    if (validateEvaluationForm()) {
-                        // If all questions have been answered, submit the form
-                        document.getElementById('form').submit();
-                    } else {
-                        // If any question is unanswered, display an alert or handle it as needed
-                        alert('Please answer all evaluation questions before submitting.');
-                        // You can also highlight the unanswered questions or take other actions here
-                    }
-                });
-
-                function validateEvaluationForm() {
-                    // Add logic here to check if all questions have been answered
-                    // For example, you can select all the input fields for evaluation questions
-                    // and check if they have values or are checked (for checkboxes or radio buttons)
-                    // Return true if all questions have been answered, otherwise return false
-
-                    // Example logic:
-                    var inputs = document.querySelectorAll('.evaluation-question'); // Change this selector to match your input fields
-
-                    for (var i = 0; i < inputs.length; i++) {
-                        // Check if any question is unanswered
-                        if (!inputs[i].value) {
-                            return false; // Return false if any question is unanswered
-                        }
-                    }
-
-                    return true; // Return true if all questions have been answered
-                }
-            </script>
-            @endpush -->
 
 </div>

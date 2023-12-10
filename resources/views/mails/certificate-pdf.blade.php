@@ -51,7 +51,7 @@
         }
 
         .container h3{
-            padding-top: 3rem;
+            padding-top: 5rem;
             font-size: 3.5rem;
             text-transform: uppercase;
         }
@@ -120,15 +120,15 @@
     <header>
         <div class="head">
         <!-- <img src="{{ public_path('images/npmc-logo-nobg.png') }}" alt="MSU-IIT NMPC Logo"> -->
-                <p> Mindanao State University <br>
+                <!-- <p> Mindanao State University <br>
                 Iligan Institute of Technology<br>
-                National Multi-purpose Cooperative 
+                National Multi-purpose Cooperative  -->
             </p>
         </div>
     </header>
 
     <div class="container">
-        <h3 >Certificate of <br></h3>
+        <h3>Certificate of <br></h3>
         <h1>Appreciation <br></h1>
         <p>is presented to <br> <br></p>
 
@@ -142,20 +142,20 @@
         <div class="signatures">
             <div>
                 <hr class="separator2">
-                <strong>Name</strong>
-                <p>Position</p>    
+                <strong>DAVID N. ALMAREZ, DM</strong>
+                <p>Chairperson</p>    
             </div>
 
             <div>
                 <hr class="separator2">
-                <strong>Name</strong>
-                <p>Position</p>    
+                <strong>PROF. EDNA E. ABERILLA</strong>
+                <p>Chairperson Emeritus</p>    
             </div>
 
             <div>
                 <hr class="separator2">
-                <strong>Name</strong>
-                <p>Position</p>    
+                <strong>MYRNA P. CALO</strong>
+                <p>Vice Chairperson</p>    
             </div>
         </div>
         

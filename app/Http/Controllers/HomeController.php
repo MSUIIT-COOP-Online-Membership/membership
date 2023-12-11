@@ -7,6 +7,8 @@ use App\Models\Member;
 use App\Models\Staff;
 use App\Models\Branch;
 use App\Models\Appointment;
+use App\Models\ToDoList;
+use App\Models\Payment;
 
 class HomeController extends Controller
 {
@@ -33,13 +35,24 @@ class HomeController extends Controller
         $totalBranches = Branch::count();
         $totalAppointments = Appointment::count();
 
+        // Fetch the latest members from the database
+        $members = Member::latest()->take(8)->get();
+
+        // Fetch the ToDo list items from the database
+        $todoItems = ToDoList::latest()->take(5)->get();
+
+        // Fetch the latest payments from the database
+        $payments = Payment::latest()->take(8)->get();
+
         // Pass the total number of members, staff, and branches to the view
         return view('home', [
+            'members' => $members,
             'totalMembers' => $totalMembers,
             'totalStaff' => $totalStaff,
             'totalBranches' => $totalBranches,
             'totalAppointments' => $totalAppointments,
+            'todoItems' => $todoItems, 
+            'payments' => $payments,
         ]);
     }
-
 }

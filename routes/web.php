@@ -21,6 +21,7 @@ use App\Http\Controllers\FatherController;
 use App\Http\Controllers\MotherController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\SpouseController;
+use App\Http\Controllers\ToDoListController;
 
 
 
@@ -42,6 +43,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('todo-items', ToDoListController::class);
 
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');

@@ -553,22 +553,19 @@
                 </div>
                 <!-- /.card-footer -->
               </div>
-
-
+            <!-- /.card -->
             <!-- /.card -->
           </section>
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
 
-          
-
-            <!-- Map card -->
-            <div class="card bg-gradient-primary">
+           <!-- Map card -->
+ <div class="card bg-gradient-primary">
               <div class="card-header border-0">
                 <h3 class="card-title">
                   <i class="fas fa-map-marker-alt mr-1"></i>
-                  Visitors
+                  COOP Branches
                 </h3>
                 <!-- card tools -->
                 <div class="card-tools">
@@ -581,32 +578,33 @@
                 </div>
                 <!-- /.card-tools -->
               </div>
-              <div class="card-body">
-                <div id="world-map" style="height: 250px; width: 100%;"></div>
+              <div class="card-body p-0">
+                  <div class="map-container">
+                  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1vYU4O4LJ1TvDHiSEGSKvfYovk-N5_Mo&ehbc=2E312F&noprof=1" width="100%" height="500"></iframe>
+                  </div>
               </div>
               <!-- /.card-body-->
               <div class="card-footer bg-transparent">
                 <div class="row">
                   <div class="col-4 text-center">
                     <div id="sparkline-1"></div>
-                    <div class="text-white">Visitors</div>
+                    <div class="text-white"></div>
                   </div>
                   <!-- ./col -->
                   <div class="col-4 text-center">
                     <div id="sparkline-2"></div>
-                    <div class="text-white">Online</div>
+                    <div class="text-white"></div>
                   </div>
                   <!-- ./col -->
                   <div class="col-4 text-center">
                     <div id="sparkline-3"></div>
-                    <div class="text-white">Sales</div>
+                    <div class="text-white"></div>
                   </div>
                   <!-- ./col -->
                 </div>
                 <!-- /.row -->
               </div>
             </div>
-            <!-- /.card -->
 
             <div class="card bg-gradient-info">
             <div class="card-header border-0">

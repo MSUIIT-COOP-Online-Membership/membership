@@ -11,6 +11,7 @@ class Member extends Model
 
     protected $fillable = [
         'usercode',
+        'id_photo',
         'lname',
         'mname',
         'fname',

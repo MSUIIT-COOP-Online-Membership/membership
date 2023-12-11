@@ -41,7 +41,7 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="#" class="nav-link" id="dashboard-link">
                 <i class="nav-icon fas fa-chart-bar"></i>
                 <p>
@@ -57,7 +57,7 @@
                     {{ __('Timeline') }}
                 </p>
             </a>
-        </li>
+        </li> -->
 
         <li class="nav-header">CRUD MODELS</li>
             <li class="nav-item">
@@ -180,7 +180,7 @@
             </li>
 
 
-            <li class="nav-item has-treeview">
+            <!-- <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon far fa-envelope"></i>
                     <p>
@@ -208,10 +208,10 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
 
-            <li class="nav-header">MISCELLANEOUS</li>
+            <!-- <li class="nav-header">MISCELLANEOUS</li> -->
             <li class="nav-item">
                 <a href="{{ route('appointments.calendar') }}" class="nav-link">
                     <i class="nav-icon far fa-calendar-alt"></i>
@@ -221,7 +221,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="{{ route('appointments.calendar') }}" class="nav-link">
                     <i class="nav-icon far fa-image"></i>
                     <p>
@@ -229,17 +229,17 @@
                         <span class="badge badge-info right"></span>
                     </p>
                 </a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
                 <a href="{{ route('about') }}" class="nav-link">
                     <i class="nav-icon far fa-address-card"></i>
                     <p>
                         {{ __('About Us') }}
                     </p>
                 </a>
-            </li>
+            </li> -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-cogs"></i>
                     <p>
@@ -255,7 +255,7 @@
                         {{ __('FAQs') }}
                     </p>
                 </a>
-            </li>
+            </li> -->
     
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">

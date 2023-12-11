@@ -680,12 +680,14 @@
                             </div>
                             @endforeach
 
+                            @foreach($houses as $index => $house)
                             <div class="col-md-6">
                                 <div class="input-group">
                                 <label for="house_yearly_income">Household Gross Yearly Income</label>
                                 <input name="house_yearly_income" id="house_yearly_income" value='{{ $house->house_yearly_income }}' readonly>
                             </div>
                             </div>
+                            @endforeach
                             
                         </div>
 

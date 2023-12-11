@@ -14,6 +14,18 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BeneficiaryController;
 use App\Http\Controllers\Pre_MembershipController;
 use App\Http\Controllers\MembershipApplication;
+use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\ChildController;
+use App\Http\Controllers\EmergencyController;
+use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\EmploymentController;
+use App\Http\Controllers\FatherController;
+use App\Http\Controllers\MotherController;
+use App\Http\Controllers\HouseController;
+use App\Http\Controllers\SpouseController;
+use App\Http\Controllers\ToDoListController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +65,7 @@ Route::middleware(['auth', 'checkRole:Regular Member,Associate Member'])->group(
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('todo-items', ToDoListController::class);
 
 Route::middleware(['auth', 'checkRole:System Administrator'])->group(function () {
     Route::view('about', 'about')->name('about');
@@ -145,6 +158,69 @@ Route::middleware(['auth', 'checkRole:System Administrator'])->group(function ()
     Route::get('/beneficiaries/{beneficiary}/edit', [BeneficiaryController::class, 'edit'])->name('beneficiaries.edit');
     Route::delete('/beneficiaries/{beneficiary}', [BeneficiaryController::class, 'destroy'])->name('beneficiaries.destroy');
     Route::resource('beneficiaries', BeneficiaryController::class);
+
+    Route::get('businesses', [\App\Http\Controllers\BusinessController::class, 'index'])->name('businesses.index');
+    Route::get('businesses/create', [App\Http\Controllers\BusinessController::class, 'create'])->name('businesses.create');
+    Route::post('businesses', [App\Http\Controllers\BusinessController::class, 'store'])->name('businesses.store');
+    Route::get('/businesses/{business}/edit', [BusinessController::class, 'edit'])->name('businesses.edit');
+    Route::delete('/businesses/{business}', [BusinessController::class, 'destroy'])->name('businesses.destroy');
+    Route::resource('businesses', BusinessController::class);
+
+    Route::get('children', [\App\Http\Controllers\ChildController::class, 'index'])->name('children.index');
+    Route::get('children/create', [App\Http\Controllers\ChildController::class, 'create'])->name('children.create');
+    Route::post('children', [App\Http\Controllers\ChildController::class, 'store'])->name('children.store');
+    Route::get('/children/{child}/edit', [ChildController::class, 'edit'])->name('children.edit');
+    Route::delete('/children/{child}', [ChildController::class, 'destroy'])->name('children.destroy');
+    Route::resource('children', ChildController::class);
+
+    Route::get('emergencies', [\App\Http\Controllers\EmergencyController::class, 'index'])->name('emergencies.index');
+    Route::get('emergencies/create', [App\Http\Controllers\EmergencyController::class, 'create'])->name('emergencies.create');
+    Route::post('emergencies', [App\Http\Controllers\EmergencyController::class, 'store'])->name('emergencies.store');
+    Route::get('/emergencies/{emergency}/edit', [EmergencyController::class, 'edit'])->name('emergencies.edit');
+    Route::delete('/emergencies/{emergency}', [EmergencyController::class, 'destroy'])->name('emergencies.destroy');
+    Route::resource('emergencies', EmergencyController::class);
+
+    Route::get('employers', [\App\Http\Controllers\EmployerController::class, 'index'])->name('employers.index');
+    Route::get('employers/create', [App\Http\Controllers\EmployerController::class, 'create'])->name('employers.create');
+    Route::post('employers', [App\Http\Controllers\EmployerController::class, 'store'])->name('employers.store');
+    Route::get('/employers/{employer}/edit', [EmployerController::class, 'edit'])->name('employers.edit');
+    Route::delete('/employers/{employer}', [EmployerController::class, 'destroy'])->name('employers.destroy');
+    Route::resource('employers', EmployerController::class);
+
+    Route::get('employments', [\App\Http\Controllers\EmploymentController::class, 'index'])->name('employments.index');
+    Route::get('employments/create', [App\Http\Controllers\EmploymentController::class, 'create'])->name('employments.create');
+    Route::post('employments', [App\Http\Controllers\EmploymentController::class, 'store'])->name('employments.store');
+    Route::get('/employments/{employment}/edit', [EmploymentController::class, 'edit'])->name('employments.edit');
+    Route::delete('/employments/{employment}', [EmploymentController::class, 'destroy'])->name('employments.destroy');
+    Route::resource('employments', EmploymentController::class);
+
+    Route::get('fathers', [\App\Http\Controllers\FatherController::class, 'index'])->name('fathers.index');
+    Route::get('fathers/create', [App\Http\Controllers\FatherController::class, 'create'])->name('fathers.create');
+    Route::post('fathers', [App\Http\Controllers\FatherController::class, 'store'])->name('fathers.store');
+    Route::get('/fathers/{father}/edit', [FatherController::class, 'edit'])->name('fathers.edit');
+    Route::delete('/fathers/{father}', [FatherController::class, 'destroy'])->name('fathers.destroy');
+    Route::resource('fathers', FatherController::class);
+
+    Route::get('mothers', [\App\Http\Controllers\MotherController::class, 'index'])->name('mothers.index');
+    Route::get('mothers/create', [App\Http\Controllers\MotherController::class, 'create'])->name('mothers.create');
+    Route::post('mothers', [App\Http\Controllers\MotherController::class, 'store'])->name('mothers.store');
+    Route::get('/mothers/{mother}/edit', [MotherController::class, 'edit'])->name('mothers.edit');
+    Route::delete('/mothers/{mother}', [MotherController::class, 'destroy'])->name('mothers.destroy');
+    Route::resource('mothers', MotherController::class);
+
+    Route::get('houses', [\App\Http\Controllers\HouseController::class, 'index'])->name('houses.index');
+    Route::get('houses/create', [App\Http\Controllers\HouseController::class, 'create'])->name('houses.create');
+    Route::post('houses', [App\Http\Controllers\HouseController::class, 'store'])->name('houses.store');
+    Route::get('/houses/{house}/edit', [HouseController::class, 'edit'])->name('houses.edit');
+    Route::delete('/houses/{house}', [HouseController::class, 'destroy'])->name('houses.destroy');
+    Route::resource('houses', HouseController::class);
+
+    Route::get('spouses', [\App\Http\Controllers\SpouseController::class, 'index'])->name('spouses.index');
+    Route::get('spouses/create', [App\Http\Controllers\SpouseController::class, 'create'])->name('spouses.create');
+    Route::post('spouses', [App\Http\Controllers\SpouseController::class, 'store'])->name('spouses.store');
+    Route::get('/spouses/{spouse}/edit', [SpouseController::class, 'edit'])->name('spouses.edit');
+    Route::delete('/spouses/{spouse}', [SpouseController::class, 'destroy'])->name('spouses.destroy');
+    Route::resource('spouses', SpouseController::class);
 });
 
 

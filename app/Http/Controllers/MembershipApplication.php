@@ -66,6 +66,9 @@ class MembershipApplication extends Controller
                 return view('members.membershipform', ['members' => $members, 'usercode' => $code]);
             }
         }
+        else {
+            return redirect()->back()->with('error', 'Code not found.');
+        }
     }
 
     public function getSubTypeOptions(Request $request)
@@ -427,7 +430,7 @@ class MembershipApplication extends Controller
 
             // Load HTML content
             $html = view('members.pdf_download.pdf_view', $data)->render();
-            $htmlWithStyles = '<style>' . file_get_contents('C:\Users\Acer\membership\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
+            $htmlWithStyles = '<style>' . file_get_contents('C:\xampp\htdocs\Membership-Module\public\assets\membershipapplication\css\pdf.css') . '</style>' . $html;
 
             // Load HTML to Dompdf
             $dompdf->loadHtml($htmlWithStyles);

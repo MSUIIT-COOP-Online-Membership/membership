@@ -122,7 +122,7 @@
                   <li class="nav-item"><a class="nav-link active" href="#section1" data-toggle="tab">Personal Informartion</a></li>
                   <li class="nav-item"><a class="nav-link" href="#section2" data-toggle="tab">Employment</a></li>
                   <li class="nav-item"><a class="nav-link" href="#section3" data-toggle="tab">Family Background</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#section4" data-toggle="tab">Beneficiaries</a></li>
+                  <!-- <li class="nav-item"><a class="nav-link" href="#section4" data-toggle="tab">Beneficiaries</a></li> -->
                   <li class="nav-item"><a class="nav-link" href="#section5" data-toggle="tab">Declaration</a></li>
                 </ul>
               </div><!-- /.card-header -->
@@ -446,18 +446,19 @@
 
                     <!-- Acceptance Checkbox -->
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="acceptanceCheckbox">
+                        <input type="checkbox" class="custom-control-input" id="acceptanceCheckbox" checked>
                         <label class="custom-control-label" for="acceptanceCheckbox">
-                            I accept the terms and conditions
+                            I accept the terms and conditions.
                         </label>
                     </div>
 
-                    <!-- Submit Button -->
+
+                    <!-- Submit Button
                     <div class="mt-3">
                         <button class="btn btn-primary" onclick="submitDeclaration()">
                             <i class="fas fa-check-circle mr-1"></i> Submit Declaration
                         </button>
-                    </div>
+                    </div> -->
                 </div>
 
                   <!-- /.tab-pane -->

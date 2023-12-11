@@ -23,7 +23,7 @@
 
  <!-- Preloader -->
  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('images/msuiitcoop-logo.png') }}" alt="MSUIIT COOP" width="200">
+    <img class="animation__shake" src="{{ asset('images/npmc-logo-nobg.png') }}" alt="MSUIIT COOP" width="200">
   </div>
 
     <!-- Navbar -->
@@ -65,11 +65,11 @@
                 </div>
             </li>
 
-            <!-- Messages Dropdown Menu -->
+               <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
+            <span class="badge badge-info navbar-badge">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">
@@ -182,6 +182,7 @@
                 </div>
             </li>
         </ul>
+
     </nav>
     <!-- /.navbar -->
     

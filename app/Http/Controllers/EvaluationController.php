@@ -40,7 +40,7 @@ class EvaluationController extends Controller
     public function create()
     {
        
- $members = Member::all();
+        $members = Member::all();
         $branches = Branch::all();
         return view('evaluations.create', compact('members', 'branches'));
     }

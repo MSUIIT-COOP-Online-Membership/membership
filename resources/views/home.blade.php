@@ -348,8 +348,15 @@
                     <ul class="users-list clearfix">
                         @foreach ($members as $member)
                         <li>
-                            <img src="{{ asset($member->id_photo) }}" alt="{{ $member->fname }} {{ $member->lname }} Image">
-                            <a class="users-list-name" href="#">{{ $member->fname }} {{ $member->lname }}</a>
+                            @if ($member->id_photo)
+                                      <img src="{{ asset('images/id_photos/' . $member->id_photo) }}" alt="ID Photo" class="img-thumbnail" width="50" height="50">
+                                  @else
+                                      No photo
+                                  @endif
+                                  <a class="users-list-name" href="{{ route('members.show', ['member' => $member->id]) }}">
+                                    {{ $member->fname }} {{ $member->lname }}
+                                </a>
+
                             <span class="users-list-date">Today</span>
                         </li>
                         @endforeach
